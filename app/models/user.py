@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
@@ -18,9 +19,14 @@ class User(db.Model, UserMixin):
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
   # posts = db.relationship("Post", back_populates="userId")
+  
 
+class Follower(db.Model):
+  __tablename__ = 'followers'
 
-
+  id = db.Column(db.Integer, primary_key = True)
+  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
   @property
