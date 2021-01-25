@@ -31,7 +31,7 @@ function Post() {
           </div>
           <div className="likeBlock">
             <p>
-              Liked by <a href={"/"}>User</a> and <p>Total Likes{}</p>
+              Liked by <a href={"/"}>User</a> and Total Likes{}
             </p>
           </div>
           <div className="captionBlock">
