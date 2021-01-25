@@ -1,4 +1,6 @@
 import React from "react";
+import CreateComment from "../Comment/comment";
+
 
 function Post() {
   let comments = [1, 1, 1]
@@ -36,6 +38,9 @@ function Post() {
               </div>
               <div className={'topComments'}>
                 <a href={''}>User Name</a><p>Comment text...</p>
+              </div>
+              <div className='postCommentBlock'>
+                <CreateComment />
               </div>
           </div>
         </div>
