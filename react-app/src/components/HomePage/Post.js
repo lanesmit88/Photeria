@@ -1,0 +1,35 @@
+import React from "react";
+
+function Post() {
+  return (
+    <>
+      <div className="wrapper">
+        <div className="headerBlock">
+          <img src={""} alt={""} />
+          <a href={"/"}>Profile Name</a>
+        </div>
+        <div className="imageBlock">
+          <img src={""} alt={""} />
+        </div>
+        <div className="detailBlock">
+          {/* Likes and other details */}
+          <div className="iconBlock">
+            <button>Like</button>
+            <button>Comment</button>
+            <button>DM</button>
+          </div>
+          <div className="likeBlock">
+            <p>
+              Liked by <a href={"/"}>User</a> and <p>Total Likes{}</p>
+            </p>
+          </div>
+          <div className="captionBlock">
+            <a href={"/"}>User Name</a>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Post;
