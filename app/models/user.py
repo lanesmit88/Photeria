@@ -15,9 +15,10 @@ class User(db.Model, UserMixin):
   bio = db.Column(db.String(255))
   firstName = db.Column(db.String(80), nullable = False)
   lastName = db.Column(db.String(80), nullable = False)
-  messages = db.relationship("Message")
+  # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
+  
   # posts = db.relationship("Post", back_populates="userId")
   
 
