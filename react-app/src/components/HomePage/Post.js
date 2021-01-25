@@ -25,6 +25,15 @@ function Post() {
           </div>
           <div className="captionBlock">
             <a href={"/"}>User Name</a>
+            <p>Caption text</p>
+          </div>
+          <div className={"commentBlock"}>
+              <div className={'topComments'}>
+                <a href={''}>User Name</a><p>Comment text...</p>
+              </div>
+              <div className={'topComments'}>
+                <a href={''}>User Name</a><p>Comment text...</p>
+              </div>
           </div>
         </div>
       </div>
