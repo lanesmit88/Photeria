@@ -1,0 +1,30 @@
+.wrapper {
+  margin: auto;
+  width: 33%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "headerBlock"
+    "imageBlock"
+    "detailBlock"
+    "postCommentBlock";
+  justify-items: center;
+  border: solid 1px rgba(100, 200, 233, 0.4);
+}
+.headerBlock > img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.detailBlock {
+  grid-area: detailBlock;
+  border-top: solid 1px black;
+  width: 100%;
+
+  /* margin: auto; */
+}
+
+.detailBlock div {
+  margin: auto;
+  justify-self: center;
+}
