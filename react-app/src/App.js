@@ -25,7 +25,7 @@ function App() {
   if (!loaded) {
     return null;
   }
-  //d
+
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
