@@ -2,13 +2,32 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  hashed_password = db.Column(db.String(255), nullable = False)
+  hashedPassword = db.Column(db.String(255), nullable = False)
+  profilePhoto = db.Column(db.String(255), default="https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg")
+  headline = db.Column(db.String(100))
+  bio = db.Column(db.String(255))
+  firstName = db.Column(db.String(80), nullable = False)
+  lastName = db.Column(db.String(80), nullable = False)
+  # messages = db.relationship("Message")
+  # messages = db.relationship("Message", back_populates="userId")
+  posts = db.relationship("Post")
+  
+  # posts = db.relationship("Post", back_populates="userId")
+  
+
+class Follower(db.Model):
+  __tablename__ = 'followers'
+
+  id = db.Column(db.Integer, primary_key = True)
+  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
   @property
