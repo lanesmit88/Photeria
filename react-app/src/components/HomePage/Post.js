@@ -1,6 +1,7 @@
 import React from "react";
 
 function Post() {
+  let comments = [1, 1, 1]
   return (
     <>
       <div className="wrapper">
@@ -28,6 +29,8 @@ function Post() {
             <p>Caption text</p>
           </div>
           <div className={"commentBlock"}>
+            {/*Displays option to view all comments if more than two exist*/}
+            {comments.length > 2 ? <a>view all comments</a> : ''}
               <div className={'topComments'}>
                 <a href={''}>User Name</a><p>Comment text...</p>
               </div>
