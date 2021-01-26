@@ -63,6 +63,8 @@
 .captionBlock div {
   display: inline-block;
   padding-left: 0.5em;
+  width: 370px;
+  /* background-color: black; */
   /* height: 50px; */
 }
 
@@ -138,11 +140,20 @@
 /* Caption styles  */
 .captionBlock a {
   font-size: small;
-  margin-left: 0.5em;
+  /* margin-left: 0.5em; */
 }
-
+.captionBlock {
+  display: flex;
+}
+.hi {
+  /* height: auto; */
+  /* position: static; */
+  align-self: flex-start;
+  /* height: 370px; */
+}
 .captionBlock p {
   font-size: small;
+  margin: 3px 0 0 0;
 }
 /* comment styles */
 .commentBlock > a {

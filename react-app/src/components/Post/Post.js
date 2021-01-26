@@ -40,7 +40,9 @@ function Post() {
             </p>
           </div>
           <div className="captionBlock">
-            <a href={"/"}>User Name</a>
+            <div className="hi" style={{ width: "auto" }}>
+              <a href={"/"}>User Name</a>
+            </div>{" "}
             <div className="testing">
               {!testTrue && captionTxt.length > 60 ? (
                 <p className="test">
