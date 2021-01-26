@@ -101,7 +101,7 @@ function Post() {
                   stNull(false);
                 }}
               >
-                Hey!
+                View less comments
               </a>
             ) : (
               ""
