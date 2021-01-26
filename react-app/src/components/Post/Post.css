@@ -21,18 +21,26 @@
   grid-area: detailBlock;
   border-top: solid 1px black;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-  'iconBlock'
-  'likeBlock'
-  'captionBlock'
-  'commentBlock'
-  'topComments'
-  ;
-  /* margin: auto; */
+  /* display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "iconBlock"
+    "likeBlock"
+    "captionBlock"
+    "commentBlock"
+    "topComments";
+    margin: auto; */
 }
 
+.imageBlock {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.imageBlock > img {
+  width: auto;
+}
 .captionBlock p {
   /* margin: auto; */
   /* justify-self: center; */
@@ -40,49 +48,49 @@
   padding-left: 0.5em;
 }
 
-.topComments p{
+.topComments p {
   display: inline;
   padding-left: 0.5em;
 }
 
-.iconBlock{
+/* .iconBlock {
   grid-area: iconBlock;
 }
 
-.likeBlock{
+.likeBlock {
   grid-area: likeBlock;
 }
 
-.captionBlock{
+.captionBlock {
   grid-area: captionBlock;
 }
 
-.commentBlock{
+.commentBlock {
   grid-area: commentBlock;
 }
 
-.topComments{
+.topComments {
   grid-area: topComments;
-}
+} */
 
-.postCommentBlock{
+.postCommentBlock {
   justify-self: start;
   width: 100%;
   border-top: solid 1px black;
 }
 
-.postCommentBlock form{
+.postCommentBlock form {
   display: flex;
   justify-content: space-between;
 }
 
-.postCommentBlock form textarea{
+.postCommentBlock form textarea {
   border: none;
   resize: none;
   width: 88%;
 }
 
-.postCommentBlock form button{
+.postCommentBlock form button {
   /* margin: auto; */
   color: blue;
   border: none;
