@@ -7,7 +7,7 @@ function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   let captionTxt =
-    "Hello this is the greatest and it means nothing so let go and move on and what is it typoig forget it and there are plenty";
+    "Hello this ishohs the ghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
   let comments = [1, 1, 1];
   return (
     <div>
@@ -42,33 +42,41 @@ function Post() {
           <div className="captionBlock">
             <a href={"/"}>User Name</a>
             {!testTrue && captionTxt.length > 60 ? (
-              <p className="test">
-                {captionTxt.slice(0, 55)}
-                <span
-                  className="readMoreSpan"
-                  style={{
-                    marginLeft: "1px",
-
-                    // color: "blue",
-                  }}
-                  onClick={() => setTest(true)}
-                >
-                  read more
-                </span>
-              </p>
+              <div className="testing">
+                <p className="test">
+                  {captionTxt.slice(0, 55)}
+                  <span
+                    className="readMoreSpan"
+                    style={{
+                      marginLeft: "1px",
+                    }}
+                    onClick={() => setTest(true)}
+                  >
+                    read more
+                  </span>
+                </p>
+              </div>
+            ) : captionTxt.length <= 60 ? (
+              <div className="testing">
+                {" "}
+                <p>{captionTxt}</p>
+              </div>
             ) : (
-              <p>
-                {captionTxt}{" "}
-                <span
-                  onClick={() => setTest(false)}
-                  className="collapseSpan"
-                  style={{
-                    marginLeft: "1px",
-                  }}
-                >
-                  collapse
-                </span>
-              </p>
+              <div className="testing">
+                {" "}
+                <p>
+                  {captionTxt}{" "}
+                  <span
+                    onClick={() => setTest(false)}
+                    className="collapseSpan"
+                    style={{
+                      marginLeft: "1px",
+                    }}
+                  >
+                    collapse
+                  </span>
+                </p>
+              </div>
             )}
           </div>
           <div className={"commentBlock"}>

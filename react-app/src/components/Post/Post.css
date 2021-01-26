@@ -55,9 +55,15 @@
   margin-top: 1px;
   margin-bottom: 1px;
 }
-.captionBlock p {
-  display: inline;
+/* .captionBlock {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+} */
+.captionBlock div {
+  display: inline-block;
   padding-left: 0.5em;
+  /* height: 50px; */
 }
 
 .topComments p {
@@ -135,7 +141,7 @@
   margin-left: 0.5em;
 }
 
-.captionBlock {
+.captionBlock p {
   font-size: small;
 }
 /* comment styles */
