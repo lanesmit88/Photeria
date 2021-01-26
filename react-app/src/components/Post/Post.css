@@ -143,7 +143,24 @@
   font-size: small;
   margin-left: 0.5em;
 }
-
+.readMoreSpan {
+  color: blue;
+  font-size: smaller;
+  border-bottom: 1px solid black;
+}
+.collapseSpan {
+  color: blue;
+  font-size: smaller;
+  border-bottom: 1px solid black;
+}
+.collapseSpan:hover {
+  color: red;
+  border-bottom: 1px solid red;
+}
+.readMoreSpan:hover {
+  color: red;
+  border-bottom: 1px solid red;
+}
 .topComments a {
   margin-left: 0.5em;
   font-size: small;

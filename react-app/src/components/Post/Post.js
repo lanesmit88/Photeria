@@ -4,7 +4,10 @@ import CreateComment from "../Comment/comment";
 import "./Post.css";
 
 function Post() {
-  const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
+  // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
+  const [testTrue, setTest] = useState(false);
+  let captionTxt =
+    "Hello this is the greatest and it means nothing so let go and move on and what is it typoig forget it and there are plenty";
   let comments = [1, 1, 1];
   return (
     <div>
@@ -38,7 +41,35 @@ function Post() {
           </div>
           <div className="captionBlock">
             <a href={"/"}>User Name</a>
-            <p>Caption text</p>
+            {!testTrue && captionTxt.length > 60 ? (
+              <p className="test">
+                {captionTxt.slice(0, 55)}
+                <span
+                  className="readMoreSpan"
+                  style={{
+                    marginLeft: "1px",
+
+                    // color: "blue",
+                  }}
+                  onClick={() => setTest(true)}
+                >
+                  read more
+                </span>
+              </p>
+            ) : (
+              <p>
+                {captionTxt}{" "}
+                <span
+                  onClick={() => setTest(false)}
+                  className="collapseSpan"
+                  style={{
+                    marginLeft: "1px",
+                  }}
+                >
+                  collapse
+                </span>
+              </p>
+            )}
           </div>
           <div className={"commentBlock"}>
             {/*Displays option to view all comments if more than two exist*/}
