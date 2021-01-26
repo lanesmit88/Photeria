@@ -65,6 +65,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <Post />
         </ProtectedRoute>
+        <Route exact path="/element/:id">
+          <ProfilePage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

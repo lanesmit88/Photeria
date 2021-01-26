@@ -1,0 +1,66 @@
+.mainDiv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "image details";
+  width: 80%;
+  margin: auto;
+}
+
+.imageDiv {
+  grid-area: image;
+  min-width: 200px;
+  max-width: 200px;
+  padding-right: 10px;
+}
+.imageDiv img {
+  border-radius: 40px 20px 10px 100px;
+  border: 2px solid rgba(0, 0, 0, 0.473);
+}
+.detailDiv {
+  grid-area: details;
+}
+
+.userNameDiv {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 9px;
+}
+
+.userNameHeading {
+  margin-top: 1px;
+  margin-bottom: 0;
+  width: auto;
+}
+
+.editProfileButton {
+  height: 30px;
+  /* width: 55px; */
+}
+
+.pffDiv {
+  display: flex;
+  margin-bottom: 0;
+  padding-left: 9px;
+}
+
+.pffDiv p {
+  padding-right: 10px;
+  font-weight: bold;
+}
+.pffDiv span {
+  font-weight: lighter;
+}
+.nameHeading {
+  margin-top: 0px;
+  margin-bottom: 3px;
+  padding-left: 9px;
+  font-size: 18px;
+}
+
+.bio {
+  margin-top: 6px;
+  padding-left: 9px;
+  width: 500px;
+  font-style: oblique;
+  font-weight: 300;
+}
