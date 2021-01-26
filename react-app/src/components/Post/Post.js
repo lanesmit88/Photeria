@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import CreateComment from "../Comment/comment";
 import "./Post.css";
 
 function Post() {
+  const [likeColor, likeColorChange] = useState();
   let comments = [1, 1, 1];
   return (
     <div>
@@ -25,7 +27,17 @@ function Post() {
         <div className="detailBlock">
           {/* Likes and other details */}
           <div className="iconBlock">
-            <button>Like</button>
+            <i
+              class="fa fa-heartbeat"
+              onClick={() =>
+                likeColor === "red"
+                  ? likeColorChange("rgba(10,10,10, 0.4)")
+                  : likeColorChange("red")
+              }
+              style={{
+                color: likeColor === "red" ? "rgba(10,10,10, 0.4)" : "red",
+              }}
+            ></i>
             <button>Comment</button>
             <button>DM</button>
           </div>
