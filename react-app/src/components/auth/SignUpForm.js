@@ -1,24 +1,32 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
-import "./signup.css"
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../services/auth";
+import "./signup.css";
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, password, firstName, lastName);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -45,7 +53,24 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         <h1 id="signup-logo">Photeria</h1>
       </div>
       <div class="signup-fields">
-        <label>User Name</label>
+        <input
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+          placeholder="First Name"
+        ></input>
+      </div>
+      <div class="signup-fields">
+        <input
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+          placeholder="Last Name"
+        ></input>
+      </div>
+      <div class="signup-fields">
         <input
           type="text"
           name="username"
@@ -55,7 +80,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div class="signup-fields">
-        <label>Email</label>
         <input
           type="text"
           name="email"
@@ -65,7 +89,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div class="signup-fields">
-        <label>Password</label>
         <input
           type="password"
           name="password"
@@ -75,7 +98,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div class="signup-fields">
-        <label>Repeat Password</label>
         <input
           type="password"
           name="repeat_password"
