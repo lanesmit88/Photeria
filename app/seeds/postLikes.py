@@ -1,7 +1,7 @@
-from app.models import db, PostLike, CommentLike
+from app.models import db, PostLike
 
 # Adds a demo user, you can add other users here if you want
-def seed_likes():
+def seed_postLikes():
 
     postLike1 = PostLike(userId=1,postId=2)
     postLike2 = PostLike(userId=2,postId=3)
@@ -14,16 +14,6 @@ def seed_likes():
     postLike9 = PostLike(userId=2,postId=5)
     postLike10 = PostLike(userId=3,postId=6)
     
-    commentLike1 = CommentLike(userId=2,commentId=1)
-    commentLike2 = CommentLike(userId=3,commentId=1)
-    commentLike3 = CommentLike(userId=4,commentId=1)
-    commentLike4 = CommentLike(userId=1,commentId=2)
-    commentLike5 = CommentLike(userId=2,commentId=3)
-    commentLike6 = CommentLike(userId=3,commentId=4)
-    commentLike7 = CommentLike(userId=4,commentId=2)
-    commentLike8 = CommentLike(userId=5,commentId=6)
-
-
     db.session.add(postLike1)
     db.session.add(postLike2)
     db.session.add(postLike3)
@@ -34,15 +24,6 @@ def seed_likes():
     db.session.add(postLike8)
     db.session.add(postLike9)
     db.session.add(postLike10)
-    
-    db.session.add(commentLike1)
-    db.session.add(commentLike2)
-    db.session.add(commentLike3)
-    db.session.add(commentLike4)
-    db.session.add(commentLike5)
-    db.session.add(commentLike6)
-    db.session.add(commentLike7)
-    db.session.add(commentLike8)
    
 
     db.session.commit()
@@ -51,7 +32,6 @@ def seed_likes():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
-def undo_likes():
+def undo_postLikes():
     db.session.execute('TRUNCATE postLikes;')
-    db.session.execute('TRUNCATE commentLikes;')
     db.session.commit()
