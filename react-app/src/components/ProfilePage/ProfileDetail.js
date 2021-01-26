@@ -1,7 +1,10 @@
 import React from "react";
+// import { useParams } from "react-router-dom";
 import "./ProfileDetail.css";
 
 function ProfileDetail() {
+  // const { id } = useParams();
+  // console.log(id);
   return (
     <div className="mainDiv">
       <div className="imageDiv">
@@ -14,7 +17,12 @@ function ProfileDetail() {
       <div className="detailDiv">
         <div className="userNameDiv">
           <h1 className="userNameHeading">ghossstx</h1>
-          <button className="editProfileButton">Edit Profile</button>
+          <button
+            className="editProfileButton"
+            onClick={() => (window.location.href = "/edit/profile")}
+          >
+            Edit Profile
+          </button>
         </div>
         <div className="pffDiv">
           <p>
