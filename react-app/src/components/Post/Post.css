@@ -1,3 +1,6 @@
+body {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .wrapper {
   margin: auto;
   width: 33%;
@@ -16,21 +19,21 @@
 .headerBlock {
   justify-self: start;
   display: flex;
-  /* align-content: center; */
   height: 35px;
+  width: 100%;
+  border-bottom: solid 0.5px rgba(100, 100, 100, 0.5);
 }
 .headerBlock > img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 33px;
+  height: 100%;
+  /* border-radius: 50%; */
   align-self: center;
-  /* padding-right: 2px;
-  padding-left: 2px; */
   padding: 2px 2px 2px 2px;
-  /* margin-left: 0; */
+  margin-left: 3px;
 }
 .headerBlock a {
   align-self: center;
+  padding-left: 2px;
 }
 .detailBlock {
   grid-area: detailBlock;
@@ -80,9 +83,8 @@
   grid-area: topComments;
 } */
 
-
 /* Post comment styles */
-.postCommentBlock{
+.postCommentBlock {
   justify-self: start;
   width: 100%;
   border-top: solid 1px black;
@@ -109,32 +111,31 @@
 }
 
 /* Icon styles */
-.iconBlock button{
+.iconBlock button {
   margin-top: 0.5em;
   margin-left: 0.5em;
 }
 
-
 /* Likes styles  */
-.likeBlock p{
+.likeBlock p {
   margin-left: 0.5em;
 }
 
 /* Caption styles  */
-.captionBlock a{
+.captionBlock a {
   margin-left: 0.5em;
 }
 
 /* comment styles */
-.commentBlock > a{
+.commentBlock > a {
   margin-left: 0.5em;
 }
 
-.topComments a{
- margin-left: 0.5em;
- /* padding-bottom: 0.5em; */
+.topComments a {
+  margin-left: 0.5em;
+  /* padding-bottom: 0.5em; */
 }
 
-.topComments{
+.topComments {
   padding-bottom: 0.3em;
 }
