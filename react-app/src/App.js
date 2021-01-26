@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Post from "./components/Post/Post";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/profile" exact={true}>
+          <ProfilePage/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm

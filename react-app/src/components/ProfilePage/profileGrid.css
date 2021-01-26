@@ -1,0 +1,39 @@
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.grid-entry {
+   height:250px;
+   /* width: 150px; */
+   background-size:contain;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+.red {
+    /* background-color: red; */
+}
+
+.hover {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.hover-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.grid-entry:hover .hover {
+    display: flex;
+}
