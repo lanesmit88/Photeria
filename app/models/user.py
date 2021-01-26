@@ -20,15 +20,6 @@ class User(db.Model, UserMixin):
   posts = db.relationship("Post")
   
   # posts = db.relationship("Post", back_populates="userId")
-  
-
-class Follower(db.Model):
-  __tablename__ = 'followers'
-
-  id = db.Column(db.Integer, primary_key = True)
-  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
-  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-
 
   @property
   def password(self):
@@ -50,3 +41,12 @@ class Follower(db.Model):
       "username": self.username,
       "email": self.email
     }
+
+
+class Follower(db.Model):
+  __tablename__ = 'followers'
+
+  id = db.Column(db.Integer, primary_key = True)
+  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
+

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import "./signup.css"
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -39,35 +40,41 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form id="signupForm" onSubmit={onSignUp}>
       <div>
+        <h1 id="signup-logo">Photeria</h1>
+      </div>
+      <div class="signup-fields">
         <label>User Name</label>
         <input
           type="text"
           name="username"
           onChange={updateUsername}
           value={username}
+          placeholder="Username"
         ></input>
       </div>
-      <div>
+      <div class="signup-fields">
         <label>Email</label>
         <input
           type="text"
           name="email"
           onChange={updateEmail}
           value={email}
+          placeholder="Email"
         ></input>
       </div>
-      <div>
+      <div class="signup-fields">
         <label>Password</label>
         <input
           type="password"
           name="password"
           onChange={updatePassword}
           value={password}
+          placeholder="Password"
         ></input>
       </div>
-      <div>
+      <div class="signup-fields">
         <label>Repeat Password</label>
         <input
           type="password"
@@ -75,9 +82,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder="Confirm Password"
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button id="signup-button" type="submit">
+        Sign Up
+      </button>
     </form>
   );
 };
