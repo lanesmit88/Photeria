@@ -1,0 +1,30 @@
+.mainDiv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "image details";
+}
+
+.imageDiv {
+  grid-area: image;
+}
+
+.detailDiv {
+  grid-area: details;
+}
+
+.userNameDiv {
+  display: flex;
+}
+
+.userNameHeading {
+  display: inline-block;
+  width: auto;
+}
+
+.editProfileButton {
+  display: inline-block;
+}
+
+.pffDiv {
+  display: flex;
+}
