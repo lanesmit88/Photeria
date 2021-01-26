@@ -6,6 +6,7 @@ import "./Post.css";
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
+  const [stnule, stNull] = useState(false);
   let captionTxt =
     "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
   let comments = [1, 1, 1];
@@ -79,7 +80,40 @@ function Post() {
           </div>
           <div className={"commentBlock"}>
             {/*Displays option to view all comments if more than two exist*/}
-            {comments.length > 2 ? <a>view all comments</a> : ""}
+            {comments.length > 2 && !stnule ? (
+              <a
+                onClick={() => {
+                  stNull(true);
+                }}
+              >
+                view all comments
+              </a>
+            ) : (
+              ""
+            )}
+            {stnule ? (
+              <a
+                onClick={() => {
+                  stNull(false);
+                }}
+              >
+                Hey!
+              </a>
+            ) : (
+              ""
+            )}
+
+            {stnule &&
+              comments.map((eachComment) => (
+                <div className="comment">
+                  <div className="aTagDivComment">
+                    <a href="">User Name</a>
+                  </div>
+                  <div className="pTagDivComment">
+                    <p>{eachComment}</p>
+                  </div>
+                </div>
+              ))}
             <div className={"topComments"}>
               <a href={""}>User Name</a>
               <p>Comment text...</p>
