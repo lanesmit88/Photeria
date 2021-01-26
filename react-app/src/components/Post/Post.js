@@ -9,7 +9,11 @@ function Post() {
   const [stnule, stNull] = useState(false);
   let captionTxt =
     "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
-  let comments = [1, 1, 1];
+  let comments = [
+    "bunch of comments iwth the word of the fdshjk",
+    "there are theh fghdghfkd let og there are theh fghdghfkd let og there are theh fghdghfkd let og  oand nomero",
+    "there are ahsosndgh a snd you can let og ",
+  ];
   return (
     <div>
       <div className="wrapper">
@@ -114,14 +118,18 @@ function Post() {
                   </div>
                 </div>
               ))}
-            <div className={"topComments"}>
-              <a href={""}>User Name</a>
-              <p>Comment text...</p>
-            </div>
-            <div className={"topComments"}>
-              <a href={""}>User Name</a>
-              <p>Comment text...</p>
-            </div>
+            {!stnule && (
+              <>
+                <div className={"topComments"}>
+                  <a href={""}>User Name</a>
+                  <p>Comment text...</p>
+                </div>
+                <div className={"topComments"}>
+                  <a href={""}>User Name</a>
+                  <p>Comment text...</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="postCommentBlock">

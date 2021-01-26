@@ -161,6 +161,25 @@
   font-size: small;
   margin-left: 0.5em;
 }
+.comment {
+  display: flex;
+}
+.aTagDivComment {
+  align-self: flex-start;
+}
+.aTagDivComment a {
+  font-size: small;
+  margin-left: 0.5em;
+}
+.pTagDivComment {
+  width: 370px;
+}
+.pTagDivComment p {
+  font-size: small;
+  margin: 3px 0 0 0;
+  word-wrap: break-word;
+}
+
 .readMoreSpan {
   color: blue;
   font-size: smaller;
