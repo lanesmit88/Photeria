@@ -41,9 +41,11 @@ function Post() {
           </div>
           <div className="captionBlock">
             <a href={"/"}>User Name</a>
-            {!testTrue && captionTxt.length > 60 ? (
-              <div className="testing">
+            <div className="testing">
+              {!testTrue && captionTxt.length > 60 ? (
                 <p className="test">
+                  {/* // {testingagain && captionTxt}
+                  // {!testingagain && captionTxt.slice(0, 55)} */}
                   {captionTxt.slice(0, 55)}
                   <span
                     className="readMoreSpan"
@@ -55,17 +57,11 @@ function Post() {
                     read more
                   </span>
                 </p>
-              </div>
-            ) : captionTxt.length <= 60 ? (
-              <div className="testing">
-                {" "}
-                <p>{captionTxt}</p>
-              </div>
-            ) : (
-              <div className="testing">
-                {" "}
+              ) : captionTxt.length <= 60 ? (
+                <p style={{ display: "inline-block" }}>{captionTxt}</p>
+              ) : (
                 <p>
-                  {captionTxt}{" "}
+                  {captionTxt}
                   <span
                     onClick={() => setTest(false)}
                     className="collapseSpan"
@@ -76,8 +72,8 @@ function Post() {
                     collapse
                   </span>
                 </p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
           <div className={"commentBlock"}>
             {/*Displays option to view all comments if more than two exist*/}
