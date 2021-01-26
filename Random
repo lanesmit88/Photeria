@@ -2,3 +2,17 @@ Go back to / protected route and change authenticated to true "remove '!'"
 
 
 Add caption text width 385
+
+
+profile page
+it will have a photo and to the right it will have the user name and edit proile
+underneath it will have total posts followers following
+underneath it will have name
+the bio
+option to create photo
+option to see all posts or tagged *
+then it will have a container which will have all the photos with the most recenet starting at top
+each picture will be clickable and it will  take to its pwn page or have it pop up
+therre will be three photos in a row
+
+add photos on the main page

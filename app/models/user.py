@@ -18,10 +18,10 @@ class User(db.Model, UserMixin):
   # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
-  
-  # posts = db.relationship("Post", back_populates="userId")
-  
 
+  # posts = db.relationship("Post", back_populates="userId")
+
+# followers and message need relation postlike commentlike comment
 class Follower(db.Model):
   __tablename__ = 'followers'
 
