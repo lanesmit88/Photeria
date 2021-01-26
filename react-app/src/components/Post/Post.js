@@ -43,9 +43,7 @@ function Post() {
           </div>
           <div className="likeBlock">
             <p>
-              Liked by <a href={"/"}>User</a> and <a onClick={() => {
-                console.log('Ive been clicked!')
-                setShowModal(true)}}>Total Likes</a>
+              Liked by <a href={"/"}>User</a> and <a onClick={() => setShowModal(true)}>Total Likes</a>
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                   <div id='modal-div'>
