@@ -7,7 +7,7 @@ function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   let captionTxt =
-    "Hello this ishohs the ghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
+    "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
   let comments = [1, 1, 1];
   return (
     <div>

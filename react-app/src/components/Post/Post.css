@@ -154,6 +154,7 @@
 .captionBlock p {
   font-size: small;
   margin: 3px 0 0 0;
+  word-wrap: break-word;
 }
 /* comment styles */
 .commentBlock > a {
