@@ -11,6 +11,7 @@
   justify-items: center;
   border: solid 1px rgba(100, 200, 233, 0.4);
   border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .headerBlock {
   justify-self: start;
@@ -59,7 +60,7 @@
   padding-left: 0.5em;
 }
 
-/* .iconBlock {
+/* .iconBlock{
   grid-area: iconBlock;
 }
 
@@ -79,7 +80,9 @@
   grid-area: topComments;
 } */
 
-.postCommentBlock {
+
+/* Post comment styles */
+.postCommentBlock{
   justify-self: start;
   width: 100%;
   border-top: solid 1px black;
@@ -103,4 +106,35 @@
   background-color: rgba(100, 200, 233, 0);
   padding-right: 0.9em;
   cursor: pointer;
+}
+
+/* Icon styles */
+.iconBlock button{
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}
+
+
+/* Likes styles  */
+.likeBlock p{
+  margin-left: 0.5em;
+}
+
+/* Caption styles  */
+.captionBlock a{
+  margin-left: 0.5em;
+}
+
+/* comment styles */
+.commentBlock > a{
+  margin-left: 0.5em;
+}
+
+.topComments a{
+ margin-left: 0.5em;
+ /* padding-bottom: 0.5em; */
+}
+
+.topComments{
+  padding-bottom: 0.3em;
 }
