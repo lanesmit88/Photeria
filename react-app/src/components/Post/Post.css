@@ -23,6 +23,9 @@
   height: 30px;
   border-radius: 50%;
   align-self: center;
+  /* padding-right: 2px;
+  padding-left: 2px; */
+  padding: 2px 2px 2px 2px;
   /* margin-left: 0; */
 }
 .headerBlock a {
@@ -32,29 +35,21 @@
   grid-area: detailBlock;
   border-top: solid 1px black;
   width: 100%;
-  /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-    "iconBlock"
-    "likeBlock"
-    "captionBlock"
-    "commentBlock"
-    "topComments";
-    margin: auto; */
 }
 
 .imageBlock {
   width: 100%;
-  height: 100%;
+  height: 370px;
   display: flex;
   justify-content: center;
 }
 .imageBlock > img {
-  width: auto;
+  min-width: auto;
+  max-width: 100%;
+  min-height: auto;
+  max-height: 370px;
 }
 .captionBlock p {
-  /* margin: auto; */
-  /* justify-self: center; */
   display: inline;
   padding-left: 0.5em;
 }
