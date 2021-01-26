@@ -62,7 +62,7 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <Post />
         </ProtectedRoute>
-        <Route exact path="/sig">
+        <Route exact path="/element">
           <ProfilePage />
         </Route>
       </Switch>
