@@ -14,6 +14,12 @@ if (process.env.NODE_ENV === "production") {
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
+
+// export const signUpUser = (user) => {
+//   return function (dispatch) {
+//     dispatch(signUp(user))
+//   }
+// }
 export const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
