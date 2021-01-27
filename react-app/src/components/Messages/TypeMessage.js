@@ -6,8 +6,8 @@ function TypeMessage() {
   return (
     <div className="messageContainer">
       <form>
-        <input
-          type="textarea"
+        <textarea
+          // type="textarea"
           placeholder="Message"
           onChange={() => setTyped(true)}
         />

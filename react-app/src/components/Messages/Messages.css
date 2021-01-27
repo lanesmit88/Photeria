@@ -63,27 +63,34 @@
 /* TYPE MESSAGE GOES HERE */
 
 .typeMessageDiv {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 420px;
   margin: auto;
   height: 50px;
+  /* display: flex; */
 }
-
-.messageContainer form input {
+.messageContainer {
+  width: 100%;
+}
+.messageContainer form textarea {
   width: 370px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.151);
   height: 41px;
 }
 
+.messageContainer form textarea:focus {
+  outline: none;
+}
 .messageContainer form button {
   width: 42px;
-  height: 43px;
+  height: 44px;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 2px;
   background-color: transparent;
   margin-left: 1px;
   border-radius: 5px;
-
   border: 1px solid rgba(0, 0, 0, 0.14);
+  /* align-self: flex-start; */
 }
