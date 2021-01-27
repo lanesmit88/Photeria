@@ -59,3 +59,31 @@
   margin-left: auto;
   margin-right: 1px;
 }
+
+/* TYPE MESSAGE GOES HERE */
+
+.typeMessageDiv {
+  border: 1px solid black;
+  width: 420px;
+  margin: auto;
+  height: 50px;
+}
+
+.messageContainer form input {
+  width: 370px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  height: 41px;
+}
+
+.messageContainer form button {
+  width: 42px;
+  height: 43px;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  margin-left: 1px;
+  border-radius: 5px;
+
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}

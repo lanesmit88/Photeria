@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import "./Messages.css";
 
 function TypeMessage() {
   const [typed, setTyped] = useState(false);
   return (
-    <div className="messageContainer" style={{ marginTop: "400px" }}>
+    <div className="messageContainer">
       <form>
         <input
           type="textarea"

@@ -25,8 +25,10 @@ function Messages() {
             to initiate an something
           </p>
         </div>
+        <div className="typeMessageDiv">
+          <TypeMessage />
+        </div>
       </div>
-      <TypeMessage />
     </>
   );
 }
