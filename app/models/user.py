@@ -53,7 +53,3 @@ class Follower(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-<<<<<<< HEAD
-=======
-
->>>>>>> c267babdb3b860b05ce53905182b5ed4734f6254
