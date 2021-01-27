@@ -2,13 +2,35 @@ import React from "react";
 import { useState } from "react";
 import CreateComment from "../Comment/comment";
 import "./Post.css";
-import { Modal } from "../../context/Modal"
+import { useEffect } from "react";
+import { Modal } from "../../context/Modal";
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchPostData } from "../../store/post";
+import { fetchPostLikes } from "../../store/postLikes"
 
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const postData = useSelector((reduxState) => {
+    return reduxState.post;
+  });
+  
+  console.log('awefaewfawefawf', postData.id)
+  useEffect(async () => {
+    dispatch(fetchPostData(2));
+  }, []);
+
+  // let postId = postData.id
+
+  useEffect(async () => {
+    dispatch(fetchPostLikes(2));
+  }, []);
+
   let captionTxt =
     "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
   let comments = [
@@ -43,10 +65,11 @@ function Post() {
           </div>
           <div className="likeBlock">
             <p>
-              Liked by <a href={"/"}>User</a> and <a onClick={() => setShowModal(true)}>Total Likes</a>
+              Liked by <a href={"/"}>User</a> and{" "}
+              <a onClick={() => setShowModal(true)}>Total Likes</a>
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                  <div id='modal-div'>
+                  <div id="modal-div">
                     <ul>
                       <li>User liked this post</li>
                       <li>User liked this post</li>
