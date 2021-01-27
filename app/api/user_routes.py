@@ -14,18 +14,21 @@ def user_profile(id):
     # print(user.posts)
     
     postsquery = Post.query.filter(Post.userId==id).all()
+    for p in postsquery:
+        print(p.likes)
+        print('--------------')
+        print(p.comments)
+        
     posts = [post.to_dict() for post in postsquery]
     
     followers = Follower.query.filter(Follower.followedId==id).all()
     following = Follower.query.filter(Follower.followerId==id).all()
-    print(len(followers))
-
-    # userToReturn = 
-    # print(posts.likes)
+    
+   
     # likes = PostLike.query.filter(Postlike.postId==id).all()
+    
     return {"user":user.to_dict(),"posts":posts, "numFollowers":len(followers),"numFollowing":len(following)}
-    # return {"user": [user.to_dict() for user in users],"posts": [post.to_dict() for post in users[0].posts]}
-    # return jsonify({"name":"a name"})
+
 
 @user_routes.route('/')
 @login_required
