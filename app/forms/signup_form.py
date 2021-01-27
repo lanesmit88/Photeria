@@ -20,4 +20,3 @@ class SignUpForm(FlaskForm):
     lastName = StringField('last name', validators=[DataRequired()])
     profilePhoto = StringField('profile image url')
     
-   
