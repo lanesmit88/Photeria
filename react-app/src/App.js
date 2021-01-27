@@ -39,7 +39,7 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/profile" exact={true}>
+        <Route path="/profile/:id" exact={true}>
           <ProfilePage/>
         </Route>
         <Route path="/sign-up" exact={true}>
