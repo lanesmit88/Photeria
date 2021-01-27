@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import './profileGrid.css'
-import ProfileGridEntry from './ProfileGridEntry'
+import "./profileGrid.css";
+import ProfileGridEntry from "./ProfileGridEntry";
 
 function ProfileGrid({posts}) {
 
@@ -20,14 +20,11 @@ function ProfileGrid({posts}) {
     console.log(posts)
   },[])
   return (
-    <div className='profile-grid'>
-      
-       {  posts &&
-           posts.map(post => {
-            return <ProfileGridEntry imgSrc={post.photoData}/>
-        })
-
-    }
+    <div className="profile-grid">
+      {posts &&
+        posts.map((post) => {
+          return <ProfileGridEntry imgSrc={post.photoData} />;
+        })}
     </div>
   );
 }

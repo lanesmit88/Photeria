@@ -1,0 +1,37 @@
+body {
+  background-color: black;
+}
+.editProfile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.editProfileMain {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.editProfileMain form {
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 220px;
+}
+.editProfileMain {
+  width: 220px;
+  display: inline-block;
+}
+
+.editProfile img {
+  /* display: flex; */
+  /* row-gap: 0%; */
+  width: 294px;
+  height: 188px;
+}
+.editImageDiv {
+  display: grid;
+  /* background-color: ; */
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 18px;
+}
