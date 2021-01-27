@@ -7,25 +7,28 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Post from "./components/Post/Post";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+import EditProfile from "./components/EditProfile/EditProfile";
+
 import { authenticate } from "./services/auth";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
-      setLoaded(true);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const user = await authenticate();
+  //     if (!user.errors) {
+  //       setAuthenticated(true);
+  //     }
+  //     setLoaded(true);
+  //   })();
+  // }, []);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
 
   return (
     <BrowserRouter>
@@ -37,6 +40,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/profile/:id" exact={true}>
+          <ProfilePage/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
@@ -61,6 +67,13 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <Post />
         </ProtectedRoute>
+        {/* double check these routes */}
+        <Route exact path="/element">
+          <ProfilePage />
+        </Route>
+        <Route path="/edit/profile">
+          <EditProfile />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

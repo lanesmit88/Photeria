@@ -1,7 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import userReducer from './user'
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  user: userReducer
+});
 
 let enhancer;
 

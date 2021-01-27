@@ -18,8 +18,13 @@ class User(db.Model, UserMixin):
   # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
-  
+
   # posts = db.relationship("Post", back_populates="userId")
+
+
+# followers and message need relation postlike commentlike comment
+
+
 
   @property
   def password(self):
@@ -39,7 +44,26 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
+      "email": self.email,
+      "profilePhoto": self.profilePhoto,
+      "headline": self.headline,
+      "bio": self.bio,
+      "firstName": self.firstName,
+      "lastName": self.lastName,
+    }
+        
+class Follower(db.Model):
+  __tablename__ = 'followers'
+
+  id = db.Column(db.Integer, primary_key = True)
+  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "followerId": self.followerId,
+      "followedId": self.followedId,
     }
 
 
