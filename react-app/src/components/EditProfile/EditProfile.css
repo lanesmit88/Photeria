@@ -30,43 +30,40 @@
   color: #165057;
 }
 .editProfileMain form button {
-  margin-bottom: 15px;
-  margin-left: 40px;
+  margin-bottom: 0px;
+  margin-left: 70px;
   height: 60px;
   background-color: #165057;
   color: white;
   width: 60px;
   border-radius: 90%;
   transform: rotate(20deg);
-  animation: rotate 1.9s linear infinite;
+  animation: rotate 3s linear infinite;
 }
 
 @keyframes rotate {
   0% {
-    transform: translate(0, -15px);
+    transform: translate(0, 0px);
   }
 
   20% {
-    transform: translate(-45px, -105px);
+    transform: translate(-80px, -50px);
   }
   30% {
-    transform: translate(150px, -105px);
+    transform: translate(0px, 0px);
   }
   90% {
-    transform: translate(15px, -15px);
+    transform: translate(105px, -50px);
   }
 }
 
-/* .editProfileMain form button:hover {
-  transform: translate(50px, 100px);
-} */
 .cancelButton {
   height: 30px;
   width: 170px !important;
   background-color: #165057;
   color: white;
   border-radius: 125px;
-  animation: move 3s linear infinite;
+  animation: move 2s linear infinite;
 }
 
 @keyframes move {
@@ -75,7 +72,7 @@
   }
 
   90% {
-    transform: translate(-0px, -0px);
+    transform: translate(-15px, -0px);
   }
 }
 
