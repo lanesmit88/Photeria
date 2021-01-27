@@ -1,10 +1,12 @@
 import React from "react";
 import TypeMessage from "./TypeMessage";
 import "./Messages.css";
+import AllMessages from "./AllMessages/AllMessages";
 
 function Messages() {
   return (
     <>
+      <AllMessages />
       <div className="mainMessagesDiv">
         <div className="senderMessageBlock">
           <img
