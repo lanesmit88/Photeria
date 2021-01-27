@@ -6,14 +6,17 @@ post_routes = Blueprint('posts', __name__)
 
 
 @post_routes.route('/<int:id>/likes')
-@login_required
+# @login_required
 def postLikes(id):
-    post = PostLikes.query.filer(PostLikes.postId.equal(id)).all()
-    return {"users": [user.to_dict() for user in users]}
+    posts = PostLike.query.filter(PostLike.postId == id).all()
+    allPosts = []
+    for post in posts:
+        allPosts.append(post.to_dict())
+    return jsonify(*allPosts)
 # Get users another time
 
 @post_routes.route('/<int:id>')
-@login_required
+# @login_required
 def post(id):
     post = Post.query.get(id)
     return post.to_dict()

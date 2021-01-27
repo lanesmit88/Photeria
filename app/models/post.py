@@ -16,10 +16,9 @@ class Post(db.Model):
   caption = db.Column(db.String(255), nullable = False)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'))
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
-  
   likes = db.relationship("PostLike")
   comments = db.relationship('Comment')
-  
+
   def to_dict(self):
     return {
       "id": self.id,
@@ -27,11 +26,10 @@ class Post(db.Model):
       "location": self.location,
       "caption": self.caption,
       "userId": self.userId,
+      "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags ]
       "likes": [like.to_dict() for like in self.likes],
       "comment": [comment.to_dict() for comment in self.comments]
-     
     }
-  
 
 class Hashtag(db.Model):
   __tablename__ = 'hashtags'
@@ -40,6 +38,11 @@ class Hashtag(db.Model):
   tag = db.Column(db.String(25), nullable = False)
   
   posts = db.relationship("Post", secondary=hashtagPostJoin, back_populates="hashtags")
+
+  def to_dict(self):
+    return {
+      "id": self.id
+    }
 
 class PostLike(db.Model):
   __tablename__ = 'postLikes'
@@ -54,6 +57,14 @@ class PostLike(db.Model):
       "userId": self.userId,
       "postId": self.postId
     }
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "userId": self.userId,
+      "postId": self.postId
+    }
+
 
 class Comment(db.Model):
   __tablename__ = 'comments'
