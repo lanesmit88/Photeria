@@ -8,6 +8,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Post from "./components/Post/Post";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import EditProfile from "./components/EditProfile/EditProfile";
+
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -62,8 +64,12 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <Post />
         </ProtectedRoute>
-        <Route exact path="/element/:id">
+        {/* double check these routes */}
+        <Route exact path="/element">
           <ProfilePage />
+        </Route>
+        <Route path="/edit/profile">
+          <EditProfile />
         </Route>
       </Switch>
     </BrowserRouter>

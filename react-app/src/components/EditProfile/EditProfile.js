@@ -1,4 +1,5 @@
 import React from "react";
+import "./EditProfile.css";
 
 function EditProfile() {
   return (
@@ -12,6 +13,12 @@ function EditProfile() {
         <input placeholder="Confirm Password" />
         <button>Save</button>
       </form>
+      <button
+        style={{ width: "220px" }}
+        onClick={() => (window.location.href = "/element")}
+      >
+        Cancel
+      </button>
     </div>
   );
 }

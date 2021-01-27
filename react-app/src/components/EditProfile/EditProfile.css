@@ -1,0 +1,11 @@
+.editProfileMain form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 220px;
+}
+.editProfileMain {
+  width: 220px;
+}
+/* .editProfileMain form input {
+  /* margin-bottom: ; */

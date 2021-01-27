@@ -21,7 +21,7 @@ function ProfileDetail() {
       <div className="detailDiv">
         <div className="userNameDiv">
           <h1 className="userNameHeading">ghossstx</h1>
-          {id ? (
+          {!id ? (
             <button
               className="editProfileButton"
               onClick={() => (window.location.href = "/edit/profile")}
