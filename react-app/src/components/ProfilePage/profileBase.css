@@ -1,4 +1,10 @@
 .profile-div {
-    width: 80%;
-    margin: auto;
+    width: 80% !important;
+    margin: auto !important;
+    background-color: white;
+    padding: 20px;
+    z-index: -1;
+    position: relative;
+    top: 80px;
+    left: 8%;
 }
