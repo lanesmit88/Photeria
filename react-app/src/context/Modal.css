@@ -1,4 +1,4 @@
-#modal {
+#modal{
     position: fixed;
     top: 0;
     right: 0;
@@ -7,22 +7,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  #modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
-  #modal-content {
-    position: absolute;
-    width: 50%;
-    background-color: rgb(241, 216, 177);
-  }
-  #modal-content h1{
-    padding-left: 50%;
-  }
+#modal-content {
+  position: absolute;
+  width: 25%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  max-height: 33%;
+  overflow: scroll;
+}
+
+#modal-content h1{
+  padding-left: 50%;
+}
+
+/* width */
+#modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Handle */
+#modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+#modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
