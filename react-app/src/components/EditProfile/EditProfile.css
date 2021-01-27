@@ -18,6 +18,10 @@
   flex-direction: column;
   width: 220px;
   /* margin-bot */
+  /* background-color: #121f18; */
+}
+.editProfileMain form input:focus {
+  outline: none;
 }
 .editProfileMain form input {
   margin-bottom: 40px;
