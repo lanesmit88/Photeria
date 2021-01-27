@@ -17,6 +17,17 @@ class Post(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'))
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "photoData": self.photoData,
+      "location": self.location,
+      "caption": self.caption,
+      "userId": self.userId,
+      "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags]
+
+    }
+
 
 class Hashtag(db.Model):
   __tablename__ = 'hashtags'
@@ -25,6 +36,11 @@ class Hashtag(db.Model):
   tag = db.Column(db.String(25), nullable = False)
   
   posts = db.relationship("Post", secondary=hashtagPostJoin, back_populates="hashtags")
+
+  def to_dict(self):
+    return {
+      "id": self.id
+    }
 
 class PostLike(db.Model):
   __tablename__ = 'postLikes'

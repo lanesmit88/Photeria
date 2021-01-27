@@ -1,7 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-const rootReducer = combineReducers({});
+import postReducer from "./post"
+
+const rootReducer = combineReducers({
+  post: postReducer
+});
 
 let enhancer;
 
@@ -14,12 +18,6 @@ if (process.env.NODE_ENV === "production") {
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
-
-// export const signUpUser = (user) => {
-//   return function (dispatch) {
-//     dispatch(signUp(user))
-//   }
-// }
 export const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };

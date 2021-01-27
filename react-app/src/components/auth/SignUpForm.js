@@ -9,8 +9,6 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
 
   const dispatch = useDispatch();
   const reduxStore = useSelector((storeData) => {
@@ -22,19 +20,13 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password, firstName, lastName);
+      const user = await signUp(username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
