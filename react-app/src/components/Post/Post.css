@@ -1,6 +1,4 @@
-/* body {
-  background-color: rgba(0, 0, 0, 0.7);
-} */
+
 .wrapper {
   margin: auto;
   width: 33%;
@@ -15,6 +13,7 @@
   border: solid 1px rgba(100, 200, 233, 0.4);
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
+  background-color:rgba(245, 245, 245, 0.6);
 }
 .headerBlock {
   justify-self: start;
@@ -26,7 +25,6 @@
 .headerBlock > img {
   width: 33px;
   height: 100%;
-  /* border-radius: 50%; */
   align-self: center;
   padding: 2px 2px 2px 2px;
   margin-left: 3px;
@@ -40,12 +38,18 @@
   border-top: solid 1px black;
   width: 100%;
 }
+.wrapper a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
 
 .imageBlock {
   width: 100%;
   height: 348px;
   display: flex;
   justify-content: center;
+  background-color: black;
 }
 .imageBlock > img {
   min-width: auto;
@@ -55,18 +59,11 @@
   margin-top: 1px;
   margin-bottom: 1px;
 }
-/* .captionBlock {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: center;
-} */
 .captionBlock div {
   display: inline-block;
   padding-left: 0.5em;
   min-width: auto;
   max-width: 370px;
-  /* background-color: black; */
-  /* height: 50px; */
 }
 
 .topComments p {
@@ -74,25 +71,6 @@
   padding-left: 0.5em;
 }
 
-/* .iconBlock{
-  grid-area: iconBlock;
-}
-
-.likeBlock {
-  grid-area: likeBlock;
-}
-
-.captionBlock {
-  grid-area: captionBlock;
-}
-
-.commentBlock {
-  grid-area: commentBlock;
-}
-
-.topComments {
-  grid-area: topComments;
-} */
 
 /* Post comment styles */
 .postCommentBlock {
@@ -113,10 +91,10 @@
   resize: none;
   width: 88%;
   padding: 3px 0 0 3px;
+  background-color:rgba(245, 245, 245, 0.6);
 }
 
 .postCommentBlock form button {
-  /* margin: auto; */
   color: blue;
   border: none;
   background-color: rgba(100, 200, 233, 0);
@@ -141,17 +119,14 @@
 /* Caption styles  */
 .captionBlock a {
   font-size: small;
-  /* margin-left: 0.5em; */
 }
 .captionBlock {
   display: flex;
   width: 100%;
+  padding-bottom: 2em;
 }
 .hi {
-  /* height: auto; */
-  /* position: static; */
   align-self: flex-start;
-  /* height: 370px; */
 }
 .captionBlock p {
   font-size: small;
@@ -162,6 +137,9 @@
 .commentBlock > a {
   font-size: small;
   margin-left: 0.5em;
+}
+.commentBlock > a:hover{
+  color: gray;
 }
 .comment {
   display: flex;
@@ -182,24 +160,26 @@
   word-wrap: break-word;
 }
 
-.readMoreSpan {
+.readMoreSpan, .collapseSpan {
+  color: black;
+  font-size: smaller;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+/* .collapseSpan {
   color: blue;
   font-size: smaller;
   border-bottom: 1px solid black;
+} */
+.collapseSpan:hover, .readMoreSpan:hover {
+  color: darkgray;
+  border-bottom: 1px solid darkgray;
 }
-.collapseSpan {
-  color: blue;
-  font-size: smaller;
-  border-bottom: 1px solid black;
-}
-.collapseSpan:hover {
+/* .readMoreSpan:hover {
   color: red;
   border-bottom: 1px solid red;
-}
-.readMoreSpan:hover {
-  color: red;
-  border-bottom: 1px solid red;
-}
+} */
 .topComments a {
   margin-left: 0.5em;
   font-size: small;

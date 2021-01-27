@@ -21,10 +21,6 @@ class User(db.Model, UserMixin):
 
   # posts = db.relationship("Post", back_populates="userId")
 
-# followers and message need relation postlike commentlike comment
-
-
-
   @property
   def password(self):
     return self.hashed_password
@@ -50,10 +46,11 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
     }
-        
+  
 class Follower(db.Model):
   __tablename__ = 'followers'
 
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  

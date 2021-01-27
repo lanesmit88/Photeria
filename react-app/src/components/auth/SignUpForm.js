@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../services/auth";
+import "./signup.css";
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, password, firstName, lastName);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -39,45 +48,68 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form id="signupForm" onSubmit={onSignUp}>
       <div>
-        <label>User Name</label>
+        <h1 id="signup-logo">Photeria</h1>
+      </div>
+      <div class="signup-fields">
         <input
           type="text"
           name="username"
           onChange={updateUsername}
           value={username}
+          placeholder="First Name"
         ></input>
       </div>
-      <div>
-        <label>Email</label>
+      <div class="signup-fields">
+        <input
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+          placeholder="Last Name"
+        ></input>
+      </div>
+      <div class="signup-fields">
+        <input
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+          placeholder="Username"
+        ></input>
+      </div>
+      <div class="signup-fields">
         <input
           type="text"
           name="email"
           onChange={updateEmail}
           value={email}
+          placeholder="Email"
         ></input>
       </div>
-      <div>
-        <label>Password</label>
+      <div class="signup-fields">
         <input
           type="password"
           name="password"
           onChange={updatePassword}
           value={password}
+          placeholder="Password"
         ></input>
       </div>
-      <div>
-        <label>Repeat Password</label>
+      <div class="signup-fields">
         <input
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder="Confirm Password"
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button id="signup-button" type="submit">
+        Sign Up
+      </button>
     </form>
   );
 };
