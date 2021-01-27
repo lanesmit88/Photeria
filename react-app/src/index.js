@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import configureStore from "./store/index";
 import { Provider } from "react-redux";
+import { ModalProvider } from "./context/Modal";
 
 const store = configureStore();
 
@@ -12,9 +13,11 @@ if (process.env.NODE_ENV !== "production") {
 }
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ModalProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ModalProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

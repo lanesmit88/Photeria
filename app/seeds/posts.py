@@ -1,4 +1,4 @@
-from app.models import db, Post
+from app.models import db, Post, hashtagPostJoin, Hashtag
 
 # Adds a demo user, you can add other users here if you want
 def seed_posts():
@@ -29,6 +29,41 @@ def seed_posts():
     db.session.add(post5)
     db.session.add(post6)
 
+    hashtag1 = Hashtag(tag="Noice")
+    hashtag2 = Hashtag(tag="Greek")
+    hashtag3 = Hashtag(tag="Zeus")
+    hashtag4 = Hashtag(tag="Pandora")
+    hashtag5 = Hashtag(tag="Mythical")
+    hashtag6 = Hashtag(tag="Olympus")
+    hashtag7 = Hashtag(tag="Roman")
+    hashtag8 = Hashtag(tag="Spartan")
+    hashtag9 = Hashtag(tag="300")
+    hashtag10 = Hashtag(tag="Aries")
+    hashtag11 = Hashtag(tag="Neptune")
+
+    db.session.add(hashtag1)
+    db.session.add(hashtag2)
+    db.session.add(hashtag3)
+    db.session.add(hashtag4)
+    db.session.add(hashtag5)
+    db.session.add(hashtag6)
+    db.session.add(hashtag7)
+    db.session.add(hashtag8)
+    db.session.add(hashtag9)
+    db.session.add(hashtag10)
+    db.session.add(hashtag11)
+    post1.hashtags.append(hashtag3)
+    post1.hashtags.append(hashtag7)
+    post2.hashtags.append(hashtag1)
+    post2.hashtags.append(hashtag3)
+    post2.hashtags.append(hashtag8)
+    post2.hashtags.append(hashtag10)
+    post3.hashtags.append(hashtag2)
+    post4.hashtags.append(hashtag6)
+    post4.hashtags.append(hashtag9)
+    post5.hashtags.append(hashtag11)
+    post5.hashtags.append(hashtag4)
+    
 
     db.session.commit()
 
