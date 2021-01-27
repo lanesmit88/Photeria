@@ -49,6 +49,14 @@ class PostLike(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
 
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "userId": self.userId,
+      "postId": self.postId
+    }
+
+
 class Comment(db.Model):
   __tablename__ = 'comments'
 
