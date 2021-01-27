@@ -17,6 +17,9 @@ class Post(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'))
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   
+  likes = db.relationship("PostLike")
+  comments = db.relationship('Comment')
+  
   def to_dict(self):
     return {
       "id": self.id,

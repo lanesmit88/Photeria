@@ -1,6 +1,4 @@
-body {
-  background-color: black;
-}
+
 .editProfile {
   display: grid;
   grid-template-columns: auto 1fr;
