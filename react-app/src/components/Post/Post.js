@@ -20,16 +20,12 @@ function Post() {
     return reduxState.post;
   });
   
-  console.log('awefaewfawefawf', postData.id)
-  useEffect(async () => {
-    dispatch(fetchPostData(2));
-  }, []);
 
-  // let postId = postData.id
+  // useEffect(async () => {
+  //   dispatch(fetchPostData(2));
+  // }, []);
 
-  useEffect(async () => {
-    dispatch(fetchPostLikes(2));
-  }, []);
+
 
   let captionTxt =
     "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";

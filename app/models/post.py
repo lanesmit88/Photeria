@@ -26,7 +26,7 @@ class Post(db.Model):
       "location": self.location,
       "caption": self.caption,
       "userId": self.userId,
-      "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags ]
+      "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags ],
       "likes": [like.to_dict() for like in self.likes],
       "comment": [comment.to_dict() for comment in self.comments]
     }
@@ -57,14 +57,6 @@ class PostLike(db.Model):
       "userId": self.userId,
       "postId": self.postId
     }
-
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "userId": self.userId,
-      "postId": self.postId
-    }
-
 
 class Comment(db.Model):
   __tablename__ = 'comments'
