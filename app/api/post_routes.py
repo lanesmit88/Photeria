@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Post, PostLikes
+from app.models import Post, PostLike
 
 post_routes = Blueprint('posts', __name__)
 

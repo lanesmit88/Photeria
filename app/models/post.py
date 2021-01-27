@@ -27,7 +27,8 @@ class Post(db.Model):
       "location": self.location,
       "caption": self.caption,
       "userId": self.userId,
-      # "likes": self.likes,
+      "likes": [like.to_dict() for like in self.likes],
+      "comment": [comment.to_dict() for comment in self.comments]
      
     }
   
@@ -62,13 +63,13 @@ class Comment(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
   
-  # def to_dict(self):
-  #   return {
-  #     "id": self.id,
-  #     "text": self.text,
-  #     "userId": self.userId,
-  #     "postId": self.postId
-  #   }
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "text": self.text,
+      "userId": self.userId,
+      "postId": self.postId
+    }
 
 class CommentLike(db.Model):
   __tablename__ = 'commentLikes'
