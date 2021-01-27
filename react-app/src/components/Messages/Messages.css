@@ -1,9 +1,11 @@
 .mainMessagesDiv {
-  border: 1px solid rgba(0, 0, 0, 0.11);
+  /* border: 1px solid rgba(0, 0, 0, 0.11); */
   width: 700px !important;
-  margin-left: 40%;
+  /* margin-left: 40%; */
   border-radius: 10px;
   height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .senderMessageBlock {
@@ -66,7 +68,7 @@
 .typeMessageDiv {
   /* border: 1px solid black; */
   width: 420px;
-  margin: auto;
+  /* margin: auto; */
   height: 50px;
   /* display: flex; */
 }
@@ -79,7 +81,8 @@
   border: 1px solid rgba(0, 0, 0, 0.151);
   height: 41px;
   position: absolute;
-  top: 450px;
+  top: 503px;
+  left: 150px;
   /* margin-top: 200px; */
 }
 
@@ -97,7 +100,15 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.14);
   position: absolute;
-  top: 450px;
-  left: 516px;
+  top: 503px;
+  left: 526px;
   /* align-self: flex-start; */
+}
+
+.wrapEverything {
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  width: 700px !important;
+  margin-left: 40%;
+  border-radius: 10px;
+  height: 500px;
 }
