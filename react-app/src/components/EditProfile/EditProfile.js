@@ -16,7 +16,8 @@ function EditProfile() {
             <button>Save</button>
           </form>
           <button
-            style={{ width: "220px" }}
+            className="cancelButton"
+            // style={{ width: "220px" }}
             onClick={() => (window.location.href = "/element")}
           >
             Cancel

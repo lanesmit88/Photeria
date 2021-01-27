@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: black;
-}
+} */
 .editProfile {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -17,7 +17,68 @@ body {
   justify-content: space-between;
   flex-direction: column;
   width: 220px;
+  /* margin-bot */
 }
+.editProfileMain form input {
+  margin-bottom: 40px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid #165057;
+}
+
+::placeholder {
+  color: #165057;
+}
+.editProfileMain form button {
+  margin-bottom: 15px;
+  margin-left: 40px;
+  height: 60px;
+  background-color: #165057;
+  color: white;
+  width: 60px;
+  border-radius: 90%;
+  transform: rotate(20deg);
+  animation: rotate 1.9s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(0, -15px);
+  }
+
+  20% {
+    transform: translate(-45px, -105px);
+  }
+  30% {
+    transform: translate(150px, -105px);
+  }
+  90% {
+    transform: translate(15px, -15px);
+  }
+}
+
+/* .editProfileMain form button:hover {
+  transform: translate(50px, 100px);
+} */
+.cancelButton {
+  height: 30px;
+  width: 170px !important;
+  background-color: #165057;
+  color: white;
+  border-radius: 125px;
+  animation: move 3s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(70px, 0px);
+  }
+
+  90% {
+    transform: translate(-0px, -0px);
+  }
+}
+
 .editProfileMain {
   width: 220px;
   display: inline-block;
@@ -26,7 +87,8 @@ body {
 .editProfile img {
   /* display: flex; */
   /* row-gap: 0%; */
-  width: 294px;
+  border: 2px solid black;
+  width: 293.9px;
   height: 188px;
 }
 .editImageDiv {
