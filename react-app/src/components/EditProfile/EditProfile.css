@@ -63,7 +63,7 @@
   background-color: #165057;
   color: white;
   border-radius: 125px;
-  animation: move 2s linear infinite;
+  animation: move 3s linear infinite;
 }
 
 @keyframes move {
