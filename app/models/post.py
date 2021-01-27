@@ -17,6 +17,15 @@ class Post(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'))
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "photoData": self.photoData,
+      "location": self.location,
+      "caption": self.caption,
+      "userId": self.userId
+    }
+  
 
 class Hashtag(db.Model):
   __tablename__ = 'hashtags'

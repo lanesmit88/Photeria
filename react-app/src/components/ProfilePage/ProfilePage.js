@@ -1,11 +1,14 @@
 import React from "react";
-import ProfileDetail from "./ProfileDetail";
+import ProfileDetail from './ProfileDetail'
+import ProfileGrid from './ProfileGrid'
+import './profileBase.css'
+import { useState } from "react";
 
 function ProfilePage() {
   return (
-    <div className="inDiv" style={{ width: "80%", margin: "auto" }}>
+    <div className="profile-div inDiv">
       <ProfileDetail />
-      {/* <ProfileGrid /> */}
+      <ProfileGrid />
     </div>
   );
 }
