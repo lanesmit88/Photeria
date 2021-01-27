@@ -9,7 +9,7 @@ import User from "./components/User";
 import Post from "./components/Post/Post";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
-import Messages from "./components/Messages/Messages";
+import MessagesPage from "./components/Messages/MessagePage";
 
 import { authenticate } from "./services/auth";
 
@@ -37,7 +37,7 @@ function App() {
 
       <Switch>
         <Route path="/dm">
-          <Messages />
+          <MessagesPage />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm

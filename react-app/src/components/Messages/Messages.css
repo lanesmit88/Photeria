@@ -117,3 +117,7 @@
   height: 500px;
   border-bottom: none;
 }
+
+.messagesPage {
+  width: 700px !important;
+}
