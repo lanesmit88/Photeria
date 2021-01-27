@@ -85,12 +85,13 @@
   /* display: flex; */
   /* row-gap: 0%; */
   border: 2px solid black;
-  width: 293.9px;
-  height: 188px;
+  border-left: 9px solid black;
+  width: 282.95px;
+  height: 189.99px;
 }
 .editImageDiv {
   display: grid;
-  /* background-color: ; */
   grid-template-columns: repeat(4, 1fr);
   margin-left: 18px;
+  background-color: black;
 }
