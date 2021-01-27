@@ -76,13 +76,14 @@
   width: 100%;
 }
 .messageContainer form textarea {
-  width: 370px;
+  width: 630px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.151);
   height: 41px;
   position: absolute;
-  top: 503px;
-  left: 150px;
+  top: 501px;
+  left: -1px;
+  border-top-left-radius: 0;
   /* margin-top: 200px; */
 }
 
@@ -101,14 +102,17 @@
   border: 1px solid rgba(0, 0, 0, 0.14);
   position: absolute;
   top: 503px;
-  left: 526px;
+  left: 636px;
   /* align-self: flex-start; */
 }
 
 .wrapEverything {
   border: 1px solid rgba(0, 0, 0, 0.11);
   width: 700px !important;
-  margin-left: 35.2%;
+  margin-left: 35.3%;
   border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   height: 500px;
+  border-bottom: none;
 }
