@@ -78,6 +78,9 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.151);
   height: 41px;
+  position: absolute;
+  top: 450px;
+  /* margin-top: 200px; */
 }
 
 .messageContainer form textarea:focus {
@@ -93,5 +96,8 @@
   margin-left: 1px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.14);
+  position: absolute;
+  top: 450px;
+  left: 516px;
   /* align-self: flex-start; */
 }
