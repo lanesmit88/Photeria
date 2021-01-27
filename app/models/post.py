@@ -26,7 +26,9 @@ class Post(db.Model):
       "photoData": self.photoData,
       "location": self.location,
       "caption": self.caption,
-      "userId": self.userId
+      "userId": self.userId,
+      # "likes": self.likes,
+     
     }
   
 
@@ -44,6 +46,13 @@ class PostLike(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
+  
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "userId": self.userId,
+      "postId": self.postId
+    }
 
 class Comment(db.Model):
   __tablename__ = 'comments'
@@ -52,6 +61,14 @@ class Comment(db.Model):
   text = db.Column(db.String(255), nullable = False)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
+  
+  # def to_dict(self):
+  #   return {
+  #     "id": self.id,
+  #     "text": self.text,
+  #     "userId": self.userId,
+  #     "postId": self.postId
+  #   }
 
 class CommentLike(db.Model):
   __tablename__ = 'commentLikes'

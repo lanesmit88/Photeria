@@ -57,3 +57,10 @@ class Follower(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "followerId": self.followerId,
+      "followedId": self.followedId,
+    }

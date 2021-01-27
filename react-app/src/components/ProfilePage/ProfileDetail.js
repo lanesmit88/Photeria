@@ -41,10 +41,10 @@ function ProfileDetail({user}) {
             {user.posts.length} <span>Posts</span>
           </p>
           <p>
-            252 <span>Followers</span>
+            {user.numFollowers} <span>Followers</span>
           </p>
           <p>
-            238 <span>Following</span>
+            {user.numFollowing} <span>Following</span>
           </p>
         </div>
         <p className="nameHeading">{user.user.firstName}</p>
