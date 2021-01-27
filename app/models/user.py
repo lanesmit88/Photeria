@@ -46,12 +46,7 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
     }
-<<<<<<< HEAD
 
-=======
-
-
->>>>>>> c267babdb3b860b05ce53905182b5ed4734f6254
 class Follower(db.Model):
   __tablename__ = 'followers'
 
