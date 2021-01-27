@@ -1,0 +1,61 @@
+.mainMessagesDiv {
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  width: 700px !important;
+  margin-left: 20%;
+  border-radius: 10px;
+}
+
+.senderMessageBlock {
+  display: flex;
+  /* padding-left: 2px; */
+  padding-left: 10px;
+  padding-top: 8px;
+}
+.senderMessageBlock img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  margin-top: 5px;
+}
+
+.senderMessageDiv {
+  margin-left: 5px;
+  margin-top: 2px;
+  /* align-self: center; */
+  /* border: 0.5px solid rgba(0, 0, 0, 0.623); */
+}
+.senderMessageDiv p {
+  background-color: rgba(48, 82, 196, 0.171);
+
+  margin-top: 0;
+  padding-left: 10px;
+  padding-right: 8px;
+  width: 440px;
+  /* align-self: flex-start; */
+  border: 1px solid rgba(0, 0, 0, 0.062);
+  word-wrap: break-word;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* USERS MESSAGE GO HERE */
+
+.userMessageBlock {
+  margin-left: 50px;
+  /* border: 1px solid black; */
+  padding-right: 10px;
+}
+.userMessageBlock p {
+  border: 1px solid rgba(0, 0, 0, 0.062);
+  background-color: rgba(128, 128, 128, 0.144);
+  word-wrap: break-word;
+  width: 430px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 0px;
+  margin-left: auto;
+  margin-right: 1px;
+}
