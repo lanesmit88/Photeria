@@ -3,6 +3,7 @@ import { useState } from "react";
 import CreateComment from "../Comment/comment";
 import "./Post.css";
 import { Modal } from "../../context/Modal"
+import CommentComponent from '../Comment/comment'
 
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
@@ -149,7 +150,8 @@ function Post() {
           </div>
         </div>
         <div className="postCommentBlock">
-          <CreateComment />
+          <CommentComponent postId='1'/>
+          {/* <CreateComment /> */}
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import User from "./components/User";
 import Post from "./components/Post/Post";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
+import CommentListComponent from "./components/CommentListComponent/commentlist";
 import CommentComponent from "./components/Comment/comment";
 
 import { authenticate } from "./services/auth";
@@ -46,7 +47,8 @@ function App() {
           <ProfilePage/>
         </Route>
         <Route path="/commenttest" exact={true}>
-          <CommentComponent postId='1' />
+          <CommentListComponent postId='2' />
+          {/* <CommentComponent postId='1' /> */}
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
