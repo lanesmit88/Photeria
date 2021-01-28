@@ -21,9 +21,9 @@ function Post() {
   });
   
 
-  // useEffect(async () => {
-  //   dispatch(fetchPostData(2));
-  // }, []);
+  useEffect(async () => {
+    dispatch(fetchPostData(2));
+  }, []);
 
 
 
@@ -55,7 +55,7 @@ function Post() {
         <div className="detailBlock">
           {/* Likes and other details */}
           <div className="iconBlock">
-            <form action="/api/post/" >
+            <form action={`/api/post/${postData.id}/like`} method="POST">
             <button type="submit">Like</button>
             </form>
             <button>Comment</button>

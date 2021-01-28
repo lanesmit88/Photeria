@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import Post, PostLike, Comment
+from flask_login import login_required, current_user
+from app.models import db, Post, PostLike, Comment
 
 post_routes = Blueprint('posts', __name__)
 
@@ -25,11 +25,28 @@ def post_comments(id):
     return {"comments":[comment.to_dict() for comment in comments]}
 
 
+@post_routes.route('/<int:id>/like', methods=["POST"])
+@login_required
+def likePost(id):
+    post = Post.query.filter(Post.id == id).one()
+    newLike = PostLike(userId=current_user.id, postId=id)
+    db.session.add(newLike)
+    db.session.commit()
+    return "good Like"
+
 
 @post_routes.route('/<int:id>')
 # @login_required
 def post(id):
     post = Post.query.get(id)
     return post.to_dict()
+
+
+
+# @post_routes.route('/lusiyfga')
+# # @login_required
+# def fakepost():
+#     print(current_user)
+#     return "4"
 
 
