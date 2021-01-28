@@ -11,7 +11,6 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   post: postReducer,
   postLikes: postLikesReducer
-
 });
 
 let enhancer;

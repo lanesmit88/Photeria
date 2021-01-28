@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -20,7 +22,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(firstName,lastName,username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -29,6 +31,12 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -51,8 +59,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     <div>
       <form
         id="signupForm"
-        onSubmit={() => {
-          dispatch();
+        onSubmit={(e) => {
+          // dispatch();
+          onSignUp(e)
         }}
       >
         <div>
@@ -61,18 +70,18 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <div class="signup-fields">
           <input
             type="text"
-            name="username"
-            onChange={updateUsername}
-            value={username}
+            name="firstname"
+            onChange={updateFirstName}
+            value={firstName}
             placeholder="First Name"
           ></input>
         </div>
         <div class="signup-fields">
           <input
             type="text"
-            name="username"
-            onChange={updateUsername}
-            value={username}
+            name="lastname"
+            onChange={updateLastName}
+            value={lastName}
             placeholder="Last Name"
           ></input>
         </div>
