@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from datetime import datetime
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
   bio = db.Column(db.String(255))
   firstName = db.Column(db.String(80), nullable = False)
   lastName = db.Column(db.String(80), nullable = False)
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
   # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
@@ -50,6 +52,8 @@ class User(db.Model, UserMixin):
       "bio": self.bio,
       "firstName": self.firstName,
       "lastName": self.lastName,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class Follower(db.Model):
@@ -58,10 +62,14 @@ class Follower(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
 
   def to_dict(self):
     return {
       "id": self.id,
       "followerId": self.followerId,
       "followedId": self.followedId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }

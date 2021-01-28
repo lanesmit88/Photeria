@@ -1,4 +1,5 @@
 from .db import db
+from datetime import datetime
 
 hashtagPostJoin = db.Table(
   "hashtagPostJoins",
@@ -18,6 +19,8 @@ class Post(db.Model):
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   likes = db.relationship("PostLike")
   comments = db.relationship('Comment')
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
 
   def to_dict(self):
     return {
@@ -26,6 +29,8 @@ class Post(db.Model):
       "location": self.location,
       "caption": self.caption,
       "userId": self.userId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt,
       "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags ],
       "likes": [like.to_dict() for like in self.likes],
       "comment": [comment.to_dict() for comment in self.comments]
@@ -36,12 +41,17 @@ class Hashtag(db.Model):
 
   id = db.Column(db.Integer, primary_key = True)
   tag = db.Column(db.String(25), nullable = False)
-  
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
+
   posts = db.relationship("Post", secondary=hashtagPostJoin, back_populates="hashtags")
 
   def to_dict(self):
     return {
-      "id": self.id
+      "id": self.id,
+      "tag": self.tag,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class PostLike(db.Model):
@@ -50,12 +60,16 @@ class PostLike(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
-  
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
+
   def to_dict(self):
     return {
       "id": self.id,
       "userId": self.userId,
-      "postId": self.postId
+      "postId": self.postId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class Comment(db.Model):
@@ -65,13 +79,17 @@ class Comment(db.Model):
   text = db.Column(db.String(255), nullable = False)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
-  
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
+
   def to_dict(self):
     return {
       "id": self.id,
       "text": self.text,
       "userId": self.userId,
-      "postId": self.postId
+      "postId": self.postId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class CommentLike(db.Model):
@@ -80,3 +98,5 @@ class CommentLike(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   commentId = db.Column(db.Integer, db.ForeignKey("comments.id"))
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
