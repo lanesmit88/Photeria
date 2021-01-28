@@ -8,7 +8,7 @@ import postReducer from "./post"
 import postLikesReducer from "./postLikes"
 const rootReducer = combineReducers({
   user: userReducer,
-  comment: commentReducer
+  comment: commentReducer,
   post: postReducer,
   postLikes: postLikesReducer
 

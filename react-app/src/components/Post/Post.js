@@ -1,18 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import CreateComment from "../Comment/comment";
-import "./Post.css";
-
 import { Modal } from "../../context/Modal"
 import CommentComponent from '../Comment/comment'
-
 import { useEffect } from "react";
-import { Modal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
-
 import { fetchPostData } from "../../store/post";
 import { fetchPostLikes } from "../../store/postLikes"
-
+import "./Post.css";
 
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
