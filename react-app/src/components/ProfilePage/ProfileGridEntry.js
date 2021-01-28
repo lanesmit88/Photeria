@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './profileGrid.css'
 
-function ProfileGridEntry({imgSrc}) {
+function ProfileGridEntry({imgSrc, numLikes,numComments}) {
 
 //   const [call,setCall] = useState([])
 
@@ -14,8 +14,8 @@ function ProfileGridEntry({imgSrc}) {
         <div className='red grid-entry' style={{ backgroundImage: `url(${imgSrc})` }}>
             <div className='hover'>
                 <div className='hover-details'>
-                    <div><span>Likes</span></div>
-                    <div><span>Comments</span></div>
+                    <div><span><i class='far fa-heart'></i> {numLikes}</span></div>
+                    <div><span><i class='far fa-comment'></i> {numComments}</span></div>
                 </div>
             </div>
         </div>
