@@ -1,0 +1,123 @@
+.mainMessagesDiv {
+  /* border: 1px solid rgba(0, 0, 0, 0.11); */
+  width: 700px !important;
+  /* margin-left: 40%; */
+  border-radius: 10px;
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.senderMessageBlock {
+  display: flex;
+  /* padding-left: 2px; */
+  padding-left: 10px;
+  padding-top: 8px;
+}
+.senderMessageBlock img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  margin-top: 5px;
+}
+
+.senderMessageDiv {
+  margin-left: 5px;
+  margin-top: 2px;
+  /* align-self: center; */
+  /* border: 0.5px solid rgba(0, 0, 0, 0.623); */
+}
+.senderMessageDiv p {
+  background-color: rgba(48, 82, 196, 0.171);
+
+  margin-top: 0;
+  padding-left: 10px;
+  padding-right: 8px;
+  width: 440px;
+  /* align-self: flex-start; */
+  border: 1px solid rgba(0, 0, 0, 0.062);
+  word-wrap: break-word;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* USERS MESSAGE GO HERE */
+
+.userMessageBlock {
+  margin-left: 50px;
+  /* border: 1px solid black; */
+  padding-right: 10px;
+}
+.userMessageBlock p {
+  border: 1px solid rgba(0, 0, 0, 0.062);
+  background-color: rgba(128, 128, 128, 0.144);
+  word-wrap: break-word;
+  width: 430px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 0px;
+  margin-left: auto;
+  margin-right: 1px;
+}
+
+/* TYPE MESSAGE GOES HERE */
+
+.typeMessageDiv {
+  /* border: 1px solid black; */
+  width: 420px;
+  /* margin: auto; */
+  height: 50px;
+  /* display: flex; */
+}
+.messageContainer {
+  width: 100%;
+}
+.messageContainer form textarea {
+  width: 630px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  height: 41px;
+  position: absolute;
+  top: 501px;
+  left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  /* margin-top: 200px; */
+}
+
+.messageContainer form textarea:focus {
+  outline: none;
+}
+.messageContainer form button {
+  width: 42px;
+  height: 44px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2px;
+  background-color: transparent;
+  margin-left: 1px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  position: absolute;
+  top: 503px;
+  left: 636px;
+  /* align-self: flex-start; */
+}
+
+.wrapEverything {
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  width: 700px !important;
+  margin-left: 35.3%;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 500px;
+  border-bottom: none;
+}
+
+.messagesPage {
+  width: 700px !important;
+}

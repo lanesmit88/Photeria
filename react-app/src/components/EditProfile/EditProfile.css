@@ -1,19 +1,23 @@
 .editProfile {
   display: grid;
   grid-template-columns: auto 1fr;
+  margin-left: 10px;
+  margin-top: 55px !important;
+  width: 300px !important;
 }
 .editProfileMain {
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
 }
-
+/*  */
 .editProfileMain form {
   align-self: flex-start;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 220px;
+  margin-top: 20px;
   /* margin-bot */
   /* background-color: #121f18; */
 }
@@ -25,10 +29,12 @@
   height: 30px;
   border: none;
   border-bottom: 2px solid #165057;
+  background-color: transparent;
+  color: white;
 }
 
 ::placeholder {
-  color: #165057;
+  color: #578e94;
 }
 .editProfileMain form button {
   margin-bottom: 0px;
@@ -87,7 +93,7 @@
   /* row-gap: 0%; */
   border: 2px solid black;
   border-left: 9px solid black;
-  width: 282.95px;
+  width: 282.5px;
   height: 189.99px;
 }
 .editImageDiv {
@@ -95,4 +101,5 @@
   grid-template-columns: repeat(4, 1fr);
   margin-left: 18px;
   background-color: black;
+  /* width: 300px; */
 }
