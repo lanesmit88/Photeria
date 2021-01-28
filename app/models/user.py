@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  hashedPassword = db.Column(db.String(255), nullable = False)
+  hashed_password = db.Column(db.String(255), nullable = False)
   profilePhoto = db.Column(db.String(255), default="https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg")
   headline = db.Column(db.String(100))
   bio = db.Column(db.String(255))
@@ -51,26 +51,17 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
     }
-        
+
 class Follower(db.Model):
   __tablename__ = 'followers'
 
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-  
+
   def to_dict(self):
     return {
       "id": self.id,
       "followerId": self.followerId,
       "followedId": self.followedId,
     }
-
-
-# class Follower(db.Model):
-#   __tablename__ = 'followers'
-
-#   id = db.Column(db.Integer, primary_key = True)
-#   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
-#   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-

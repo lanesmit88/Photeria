@@ -1,13 +1,11 @@
-import React, {useEffect} from "react";
-import ProfileDetail from './ProfileDetail'
-import ProfileGrid from './ProfileGrid'
-import './profileBase.css'
+import React, { useEffect } from "react";
+import ProfileDetail from "./ProfileDetail";
+import ProfileGrid from "./ProfileGrid";
+import "./profileBase.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {getUserProfile} from '../../store/user'
-import {useParams} from 'react-router-dom'
-
-
+import { getUserProfile } from "../../store/user";
+import { useParams } from "react-router-dom";
 
 function ProfilePage() {
   const dispatch = useDispatch();
@@ -20,18 +18,17 @@ function ProfilePage() {
   }, []);
 
   if (user) {
-    console.log(user)
+    console.log(user);
   }
-
 
   return (
     <div className="profile-div inDiv">
-      {user.user &&
-      <div>
-        <ProfileDetail user={user} />
-        <ProfileGrid posts={user.posts} />
-      </div>
-  }
+      {user.user && (
+        <div>
+          <ProfileDetail user={user} />
+          <ProfileGrid posts={user.posts} />
+        </div>
+      )}
     </div>
   );
 }

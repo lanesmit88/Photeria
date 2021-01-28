@@ -12,14 +12,16 @@ def seed_posts():
     post3 = Post(photoData='https://images.pexels.com/photos/4394274/pexels-photo-4394274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', location='The center of the Earth',
                 caption='How did I get down here?', userId='2', 
     )
-    post6 = Post(photoData='https://images.pexels.com/photos/4394274/pexels-photo-4394274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', location='Narnia',
-                caption='Whats in this door?', userId='2', 
-    )
+    
     post4 = Post(photoData='https://images.pexels.com/photos/5808477/pexels-photo-5808477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', location='Up in the sky',
                 caption='I guess I can fly', userId='3', 
     )
     post5 = Post(photoData='https://images.pexels.com/photos/4530525/pexels-photo-4530525.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', location='Drivin down the road',
                 caption='Im almost out of gas!', userId='4', 
+    )
+    
+    post6 = Post(photoData='https://images.pexels.com/photos/4394274/pexels-photo-4394274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', location='Narnia',
+                caption='Whats in this door?', userId='2', 
     )
 
     db.session.add(post1)

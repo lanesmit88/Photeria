@@ -27,11 +27,11 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_commentLikes()
-    undo_comments()
-    undo_posts()
-    undo_messages()
-    undo_follows()
+    # undo_commentLikes()
+    # undo_comments()
+    # undo_posts()
+    # undo_messages()
+    # undo_follows()
     undo_users()
-    undo_postLikes()
+    # undo_postLikes()
     # Add other undo functions here

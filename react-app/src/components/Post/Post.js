@@ -1,14 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import CreateComment from "../Comment/comment";
-import "./Post.css";
+import { Modal } from "../../context/Modal"
+import CommentComponent from '../Comment/comment'
 import { useEffect } from "react";
-import { Modal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
-
 import { fetchPostData } from "../../store/post";
 import { fetchPostLikes } from "../../store/postLikes"
+
 import CreatePost from "../CreatePost/CreatePost";
+import "./Post.css";
+
 
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
@@ -21,16 +23,12 @@ function Post() {
     return reduxState.post;
   });
 
-  console.log('awefaewfawefawf', postData.id)
-  useEffect(async () => {
-    dispatch(fetchPostData(2));
-  }, []);
 
-  // let postId = postData.id
+  // useEffect(async () => {
+  //   dispatch(fetchPostData(2));
+  // }, []);
 
-  useEffect(async () => {
-    dispatch(fetchPostLikes(2));
-  }, []);
+
 
   let captionTxt =
     "Hello this ishohs the lets pu tosmething that happens often maybe i dont oput this as 100% at the moment but  lets see ghssdfousnf khfiughfkgifhgkghj fhgkjfhd jfgghssdfo usnfkhfiu ghfkgif hgkghjfhg kjfhdk jfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkj fggh ssdfous nfkhfiu ghfkgifhgkghj fhgkjfhdkjfgghss dfousnfkhfiugh fkgifhgkghjfhgk jfhdkjfgghs sdfousn khfiughfkgifhgkghjfhgkjfh dkjfgghssdfousnfkhv fiughfkgifhgkghjfhgkjfhdkjfgghssdfousnfkhfiughfkgifhgkghjfhgkjfhdkjfg";
@@ -234,7 +232,8 @@ function Post() {
           </div>
         </div>
         <div className="postCommentBlock">
-          <CreateComment />
+          <CommentComponent postId='1'/>
+          {/* <CreateComment /> */}
         </div>
       </div>
     </div>
