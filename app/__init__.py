@@ -20,15 +20,6 @@ app = Flask(__name__)
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
-@app.route('/test')
-def test():
-   tesst = Message.query.all()
-#    print(tesst.to_dict())
-#    print('hijlkjgkdjlg', tesst.to_dict())
-   new = {"messages": [tist.to_dict() for tist in tesst]}
-   print(new)
-   return new
-
 
 @login.user_loader
 def load_user(id):
