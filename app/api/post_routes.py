@@ -40,13 +40,3 @@ def likePost(id):
 def post(id):
     post = Post.query.get(id)
     return post.to_dict()
-
-
-
-# @post_routes.route('/lusiyfga')
-# # @login_required
-# def fakepost():
-#     print(current_user)
-#     return "4"
-
-
