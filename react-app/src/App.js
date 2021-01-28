@@ -9,6 +9,7 @@ import User from "./components/User";
 import Post from "./components/Post/Post";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
+import MessagesPage from "./components/Messages/MessagePage";
 
 import { authenticate } from "./services/auth";
 
@@ -35,6 +36,9 @@ function App() {
       <NavBar setAuthenticated={setAuthenticated} />
 
       <Switch>
+        <Route path="/dm">
+          <MessagesPage />
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
@@ -42,7 +46,7 @@ function App() {
           />
         </Route>
         <Route path="/profile/:id" exact={true}>
-          <ProfilePage/>
+          <ProfilePage />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
