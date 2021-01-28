@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import AllMessages from "./AllMessages/AllMessages";
 import Messages from "../Messages/Messages";
@@ -7,9 +8,10 @@ import "./Messages.css";
 
 function MessagesPage() {
   const [messageOpen, setMessageOpen] = useState(false);
+  const { userId } = useParams();
   return (
     <>
-      <AllMessages state={{ messageOpen, setMessageOpen }} />
+      <AllMessages state={{ messageOpen, setMessageOpen, userId }} />
       {messageOpen ? (
         <Messages />
       ) : (

@@ -1,14 +1,18 @@
 import React, { useReducer } from "react";
+import { useSelector } from "react-redux";
+import { getAllMessages } from "../../../store/Messages";
+
 // import { useState } from "react";
 import "./AllMessages.css";
 
 function AllMessages(props) {
+  getAllMessages(props.userId);
+  let messages = useSelector((state) => state.messages);
   return (
     <>
       <div className="allMessagesContainer">
         <div className="inboxDisplayDiv">
           <h2>Inbox</h2>
-          {/* <button></button> */}
         </div>
         {messages.length > 0 ? (
           <div
