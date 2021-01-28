@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPostData } from "../../store/post";
 import { fetchPostLikes } from "../../store/postLikes"
+import CreatePost from "../CreatePost/CreatePost";
 
 function Post() {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
@@ -19,7 +20,7 @@ function Post() {
   const postData = useSelector((reduxState) => {
     return reduxState.post;
   });
-  
+
   console.log('awefaewfawefawf', postData.id)
   useEffect(async () => {
     dispatch(fetchPostData(2));
@@ -40,6 +41,19 @@ function Post() {
   ];
   return (
     <div>
+      <div id='CreatePostButton'>
+        <div>
+
+          <p onClick={() => setShowModal(true)}>Make a Post</p>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                    <div id="modal-div">
+                      <CreatePost />
+                    </div>
+                  </Modal>
+                )}
+        </div>
+      </div>
       <div className="wrapper">
         <div className="headerBlock">
           <img
