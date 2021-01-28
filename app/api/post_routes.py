@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Post, PostLike
+from app.models import Post, PostLike, Comment
 
 post_routes = Blueprint('posts', __name__)
 
@@ -13,7 +13,18 @@ def postLikes(id):
     for post in posts:
         allPosts.append(post.to_dict())
     return jsonify(*allPosts)
+
 # Get users another time
+
+
+@post_routes.route('/<int:id>/allcomments')
+def post_comments(id):
+    print(id)
+    comments = Comment.query.filter(Comment.postId==id).all()
+
+    return {"comments":[comment.to_dict() for comment in comments]}
+
+
 
 @post_routes.route('/<int:id>')
 # @login_required

@@ -14,11 +14,7 @@ def user_profile(id):
     # print(user.posts)
     
     postsquery = Post.query.filter(Post.userId==id).all()
-    for p in postsquery:
-        print(p.likes)
-        print('--------------')
-        print(p.comments)
-        
+ 
     posts = [post.to_dict() for post in postsquery]
     
     followers = Follower.query.filter(Follower.followedId==id).all()
