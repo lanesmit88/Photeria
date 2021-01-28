@@ -1,4 +1,5 @@
 from .db import db
+import base64
 
 hashtagPostJoin = db.Table(
   "hashtagPostJoins",
@@ -22,6 +23,7 @@ class Post(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
+      # "photoData": self.photoData,
       "photoData": self.photoData,
       "location": self.location,
       "caption": self.caption,
