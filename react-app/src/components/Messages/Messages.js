@@ -11,59 +11,42 @@ let messages = [
   { createdAt: "2020-12-29 13:19:19.141243-05", text: "5" },
 ];
 let messages2 = [
-  { createdAt: "2021-12-29 13:19:19.141243-05", text: "1" },
-  { createdAt: "2020-12-29 13:19:19.141243-05", text: "2" },
+  // { createdAt: "2021-12-29 13:19:19.141243-05", text: "1" },
+  // { createdAt: "2020-12-29 13:19:19.141243-05", text: "2" },
   // { createdAt: "2020-12-29 13:19:19.141243-05", text: "Hey hjkfgk are you" },
 ];
 function Messages() {
-  const testing = () => {
-    let place = 0;
-    let secondPlace = 0;
+  const messagesArray = (recievedMessages, sentMessages) => {
+    let senderMessages = recievedMessages;
+    let recipientMessages = sentMessages;
     let array = [];
-    let newArray = [];
-    // let yay = messages2.map((mes) =>
-    for (let i = -messages.length; i < messages.length; i++) {
-      for (let j = -messages2.length; j < messages2.length; j++) {
+
+    for (let i = -senderMessages.length; i < senderMessages.length; i++) {
+      for (
+        let j = -recipientMessages.length;
+        j < recipientMessages.length;
+        j++
+      ) {
         if (
-          Date.parse(messages[0].createdAt) >=
-          Date.parse(messages2[0].createdAt)
+          Date.parse(senderMessages[0].createdAt) >=
+          Date.parse(recipientMessages[0].createdAt)
         ) {
-          array.push(
-            messages[0]
-            // <div className="senderMessageBlock">
-            //   <img
-            //     src={imageName}
-            //     alt="higdh"
-            //     // style={{ width: "30px" }}
-            //   />
-            //   <div className="senderMessageDiv">
-            //     <p>
-            //       hahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahahhahahah
-            //     </p>
-            //   </div>
-            // </div>
-          );
-          messages.splice(0, 1);
-          // secondPlace--;
-          // console.log(messages);
-          // console.log("thisdfghdfjhbks");
+          array.push(senderMessages[0]);
+          senderMessages.splice(0, 1);
 
           break;
         } else {
-          array.push("hfkdjshfd");
-          messages2.splice(0, 1);
-          // place--;
-          // console.log(messages2);
-          // console.log("this");
-          // break;
+          array.push(recipientMessages[0]);
+          recipientMessages.splice(0, 1);
         }
       }
     }
-    console.log(messages2, "sdf", messages);
-    // if (messages2.length > 0) {
-    //   array.push(messages2);
-    // } else if (messages.length > 0) array.push(messages);
-    console.log(array);
+    if (senderMessages.length > 0) {
+      senderMessages.forEach((msg) => array.push(msg));
+    } else if (recipientMessages.length > 0) {
+      recipientMessages.forEach((msg) => array.push(msg));
+    }
+
     return array;
   };
   return (
@@ -72,77 +55,20 @@ function Messages() {
 
       <div className="wrapEverything">
         <div className="mainMessagesDiv">
-          {testing().map((yay) => console.log("whatttttttttt"))}
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
-          <div className="userMessageBlock">
-            <p>
-              {" "}
-              Message goes here hey whats up how have you been heard youre
-              trying to initiate an something
-            </p>
-          </div>
+          {messagesArray(messages, messages2).map((message) =>
+            message.hasOwnProperty("senderId") ? (
+              <div className="senderMessageBlock">
+                <img src={message.User.profileImg} alt={message.User.name} />
+                <div className="senderMessageDiv">
+                  <p>{message.text} </p>
+                </div>
+              </div>
+            ) : (
+              <div className="userMessageBlock">
+                <p>{message.text}</p>
+              </div>
+            )
+          )}
         </div>
         <div className="typeMessageDiv">
           <TypeMessage />
