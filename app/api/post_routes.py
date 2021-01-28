@@ -32,7 +32,7 @@ def likePost(id):
     newLike = PostLike(userId=current_user.id, postId=id)
     db.session.add(newLike)
     db.session.commit()
-    return "good Like"
+    return { "success": True }
 
 
 @post_routes.route('/<int:id>')
