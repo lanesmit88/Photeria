@@ -55,7 +55,9 @@ function Post() {
         <div className="detailBlock">
           {/* Likes and other details */}
           <div className="iconBlock">
-            <button>Like</button>
+            <form action="/api/post/" >
+            <button type="submit">Like</button>
+            </form>
             <button>Comment</button>
             <button>DM</button>
           </div>
