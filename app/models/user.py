@@ -51,14 +51,14 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
     }
-        
+
 class Follower(db.Model):
   __tablename__ = 'followers'
 
   id = db.Column(db.Integer, primary_key = True)
   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-  
+
   def to_dict(self):
     return {
       "id": self.id,
@@ -67,10 +67,9 @@ class Follower(db.Model):
     }
 
 
-class Follower(db.Model):
-  __tablename__ = 'followers'
+# class Follower(db.Model):
+#   __tablename__ = 'followers'
 
-  id = db.Column(db.Integer, primary_key = True)
-  followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
-  followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
-
+#   id = db.Column(db.Integer, primary_key = True)
+#   followedId = db.Column(db.Integer, db.ForeignKey("users.id"))
+#   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
