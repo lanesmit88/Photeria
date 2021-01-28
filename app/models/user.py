@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
   lastName = db.Column(db.String(80), nullable = False)
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
-
+  messages = db.relationship('Message')
 
   # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")

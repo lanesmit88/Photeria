@@ -10,7 +10,7 @@ class Message(db.Model):
   recipientId = db.Column(db.Integer, db.ForeignKey("users.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
-
+  # user = db.relationship('User')
 
   def to_dict(self):
     return {
