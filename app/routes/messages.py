@@ -5,6 +5,8 @@ from app.models import Message, User
 bp = Blueprint('messages', __name__)
 
 @bp.route('/dm/:id<int>')
-def allMessagesFortheUser():
-    messages = Message.query.order_by(Message.createdAt).all()
-    return {'messages': [message.to_dict() for message in messages]}
+def allMessagesFortheUser(id):
+    recievedMessages = Message.query.filter(Message.recipientId == id).order_by(Message.createdAt).all()
+    sentMessages = Message.query.filter(Message.senderId == id).order_by(Message.createdAt).all()
+    messages = {{'sentMessages': [message.to_dict() for message in sentMessages]}, {'recievedMessages': [message.to_dict() for message in recievedMessages]}}
+    return messages
