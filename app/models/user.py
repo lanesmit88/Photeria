@@ -28,12 +28,12 @@ class User(db.Model, UserMixin):
 
   @property
   def password(self):
-    return self.hashedPassword
+    return self.hashed_password
 
 
   @password.setter
   def password(self, password):
-    self.hashedPassword = generate_password_hash(password)
+    self.hashed_password = generate_password_hash(password)
 
 
   def check_password(self, password):
