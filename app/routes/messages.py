@@ -1,12 +1,19 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Message, User
 
 bp = Blueprint('messages', __name__)
 
-@bp.route('/<int>:id')
+@bp.route('/<int:id>')
 def allMessagesFortheUser(id):
-    recievedMessages = Message.query.join(User).filter(Message.recipientId == id).order_by(Message.createdAt).all()
-    sentMessages = Message.query.join(User).filter(Message.senderId == id).order_by(Message.createdAt).all()
-    messages = {{'sentMessages': [message.to_dict() for message in sentMessages]}, {'recievedMessages': [message.to_dict() for message in recievedMessages]}}
-    return messages
+    # message = Message.query.get()
+    # message = Message.query.()
+    user = User.query.get(int(id))
+    print(user)
+    recievedMessages = Message.query.filter(Message.recipientId == int(id)).order_by(Message.createdAt).all()
+    sentMessages = Message.query.filter(Message.senderId == int(id)).order_by(Message.createdAt).all()
+
+    messages = {{'recievedMessages': [message.to_dict() for message in recievedMessages]},
+    {'sentMessages': [message.to_dict() for message in sentMessages]}}
+
+    return jsonify([message.to_dict() for message in messages])
