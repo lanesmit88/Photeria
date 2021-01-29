@@ -9,16 +9,16 @@ import { getSpecificUserMessages } from "../../store/Messages";
 function Messages(props) {
   let loggedInUser = 4;
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
-  console.log(props.user.userClicked);
+  // console.log(props.user.userClicked);
   const specificUserMessages = useSelector(
-    (state) => state.specificUserMessages
+    (state) => state.messages.specificUserMessages
   );
 
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSpecificUserMessages(loggedInUser, props.user.userClicked));
-  }, [props.user.userClicked]);
+    dispatch(getSpecificUserMessages(loggedInUser, props.user));
+  }, [props.user]);
 
   const messagesArray = (recievedMessages, sentMessages) => {
     let senderMessages = recievedMessages;

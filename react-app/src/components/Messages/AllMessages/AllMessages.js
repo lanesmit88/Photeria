@@ -37,8 +37,8 @@ function AllMessages(props) {
                   key={recieved[j].createdAt}
                   className="listOfMessagesDiv"
                   onClick={() => {
-                    props.state.setMessageOpen(true);
                     console.log("eys");
+                    props.state.setMessageOpen(true);
                     props.state.setUserClicked(recieved[j].senderId);
                     console.log("wegsd");
                   }}
@@ -70,11 +70,14 @@ function AllMessages(props) {
               alreadySentOrRecieved.push(recieved[j].senderId);
               allData.push(
                 <div
+                  value={recieved[j].senderId}
                   key={recieved[j].createdAt}
                   className="listOfMessagesDiv"
-                  onClick={() => {
+                  onClick={(e) => {
+                    console.log("ISIT SECOND");
+
                     props.state.setMessageOpen(true);
-                    props.state.setUserClicked(recieved[j].senderId);
+                    props.state.setUserClicked(e.target.value);
                   }}
                 >
                   <img
@@ -108,6 +111,7 @@ function AllMessages(props) {
               key={sent[i].createdAt}
               className="listOfMessagesDiv"
               onClick={() => {
+                console.log("WORKSSSSSS");
                 props.state.setMessageOpen(true);
                 props.state.setUserClicked(sent[i].recipientId);
               }}
