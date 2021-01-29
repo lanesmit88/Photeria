@@ -3,19 +3,21 @@ import Post from "../Post/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFeedData } from "../../store/feed";
 import { useEffect } from "react";
+import { fetchAllUsers } from "../../store/allUsers";
 
 function Feed() {
   const dispatch = useDispatch();
   const feedData = useSelector((reduxState) => {
-    console.log(reduxState)
     return reduxState.feed;
   });
 
   useEffect(async () => {
     dispatch(fetchFeedData());
   }, []);
-  
 
+  useEffect(async () => {
+    dispatch(fetchAllUsers());
+   }, []);
 
   return (
     <div>

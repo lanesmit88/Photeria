@@ -5,7 +5,7 @@ const feedData = (feed) => ({
   feed: feed,
 });
 
-export const fetchFeedData = (userId) => {
+export const fetchFeedData = () => {
   return async (dispatch) => {
     const res = await fetch(`/api/feed/`);
     const resData = await res.json();

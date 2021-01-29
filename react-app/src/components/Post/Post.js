@@ -7,23 +7,40 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import { fetchPostLikes } from "../../store/postLikes";
+
+
 import "./Post.css";
 
-function Post( { caption, comment, createdAt, hashtags, id, likes,location, photoData, updatedAt, userId }) {
+function Post({
+  caption,
+  comment,
+  createdAt,
+  hashtags,
+  id,
+  likes,
+  location,
+  photoData,
+  updatedAt,
+  userId,
+}) {
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const postData = useSelector((reduxState) => {
-    return reduxState.post;
+  const usersData = useSelector((reduxState) => {
+    return reduxState.allUsers.users;
+  })
+
+  // useEffect(async () => {
+  //   console.log(usersData)
+  // }, [usersData]);
+
+  let user = usersData.find((temp) => {
+    return temp.id === userId;
   });
-
-  useEffect(async () => {
-    dispatch(fetchPostData(id));
-  }, []);
-
+  console.log(user);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
