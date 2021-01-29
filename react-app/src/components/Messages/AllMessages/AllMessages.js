@@ -28,17 +28,22 @@ function AllMessages(props) {
           // console.log("RECIVEVED FINE");
           // console.log(alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0);
           for (let j = 0; j < recieved.length; j++) {
+            if (sent[i].recipientId === recieved[j].senderId) {
+              sent[i].createdAt > recieved[j].createdAt
+                ? (latesttext = sent[i])
+                : (latesttext = recieved[j]);
+            }
             if (
               sent[i].recipientId == recieved[j].senderId &&
               alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0
             ) {
               console.log("how many times");
-              if (
-                Date.parse(sent[i].createdAt) >
-                Date.parse(recieved[j].createdAt)
-              ) {
-                latesttext = sent[i];
-              } else latesttext = recieved[j];
+              // if (
+              //   Date.parse(sent[i].createdAt) >
+              //   Date.parse(recieved[j].createdAt)
+              // ) {
+              //   latesttext = sent[i].text;
+              // } else latesttext = recieved[j].text;
               alreadySentOrRecieved.push(sent[i].recipientId);
               allData.push(
                 <div
@@ -76,8 +81,8 @@ function AllMessages(props) {
               if (true) {
                 Date.parse(sent[i].createdAt) >
                 Date.parse(recieved[j].createdAt)
-                  ? (latesttext = sent[i])
-                  : (latesttext = recieved[j]);
+                  ? (latesttext = sent[i].text)
+                  : (latesttext = recieved[j].text);
               }
               // latesttext = recieved[j];
               console.log("oh no");
@@ -104,7 +109,7 @@ function AllMessages(props) {
                         paddingTop: "2px",
                       }}
                     >
-                      {latesttext.text}
+                      {recieved[j].text}
                     </p>
                   </div>
                 </div>
