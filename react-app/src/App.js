@@ -63,7 +63,7 @@ function App() {
           <TestComponent />
         </Route>
         <Route path="/followtest" exact={true}>
-          <FollowComponent />
+          <FollowComponent postId='5'/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
