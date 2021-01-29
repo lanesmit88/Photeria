@@ -18,6 +18,7 @@ function AllMessages(props) {
 
   function conversations(sent, recieved) {
     let recievedData = [];
+    let secondly = [];
     if (recieved.length > 0) {
       let latestMessage = [];
       let recievedFrom;
@@ -30,6 +31,7 @@ function AllMessages(props) {
 
           recievedFrom = (
             <div
+              key={recieved[i].id}
               className="listOfMessagesDiv"
               onClick={() => props.state.setMessageOpen(true)}
             >
@@ -57,21 +59,26 @@ function AllMessages(props) {
         }
       }
     }
+    // console.log(sent);
     if (sent.length > 0) {
       let sentPopped = [];
       let latestMessage = [];
       let sentTo;
       for (let i = 0; i < sent.length; i++) {
         for (let j = 0; j < recieved.length; j++) {
-          if (sent[i].senderId === recieved[j].recipientId) {
-            break;
+          if (sent[i].senderId === recieved[j].senderId) {
+            // break;
           } else {
-            if (sentPopped.indexOf(sent[i].recipientId)) {
+            if (sentPopped.indexOf(sent[i].recipientId) >= 0) {
               latestMessage.push(sent[i].text);
+              console.log("sentPoppedIndex");
+              console.log(sentPopped);
             } else {
+              console.log("notSendPopped");
               latestMessage.push(sent[i].text);
               sentTo = (
                 <div
+                  key={sent[i].id}
                   className="listOfMessagesDiv"
                   onClick={() => props.state.setMessageOpen(true)}
                 >
@@ -96,14 +103,15 @@ function AllMessages(props) {
                   </div>
                 </div>
               );
-              recievedData.push(sentTo);
+              secondly.push(sentTo);
               sentPopped.push(sent[i].recipientId);
             }
           }
         }
       }
     }
-    return recievedData;
+    // console.log(recievedData);
+    return [secondly, recievedData];
   }
   return (
     <>
@@ -116,7 +124,7 @@ function AllMessages(props) {
             ? conversations(
                 messages.sentMessages,
                 messages.recievedMessages
-              ).map((data) => <>{data}</>)
+              ).map((data, i) => <div key={i}>{data}</div>)
             : console.log("yusd")}
         </div>
       ) : (
