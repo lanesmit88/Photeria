@@ -18,7 +18,7 @@ function AllMessages(props) {
 
   function conversations(sent, recieved) {
     let recievedData = [];
-    if (recieved.length) {
+    if (recieved.length > 0) {
       let latestMessage = [];
       let recievedFrom;
       let popped = [];
@@ -57,6 +57,52 @@ function AllMessages(props) {
         }
       }
     }
+    if (sent.length > 0) {
+      let sentPopped = [];
+      let latestMessage = [];
+      let sentTo;
+      for (let i = 0; i < sent.length; i++) {
+        for (let j = 0; j < recieved.length; j++) {
+          if (sent[i].senderId === recieved[j].recipientId) {
+            break;
+          } else {
+            if (sentPopped.indexOf(sent[i].recipientId)) {
+              latestMessage.push(sent[i].text);
+            } else {
+              latestMessage.push(sent[i].text);
+              sentTo = (
+                <div
+                  className="listOfMessagesDiv"
+                  onClick={() => props.state.setMessageOpen(true)}
+                >
+                  <img
+                    src={sent[i].recieverPP}
+                    alt={sent[i].recieverUsername}
+                  />
+                  <div className="messageDetail">
+                    <p style={{ fontSize: "14px" }}>
+                      {sent[i].recieverUsername}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(10,10,10,0.3)",
+                        fontWeight: "light",
+                        paddingTop: "2px",
+                      }}
+                    >
+                      {latestMessage[latestMessage.length - 1]}
+                    </p>
+                  </div>
+                </div>
+              );
+              recievedData.push(sentTo);
+              sentPopped.push(sent[i].recipientId);
+            }
+          }
+        }
+      }
+    }
     return recievedData;
   }
   return (
@@ -67,27 +113,11 @@ function AllMessages(props) {
             <h2>Inbox</h2>
           </div>
           {messages.recievedMessages || messages.sentMessages
-            ? conversations(messages.sentMessages, messages.recievedMessages)
-            : // <div
-              //   className="listOfMessagesDiv"
-              //   onClick={() => props.state.setMessageOpen(true)}
-              // >
-              //   <img src={"messages.allMessages"} alt={"messages.allMessages"} />
-              //   <div className="messageDetail">
-              //     <p style={{ fontSize: "14px" }}>{"messages.allMessages"}</p>
-              //     <p
-              //       style={{
-              //         fontSize: "13px",
-              //         color: "rgba(10,10,10,0.3)",
-              //         fontWeight: "light",
-              //         paddingTop: "2px",
-              //       }}
-              //     >
-              //       {"messages.allMessages"}
-              //     </p>
-              //   </div>
-              // </div>
-              console.log("yusd")}
+            ? conversations(
+                messages.sentMessages,
+                messages.recievedMessages
+              ).map((data) => <>{data}</>)
+            : console.log("yusd")}
         </div>
       ) : (
         ""
