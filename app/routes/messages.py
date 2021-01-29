@@ -29,8 +29,8 @@ def allMessagesFortheUser(id):
 
     # messages = {{'recievedMessages': [message.to_dict() for message in recievedMessages]},
     # {'sentMessages': [message.to_dict() for message in sentMessages]}}
-    test = Message.query.order_by(Message.createdAt).filter(Message.recipientId == id).all()
-    # print(len(test), 'hgsdgusdgfiutsWHERE ARE YOU HDGKFJK HKFDHGruiftsdufytu')
-    # print('HELLO')
-    return jsonify([{'msg': msg.to_dict()} for msg in test])
+    recievedMessages = Message.query.order_by(Message.createdAt).filter(Message.recipientId == id).all()
+    sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == id).all()
+
+    return jsonify({'recievedMessages': [msg.to_dict() for msg in recievedMessages], 'sentMessages': [msg.to_dict() for msg in sentMessages]})
     # return jsonify(recieveToDict, senderUsersFound)
