@@ -8,10 +8,7 @@ useEffect(()=>{
 },[imgurl])
   return (
     <div>
-     
      <ImageUpload onNewImageBase64={b64=>setImgUrl(b64)}/>
-
-   
     </div>
   );
 }
