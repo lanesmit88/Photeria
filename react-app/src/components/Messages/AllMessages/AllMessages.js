@@ -19,24 +19,30 @@ function AllMessages(props) {
   function conversations(sent, recieved) {
     let alreadySentOrRecieved = [];
     let allData = [];
-    console.log(sent, recieved);
+    let latesttext;
+    // console.log(sent, recieved);
     if (sent.length > 0) {
-      console.log("LENGHT FINE");
+      // console.log("LENGHT FINE");
       for (let i = 0; i < sent.length; i++) {
         if (recieved.length > 0) {
           // console.log("RECIVEVED FINE");
           // console.log(alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0);
           for (let j = 0; j < recieved.length; j++) {
-            console.log(
-              "INSIDE RECIEVED LOOP AND VALUE OF SENT[I].RECIPIENTID",
-              sent[i],
-              recieved[j].senderId
-            );
+            // console.log(
+            //   "INSIDE RECIEVED LOOP AND VALUE OF SENT[I].RECIPIENTID",
+            //   sent[i],
+            //   recieved[j].senderId
+            // );
             if (
               sent[i].recipiendId == recieved[j].senderId &&
               alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0
             ) {
-              console.log("INSIDE CONVERSATION HELD");
+              if (
+                Date.parse(sent[i].createdAt) >
+                Date.parse(recieved[j].createdAt)
+              ) {
+                latesttext = sent[i];
+              } else latesttext = recieved[j];
               alreadySentOrRecieved.push(sent[i].recipiendId);
               allData.push(
                 <div
@@ -60,17 +66,17 @@ function AllMessages(props) {
                         paddingTop: "2px",
                       }}
                     >
-                      {recieved[j].text}
+                      {latesttext.text}
                     </p>
                   </div>
                 </div>
               );
               //
-            }
-            if (
+            } else if (
               // recieved[j].recipiendId === 4 &&
               alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
             ) {
+              latesttext = recieved[j];
               console.log("oh no");
               alreadySentOrRecieved.push(recieved[j].senderId);
               allData.push(
@@ -95,7 +101,7 @@ function AllMessages(props) {
                         paddingTop: "2px",
                       }}
                     >
-                      {recieved[j].text}
+                      {latesttext.text}
                     </p>
                   </div>
                 </div>
