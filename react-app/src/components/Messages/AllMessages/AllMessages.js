@@ -1,8 +1,6 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllMessages } from "../../../store/Messages";
-
-// import { useState } from "react";
 import "./AllMessages.css";
 
 function AllMessages(props) {
@@ -20,13 +18,9 @@ function AllMessages(props) {
     let alreadySentOrRecieved = [];
     let allData = [];
     let latesttext;
-    // console.log(sent, recieved);
     if (sent.length > 0) {
-      // console.log("LENGHT FINE");
       for (let i = 0; i < sent.length; i++) {
         if (recieved.length > 0) {
-          // console.log("RECIVEVED FINE");
-          // console.log(alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0);
           for (let j = 0; j < recieved.length; j++) {
             if (sent[i].recipientId === recieved[j].senderId) {
               sent[i].createdAt > recieved[j].createdAt
@@ -37,19 +31,17 @@ function AllMessages(props) {
               sent[i].recipientId == recieved[j].senderId &&
               alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0
             ) {
-              console.log("how many times");
-              // if (
-              //   Date.parse(sent[i].createdAt) >
-              //   Date.parse(recieved[j].createdAt)
-              // ) {
-              //   latesttext = sent[i].text;
-              // } else latesttext = recieved[j].text;
               alreadySentOrRecieved.push(sent[i].recipientId);
               allData.push(
                 <div
                   key={recieved[j].createdAt}
                   className="listOfMessagesDiv"
-                  onClick={() => props.state.setMessageOpen(true)}
+                  onClick={() => {
+                    props.state.setMessageOpen(true);
+                    console.log("eys");
+                    props.state.setUserClicked(recieved[j].senderId);
+                    console.log("wegsd");
+                  }}
                 >
                   <img
                     src={recieved[j].senderPP}
@@ -72,9 +64,7 @@ function AllMessages(props) {
                   </div>
                 </div>
               );
-              //
             } else if (
-              // recieved[j].recipiendId === 4 &&
               alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
             ) {
               alreadySentOrRecieved.push(recieved[j].senderId);
@@ -82,7 +72,10 @@ function AllMessages(props) {
                 <div
                   key={recieved[j].createdAt}
                   className="listOfMessagesDiv"
-                  onClick={() => props.state.setMessageOpen(true)}
+                  onClick={() => {
+                    props.state.setMessageOpen(true);
+                    props.state.setUserClicked(recieved[j].senderId);
+                  }}
                 >
                   <img
                     src={recieved[j].senderPP}
@@ -100,7 +93,6 @@ function AllMessages(props) {
                         paddingTop: "2px",
                       }}
                     >
-                      {/* {latesttext} */}
                       {"Recieved"}
                     </p>
                   </div>
@@ -115,7 +107,10 @@ function AllMessages(props) {
             <div
               key={sent[i].createdAt}
               className="listOfMessagesDiv"
-              onClick={() => props.state.setMessageOpen(true)}
+              onClick={() => {
+                props.state.setMessageOpen(true);
+                props.state.setUserClicked(sent[i].recipientId);
+              }}
             >
               <img src={sent[i].recieverPP} alt={sent[i].recieverUsername} />
               <div className="messageDetail">
@@ -133,11 +128,9 @@ function AllMessages(props) {
               </div>
             </div>
           );
-          //just display the sent messages
         }
       }
     }
-    console.log(allData);
     return allData;
   }
   return (
@@ -151,7 +144,7 @@ function AllMessages(props) {
             ? conversations(
                 messages.sentMessages,
                 messages.recievedMessages
-              ).map((d) => <>{d}</>)
+              ).map((d, i) => <div key={i}>{d}</div>)
             : console.log("yusd")}
         </div>
       ) : (
