@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Post from "./components/Post/Post";
+import Feed from "./components/feed/Feed"
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
 
@@ -76,7 +77,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Post />
+          <Feed />
         </ProtectedRoute>
         {/* double check these routes */}
         <Route exact path="/element">
