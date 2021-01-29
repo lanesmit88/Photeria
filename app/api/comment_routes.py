@@ -17,16 +17,16 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @comment_routes.route('/new/<int:postId>', methods=['POST'])
-# @login_required
+@login_required
 def new_comment(postId):
     form = CommentForm()
     data = request.get_json(force = True)
     print(data['data'])
     
     form['csrf_token'].data = request.cookies['csrf_token']
-    form['userId'].data = '1'
+    # form['userId'].data = '1'
     form['text'].data = data['data']
-    # form['userId'].data = current_user.id
+    form['userId'].data = current_user.id
     form['postId'].data = postId
     
     if form.validate_on_submit():
