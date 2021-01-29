@@ -1,41 +1,23 @@
 import React from 'react';
 import ImageUploading from 'react-images-uploading';
  
-function ImageUpload() {
+function ImageUpload({onNewImageBase64}) {
   const [images, setImages] = React.useState([]);
-  const maxNumber = 69;
  
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
+    if (imageList[0]) {
+        onNewImageBase64(imageList[0].data_url)
+    } else {
+        onNewImageBase64(null)
+    }
   };
 
-  const handleSubmit = async (e) => {
-      e.preventDefault()
-      let image64 = document.querySelector('.image-item > img')
-      let base =image64.src
-      const newPost = await fetch(`/api/post/uploadimage`,{method:'post',body: JSON.stringify({base})});
-    //   const newPost = await fetch(`/api/post/uploadimage`,{method:'post',body: JSON.stringify({base})});
-      alert(image64.src)
-  }
-
-  const handleSubmit2 = async (e) => {
-      e.preventDefault()
-  
-      const getImage = await fetch(`/api/post/testgetimage`);
-      const resp = await getImage.json()
-    //   const newPost = await fetch(`/api/post/uploadimage`,{method:'post',body: JSON.stringify({base})});
-      console.log(resp.image[0].photoData)
-      let newImg=document.createElement('img')
-      newImg.setAttribute('src',`${resp.image[0].photoData}`)
-      document.querySelector('.newImage').appendChild(newImg)  
-  }
- 
   return (
-    <div className="App">
+    <div>
       <ImageUploading
-        // multiple
         value={images}
         onChange={onChange}
         maxNumber={1}
@@ -44,7 +26,6 @@ function ImageUpload() {
         {({
           imageList,
           onImageUpload,
-          onImageRemoveAll,
           onImageUpdate,
           onImageRemove,
           isDragging,
@@ -59,8 +40,7 @@ function ImageUpload() {
             >
               Upload Image
             </button>
-            &nbsp;
-            {/* <button onClick={onImageRemoveAll}>Remove all images</button> */}
+            &nbsp; {/* html encoded space character / HTML Entity*/}
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img src={image['data_url']} alt="" width="100" />
@@ -74,15 +54,6 @@ function ImageUpload() {
         )}
       </ImageUploading>
 
-     
-      <div class='newImage'></div>
-      {/* <form onSubmit={handleSubmit} action="" method="post">
-          <button type='submit'>Send Image</button>
-      </form>
-
-      <form onSubmit={handleSubmit2} action="" method="get">
-          <button type='submit'>Get Image</button>
-      </form> */}
     </div>
   );
 }

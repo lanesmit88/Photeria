@@ -14,6 +14,7 @@ import CommentListComponent from "./components/CommentListComponent/commentlist"
 import ImageUpload from "./components/PhotoUploadComponent/photoUpload";
 import FollowComponent from "./components/FollowComponent/FollowComponent";
 import CommentComponent from "./components/Comment/comment";
+import TestComponent from "./components/TestComponent/testcomponent";
 import MessagesPage from "./components/Messages/MessagePage";
 
 
@@ -60,7 +61,7 @@ function App() {
         </Route>
 
         <Route path="/phototest" exact={true}>
-          <ImageUpload />
+          <TestComponent />
         </Route>
         <Route path="/followtest" exact={true}>
           <FollowComponent />
