@@ -29,16 +29,17 @@ function AllMessages(props) {
           // console.log(alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0);
           for (let j = 0; j < recieved.length; j++) {
             if (
-              sent[i].recipiendId == recieved[j].senderId &&
-              alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0
+              sent[i].recipientId == recieved[j].senderId &&
+              alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0
             ) {
+              console.log("how many times");
               if (
                 Date.parse(sent[i].createdAt) >
                 Date.parse(recieved[j].createdAt)
               ) {
                 latesttext = sent[i];
               } else latesttext = recieved[j];
-              alreadySentOrRecieved.push(sent[i].recipiendId);
+              alreadySentOrRecieved.push(sent[i].recipientId);
               allData.push(
                 <div
                   key={recieved[j].createdAt}
@@ -72,7 +73,7 @@ function AllMessages(props) {
               alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
             ) {
               console.log(sent[i].recipientId, recieved[j].senderId);
-              if (sent[i].recipientId === recieved[j].senderId) {
+              if (true) {
                 Date.parse(sent[i].createdAt) >
                 Date.parse(recieved[j].createdAt)
                   ? (latesttext = sent[i])
@@ -110,8 +111,33 @@ function AllMessages(props) {
               );
             }
           }
-        } else {
-        } //just display the sent messages
+        }
+        if (alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0) {
+          alreadySentOrRecieved.push(sent[i].recipientId);
+          allData.push(
+            <div
+              key={sent[i].createdAt}
+              className="listOfMessagesDiv"
+              onClick={() => props.state.setMessageOpen(true)}
+            >
+              <img src={sent[i].recieverPP} alt={sent[i].recieverUsername} />
+              <div className="messageDetail">
+                <p style={{ fontSize: "14px" }}>{sent[i].recieverUsername}</p>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: "rgba(10,10,10,0.3)",
+                    fontWeight: "light",
+                    paddingTop: "2px",
+                  }}
+                >
+                  {"Sent Message"}
+                </p>
+              </div>
+            </div>
+          );
+          //just display the sent messages
+        }
       }
     }
     console.log(allData);
