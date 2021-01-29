@@ -19,11 +19,15 @@ function AllMessages(props) {
   function conversations(sent, recieved) {
     let recievedData = [];
     if (recieved.length) {
+      let latestMessage = [];
       let recievedFrom;
       let popped = [];
       for (let i = 0; i < recieved.length; i++) {
         if (popped.indexOf(recieved[i].senderId) >= 0) {
+          latestMessage.push(recieved[i].text);
         } else {
+          latestMessage.push(recieved[i].text);
+
           recievedFrom = (
             <div
               className="listOfMessagesDiv"
@@ -43,7 +47,7 @@ function AllMessages(props) {
                     paddingTop: "2px",
                   }}
                 >
-                  {recieved[i].text}
+                  {latestMessage[latestMessage.length - 1]}
                 </p>
               </div>
             </div>

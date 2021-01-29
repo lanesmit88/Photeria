@@ -29,7 +29,7 @@ def allMessagesFortheUser(id):
 
     # messages = {{'recievedMessages': [message.to_dict() for message in recievedMessages]},
     # {'sentMessages': [message.to_dict() for message in sentMessages]}}
-    recievedMessages = Message.query.order_by(Message.createdAt).filter(Message.recipientId == id).all()
+    recievedMessages = Message.query.order_by(Message.createdAt.desc()).filter(Message.recipientId == id).all()
     sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == id).all()
     user = User.query.get(id)
     return jsonify({'recievedMessages': [msg.to_dict() for msg in recievedMessages], 'sentMessages': [msg.to_dict() for msg in sentMessages], 'user': user.to_dict()})
