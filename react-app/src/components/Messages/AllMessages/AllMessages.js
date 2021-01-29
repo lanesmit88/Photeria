@@ -24,6 +24,7 @@ function AllMessages(props) {
       let recievedFrom;
       let popped = [];
       for (let i = 0; i < recieved.length; i++) {
+        // for (let j = 0; j < sent.length; j++) { if (recieved[i].recipientId === senderId)}
         if (popped.indexOf(recieved[i].senderId) >= 0) {
           latestMessage.push(recieved[i].text);
         } else {
@@ -67,14 +68,15 @@ function AllMessages(props) {
       for (let i = 0; i < sent.length; i++) {
         for (let j = 0; j < recieved.length; j++) {
           if (sent[i].senderId === recieved[j].senderId) {
-            // break;
+            console.log("is this working");
+            break;
           } else {
             if (sentPopped.indexOf(sent[i].recipientId) >= 0) {
               latestMessage.push(sent[i].text);
-              console.log("sentPoppedIndex");
-              console.log(sentPopped);
+              // console.log("sentPoppedIndex");
+              // console.log(sentPopped);
             } else {
-              console.log("notSendPopped");
+              // console.log("notSendPopped");
               latestMessage.push(sent[i].text);
               sentTo = (
                 <div
