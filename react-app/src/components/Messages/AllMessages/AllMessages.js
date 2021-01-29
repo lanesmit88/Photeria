@@ -28,11 +28,6 @@ function AllMessages(props) {
           // console.log("RECIVEVED FINE");
           // console.log(alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0);
           for (let j = 0; j < recieved.length; j++) {
-            // console.log(
-            //   "INSIDE RECIEVED LOOP AND VALUE OF SENT[I].RECIPIENTID",
-            //   sent[i],
-            //   recieved[j].senderId
-            // );
             if (
               sent[i].recipiendId == recieved[j].senderId &&
               alreadySentOrRecieved.indexOf(sent[i].recipiendId) < 0
@@ -76,7 +71,14 @@ function AllMessages(props) {
               // recieved[j].recipiendId === 4 &&
               alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
             ) {
-              latesttext = recieved[j];
+              console.log(sent[i].recipientId, recieved[j].senderId);
+              if (sent[i].recipientId === recieved[j].senderId) {
+                Date.parse(sent[i].createdAt) >
+                Date.parse(recieved[j].createdAt)
+                  ? (latesttext = sent[i])
+                  : (latesttext = recieved[j]);
+              }
+              // latesttext = recieved[j];
               console.log("oh no");
               alreadySentOrRecieved.push(recieved[j].senderId);
               allData.push(
