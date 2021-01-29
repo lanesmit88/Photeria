@@ -8,9 +8,13 @@ const getAllMessagesAC = (messages) => {
 };
 
 export const getAllMessages = (userId) => async (dispatch) => {
-  const fetchRequest = await window.fetch(`/dm/${userId}`);
+  const fetchRequest = await fetch(`/dm/${userId}`);
+  console.log("hey");
   const convertJson = await fetchRequest.json();
-  dispatch(getAllMessagesAC(convertJson.data));
+  // console.log(fetchRequest);
+  // console.log("work");
+  console.log(convertJson);
+  dispatch(getAllMessagesAC(convertJson));
   return;
 };
 

@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllMessages } from "../../../store/Messages";
 
@@ -7,7 +7,10 @@ import "./AllMessages.css";
 
 function AllMessages(props) {
   let dispatch = useDispatch();
-  dispatch(getAllMessages(props.userId));
+  useEffect(() => {
+    dispatch(getAllMessages(props.state.userId));
+  }, []);
+  // const makeithappen = () =>
   let messages = useSelector((state) => state.messages);
   return (
     <>
