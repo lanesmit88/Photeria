@@ -11,13 +11,13 @@ def allMessagesFortheUser(id):
     # recievedMessages = Message.query.filter(Message.recipientId == int(id)).order_by(Message.createdAt).all()
     # user = User.query.order_by(recievedMessages).get(int(id))
     # print(user, 'HEEEEEEEEfgsdghsdfjkgjdfEEERE')
-    recievedMessag =  User.query.order_by(User.recievedMessages).get(int(id)).recievedMessages
-    recieveToDict = [message.to_dict() for message in recievedMessag]
-    # print(recieveToDict)
-    senderUsersFound = []
-    for item in recieveToDict:
-        test = User.query.get(item['senderId'])
-        senderUsersFound.append(test.to_dict())
+    # recievedMessag =  User.query.order_by(User.recievedMessages).get(int(id)).recievedMessages
+    # recieveToDict = [message.to_dict() for message in recievedMessag]
+    # # print(recieveToDict)
+    # senderUsersFound = []
+    # for item in recieveToDict:
+    #     test = User.query.get(item['senderId'])
+    #     senderUsersFound.append(test.to_dict())
         # print(item['senderId'], 'GHDFSJGSDFGHSDFJH')
 
     # print('THIS IS THE LIUST', senderUsersFound)
@@ -29,5 +29,8 @@ def allMessagesFortheUser(id):
 
     # messages = {{'recievedMessages': [message.to_dict() for message in recievedMessages]},
     # {'sentMessages': [message.to_dict() for message in sentMessages]}}
-
-    return jsonify(recieveToDict, senderUsersFound)
+    test = Message.query.order_by(Message.createdAt).filter(Message.recipientId == id).all()
+    # print(len(test), 'hgsdgusdgfiutsWHERE ARE YOU HDGKFJK HKFDHGruiftsdufytu')
+    # print('HELLO')
+    return jsonify([{'msg': msg.to_dict()} for msg in test])
+    # return jsonify(recieveToDict, senderUsersFound)
