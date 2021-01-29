@@ -18,32 +18,39 @@ function AllMessages(props) {
 
   function conversations(sent, recieved) {
     let allMessages = [...sent, ...recieved];
-    // console.log(allMessages);
+    console.log(allMessages);
     let messagesHeld = [];
     let allData = [];
     let temp;
+    // console.log(!messagesHeld.indexOf(allMessages[1].recipientId) >= 0);
+    // for (let i =0; i < allMessages.length; i++) {
+
+    // }
     // [1,2,3,4,5,6]
+    // for
     for (let i = 0; i <= allMessages.length - 1; i++) {
       // console.log(allMessages[5]);
+      console.log(allData);
+      if (allMessages[i] === undefined) {
+        break;
+      }
       for (let j = 1; j < allMessages.length; j++) {
-        if (j == 2 && allMessages[5] != undefined) {
-          console.log("breoke");
-          break;
-        }
         if (
           allMessages[i].recipientId === allMessages[j].senderId &&
-          !messagesHeld.indexOf(allMessages[i].recipientId) >= 0
+          !messagesHeld.indexOf(allMessages[i].recipientId) >= 0 &&
+          !messagesHeld.indexOf(allMessages[j].senderId) >= 0
         ) {
           console.log("works");
           let sent;
           if (allMessages[i].recipientId != 4) sent = allMessages[i];
+          console.log(sent, "SENTTNT");
           temp = (
             <div
               key={sent.createdAt}
               className="listOfMessagesDiv"
               onClick={() => props.state.setMessageOpen(true)}
             >
-              <img src={sent[i].recieverPP} alt={sent.recieverUsername} />
+              <img src={sent.recieverPP} alt={sent.recieverUsername} />
               <div className="messageDetail">
                 <p style={{ fontSize: "14px" }}>{sent.recieverUsername}</p>
                 <p
@@ -61,41 +68,46 @@ function AllMessages(props) {
           );
           allData.push(temp);
           messagesHeld.push(allMessages[i].recipientId);
+          messagesHeld.push(allMessages[j].senderId);
         } else if (
-          allMessages[i].recipientId != allMessages[j].senderId &&
-          !messagesHeld.indexOf(allMessages[i].recipientId) >= 0
+          (allMessages[i].recipientId != allMessages[j].senderId &&
+            !messagesHeld.indexOf(allMessages[i].recipientId) >= 0) ||
+          !messagesHeld.indexOf(allMessages[j].senderId) >= 0
         ) {
-          let recieved;
-          if (allMessages[i].recipientId === 4) recieved = allMessages[i];
-          temp = (
-            <div
-              key={allMessages[i].createdAt}
-              className="listOfMessagesDiv"
-              onClick={() => props.state.setMessageOpen(true)}
-            >
-              <img
-                src={allMessages[i].senderPP}
-                alt={allMessages[i].senderUsername}
-              />
-              <div className="messageDetail">
-                <p style={{ fontSize: "14px" }}>
-                  {allMessages[i].senderUsername}
-                </p>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "rgba(10,10,10,0.3)",
-                    fontWeight: "light",
-                    paddingTop: "2px",
-                  }}
-                >
-                  {allMessages[i].text}
-                </p>
+          if (allMessages[i].recipientId === 4) {
+            temp = (
+              <div
+                key={allMessages[i].createdAt}
+                className="listOfMessagesDiv"
+                onClick={() => props.state.setMessageOpen(true)}
+              >
+                <img
+                  src={allMessages[i].senderPP}
+                  alt={allMessages[i].senderUsername}
+                />
+                <div className="messageDetail">
+                  <p style={{ fontSize: "14px" }}>
+                    {allMessages[i].senderUsername}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "rgba(10,10,10,0.3)",
+                      fontWeight: "light",
+                      paddingTop: "2px",
+                    }}
+                  >
+                    {allMessages[i].text}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
+            );
+          }
           allData.push(temp);
           messagesHeld.push(allMessages[i].recipientId);
+          if (!messagesHeld.indexOf(allMessages[j].senderId) >= 0) {
+            messagesHeld.push(allMessages[j].senderId);
+          }
         }
       }
     }
@@ -251,7 +263,7 @@ function AllMessages(props) {
     // // console.log(secondly);
     // console.log(messagesRecieved);
     // return holdval;
-    return ["hi"];
+    return allData;
   }
   return (
     <>
