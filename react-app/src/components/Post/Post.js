@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import CreateComment from "../Comment/comment";
-import { Modal } from "../../context/Modal"
-import CommentComponent from '../Comment/comment'
+import { Modal } from "../../context/Modal";
+import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import { fetchPostLikes } from "../../store/postLikes"
-
 import CreatePost from "../CreatePost/CreatePost";
 import "./Post.css";
 
@@ -24,10 +23,15 @@ function Post() {
   });
 
 
+
   // useEffect(async () => {
   //   dispatch(fetchPostData(2));
   // }, []);
 
+
+  useEffect(async () => {
+    dispatch(fetchPostData(2));
+  }, []);
 
 
   let captionTxt =
@@ -37,6 +41,14 @@ function Post() {
     "there are theh fghdghfkd let og there are theh fghdghfkd let og there are theh fghdghfkd let og  oand nomero",
     "there are ahsosndgh a snd you can let og ",
   ];
+
+  const likeSubmit = async () => {
+    // edit fetch call to specific post
+    await fetch("/api/post/1/like", {
+      method: "POST",
+    });
+  };
+
   return (
     <div>
       <div id='CreatePostButton'>
@@ -71,7 +83,9 @@ function Post() {
         <div className="detailBlock">
           {/* Likes and other details */}
           <div className="iconBlock">
-            <button>Like</button>
+            <button onClick={() => likeSubmit()}>
+              Like
+            </button>
             <button>Comment</button>
             <button>DM</button>
           </div>
@@ -232,7 +246,7 @@ function Post() {
           </div>
         </div>
         <div className="postCommentBlock">
-          <CommentComponent postId='1'/>
+          <CommentComponent postId="1" />
           {/* <CreateComment /> */}
         </div>
       </div>

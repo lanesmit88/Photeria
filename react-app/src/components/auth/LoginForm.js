@@ -34,15 +34,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     <div>
       <form id="loginForm" onSubmit={onLogin}>
         <div>
+          <h1 id="login-logo">Photeria</h1>
+        </div>
+        <div id="login-errors">
           {errors.map((error) => (
             <div>{error}</div>
           ))}
         </div>
-        <div>
-          <h1 id="login-logo">Photeria</h1>
-        </div>
         <div class="login-fields">
-          <label htmlFor="email">Email</label>
           <input
             name="email"
             type="text"
@@ -52,7 +51,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           />
         </div>
         <div class="login-fields">
-          <label htmlFor="password">Password</label>
           <input
             name="password"
             type="password"

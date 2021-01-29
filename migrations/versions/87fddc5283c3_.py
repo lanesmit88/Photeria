@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9b310688db84
+Revision ID: 87fddc5283c3
 Revises: 
-Create Date: 2021-01-28 11:08:49.241637
+Create Date: 2021-01-28 15:05:22.185390
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9b310688db84'
+revision = '87fddc5283c3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,6 +21,8 @@ def upgrade():
     op.create_table('hashtags',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('tag', sa.String(length=25), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -33,6 +35,8 @@ def upgrade():
     sa.Column('bio', sa.String(length=255), nullable=True),
     sa.Column('firstName', sa.String(length=80), nullable=False),
     sa.Column('lastName', sa.String(length=80), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -41,6 +45,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('followedId', sa.Integer(), nullable=True),
     sa.Column('followerId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['followedId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['followerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -50,6 +56,8 @@ def upgrade():
     sa.Column('text', sa.String(length=255), nullable=False),
     sa.Column('senderId', sa.Integer(), nullable=True),
     sa.Column('recipientId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['recipientId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['senderId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -60,6 +68,8 @@ def upgrade():
     sa.Column('location', sa.String(length=255), nullable=True),
     sa.Column('caption', sa.String(length=255), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -68,6 +78,8 @@ def upgrade():
     sa.Column('text', sa.String(length=255), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.Column('postId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -83,6 +95,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.Column('postId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -91,6 +105,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.Column('commentId', sa.Integer(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['commentId'], ['comments.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
