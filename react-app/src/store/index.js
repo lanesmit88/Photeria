@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import userReducer from './user'
 import commentReducer from './comment'
-
+import feedReducer from "./feed"
 
 import postReducer from "./post"
 import postLikesReducer from "./postLikes"
@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   comment: commentReducer,
   post: postReducer,
-  postLikes: postLikesReducer
-
+  postLikes: postLikesReducer,
+  feed: feedReducer
 });
 
 let enhancer;
