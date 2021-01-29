@@ -23,6 +23,8 @@ class Message(db.Model):
       'recipientId': self.recipientId,
       'createdAt': self.createdAt,
       'updatedAt': self.updatedAt,
-      'senderName': self.sender.firstName,
-      'senderLNAME': self.sender.lastName,
+      'senderUsername': self.sender.username,
+      'senderPP': self.sender.profilePhoto,
+      'recieverUsername': self.recipient.username,
+      'recieverPP': self.recipient.profilePhoto
     }
