@@ -77,15 +77,6 @@ function AllMessages(props) {
               // recieved[j].recipiendId === 4 &&
               alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
             ) {
-              console.log(sent[i].recipientId, recieved[j].senderId);
-              if (true) {
-                Date.parse(sent[i].createdAt) >
-                Date.parse(recieved[j].createdAt)
-                  ? (latesttext = sent[i].text)
-                  : (latesttext = recieved[j].text);
-              }
-              // latesttext = recieved[j];
-              console.log("oh no");
               alreadySentOrRecieved.push(recieved[j].senderId);
               allData.push(
                 <div
@@ -109,7 +100,8 @@ function AllMessages(props) {
                         paddingTop: "2px",
                       }}
                     >
-                      {recieved[j].text}
+                      {/* {latesttext} */}
+                      {"Recieved"}
                     </p>
                   </div>
                 </div>
