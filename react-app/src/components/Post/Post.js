@@ -33,14 +33,12 @@ function Post({
     return reduxState.allUsers.users;
   })
 
-  // useEffect(async () => {
-  //   console.log(usersData)
-  // }, [usersData]);
-
   let user = usersData.find((temp) => {
     return temp.id === userId;
-  });
-  console.log(user);
+  })
+
+  console.log("------------------", user)
+
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -48,13 +46,16 @@ function Post({
       method: "POST",
     });
   };
+    if (!user) {
+      return null
+    }
 
   return (
     <div>
       <div className="wrapper">
         <div className="headerBlock">
           <img src={photoData} alt={"hi"} />
-          <a href={"/"}>Username</a>
+          <a href={"/"}>{user.username}</a>
         </div>
         <div className="imageBlock">
           <img src={photoData} alt={"sydfgui"} />
@@ -136,7 +137,7 @@ function Post({
           </div>
           <div className="captionBlock">
             <div className="hi" style={{ width: "auto" }}>
-              <a href={"/"}>User Name</a>
+              <a href={"/"}>{user.username}</a>
             </div>{" "}
             <div className="testing">
               {!testTrue && caption.length > 60 ? (
