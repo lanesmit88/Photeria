@@ -21,6 +21,7 @@ function AllMessages(props) {
       for (let i = 0; i < sent.length; i++) {
         recievers.push(sent[i].recipientId);
       }
+      console.log("RECIEVERS", recievers);
       //in the recievers user will never the recipient
       //in the senders user will never be the sender
       //SENDERS
@@ -28,29 +29,43 @@ function AllMessages(props) {
       for (let j = 0; j < recieved.length; j++) {
         senders.push(recieved[j].senderId);
       }
+      console.log(senders, "SENDERS");
       //MATCHED OR NOT MEANING EITHER THEY SENT AND RECIEVED OR JUST SENT OR RECIEVED
       let matched = [];
       let unmatched = [];
       for (let m = 0; m < recievers.length; m++) {
-        senders.indexOf(recievers[m]) >= 0 && matched.indexOf(recievers[m]) < 0
-          ? matched.push(recievers[m])
-          : unmatched.indexOf(recievers[m]) < 0
-          ? unmatched.push(recievers[m])
-          : "";
+        if (
+          senders.indexOf(recievers[m]) >= 0 &&
+          matched.indexOf(recievers[m]) < 0
+        ) {
+          matched.push(recievers[m]);
+        } else {
+          if (unmatched.indexOf(recievers[m]) < 0) {
+            unmatched.push(recievers[m]);
+          }
+        }
       }
 
       let Random = [...sent, ...recieved];
+      console.log("Random", Random);
+
+      console.log(Random[1].createdAt > Random[0].createdAt);
       let placeholder;
-      for (let i = 0; i < Random.length; i++) {
-        if (Random[i].createdAt > Random[i + 1].createdAt) {
-          placeholder = Random[i + 1];
-          Random[i + 1] = Random[i];
-          Random[i] = placeholder;
-        } else {
+      for (let j = 0; j < Random.length; j++) {
+        for (let i = 0; i < Random.length; i++) {
+          if (Random[j].createdAt > Random[i].createdAt) {
+            // console.log(Random[i + 1], "I + 1");
+            placeholder = Random[j];
+            Random[j] = Random[i];
+            Random[i] = placeholder;
+          }
         }
       }
+      console.log("Random Sorted", Random);
+
       let holder = [];
     }
+    return ["hi"];
   }
   return (
     <>
