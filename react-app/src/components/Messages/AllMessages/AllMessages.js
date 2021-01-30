@@ -70,17 +70,20 @@ function AllMessages(props) {
         }
       }
 
-      for (let i = 0; i < Random.length; i++) {
-        for (let j = 0; j < matched.length; j++) {
-          if (
-            Random[i].senderId == matched[j] ||
-            Random[i].recipientId == matched[j]
-          ) {
-            holder.push(Random[i]);
-          }
-        }
+      for (let i = 0; i < matched.length; i++) {
         if (holder.length == unmatched.length + matched.length) break;
         for (let j = 0; j < Random.length; j++) {
+          if (
+            Random[j].senderId == matched[i] ||
+            Random[j].recipientId == matched[i]
+          ) {
+            holder.push(Random[j]);
+            break;
+          }
+        }
+      }
+      for (let j = 0; j < unmatched.length; j++) {
+        for (let i = 0; i < Random.length; i++) {
           if (
             Random[i].senderId == unmatched[j] ||
             Random[i].recipientId == unmatched[j]
@@ -91,7 +94,17 @@ function AllMessages(props) {
         }
       }
     }
-    console.log(holder, "Holder");
+    let secondly = [];
+    for (let j = 0; j < holder.length; j++) {
+      for (let i = 0; i < holder.length; i++) {
+        if (holder[j].createdAt > holder[i].createdAt) {
+          secondly = holder[j];
+          holder[j] = holder[i];
+          holder[i] = secondly;
+        }
+      }
+    }
+
     let allDivs = [];
     holder.forEach((each) => {
       if (each.senderId == 4) {
@@ -161,7 +174,7 @@ function AllMessages(props) {
             ? conversations(
                 messages.sentMessages,
                 messages.recievedMessages
-              ).map((d, i) => <div key={i}>{d}</div>)
+              ).map((d, i) => d)
             : console.log("yusd")}
         </div>
       ) : (
