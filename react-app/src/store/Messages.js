@@ -1,4 +1,4 @@
-const GET_ALL_MESSAGES = "allMEssagesForUser";
+const GET_ALL_MESSAGES = "allMEssagesForUserReturn";
 const GET_S_USER_MESSAGES = "getspecificusermessages";
 const getAllMessagesAC = (messages) => {
   return {

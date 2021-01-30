@@ -16,7 +16,7 @@ function MessagesPage() {
       <AllMessages
         state={{ messageOpen, setMessageOpen, userId, setUserClicked }}
       />
-      {messageOpen && userClicked ? (
+      {messageOpen ? (
         <Messages user={userClicked} />
       ) : (
         <div

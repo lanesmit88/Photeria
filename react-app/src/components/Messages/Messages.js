@@ -19,7 +19,7 @@ function Messages(props) {
   useEffect(() => {
     dispatch(getSpecificUserMessages(loggedInUser, props.user));
   }, [props.user]);
-
+  console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {
     let recipientMessages = recievedMessages;
     let senderMessages = sentMessages;
@@ -64,15 +64,15 @@ function Messages(props) {
                 specificUserMessages.recievedMessages,
                 specificUserMessages.sentMessages
               ).map((message) =>
-                message.hasOwnProperty("senderId") ? (
-                  <div className="senderMessageBlock">
+                message.senderId != 4 ? (
+                  <div key={message.id} className="senderMessageBlock">
                     <img src={message.senderPP} alt={message.senderUsername} />
                     <div className="senderMessageDiv">
                       <p>{message.text} </p>
                     </div>
                   </div>
                 ) : (
-                  <div className="userMessageBlock">
+                  <div key={message.id} className="userMessageBlock">
                     <p>{message.text}</p>
                   </div>
                 )

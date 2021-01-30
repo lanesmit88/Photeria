@@ -37,6 +37,6 @@ def allMessagesFortheUser(id):
 
 @bp.route('/<int:userId>/<int:senderId>/specificUser')
 def getAllSpecificUserMessages(userId, senderId):
-    recievedMessages = Message.query.order_by(Message.createdAt).filter(Message.recipientId == userId).all()
-    sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == senderId).all()
+    recievedMessages = Message.query.order_by(Message.createdAt).filter(Message.recipientId == userId, Message.senderId == senderId).all()
+    sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == userId, Message.recipientId == senderId).all()
     return jsonify({'recievedMessages': [msg.to_dict() for msg in recievedMessages], 'sentMessages': [msg.to_dict() for msg in sentMessages]})
