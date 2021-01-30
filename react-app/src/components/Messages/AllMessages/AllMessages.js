@@ -15,127 +15,42 @@ function AllMessages(props) {
   let messages = useSelector((state) => state.messages.allMessages);
 
   function conversations(sent, recieved) {
-    let alreadySentOrRecieved = [];
-    let allData = [];
-    let latesttext;
-    if (sent.length > 0) {
+    if (sent.length && recieved.length) {
+      //RECIEVERS
+      let recievers = [];
       for (let i = 0; i < sent.length; i++) {
-        if (recieved.length > 0) {
-          for (let j = 0; j < recieved.length; j++) {
-            if (sent[i].recipientId === recieved[j].senderId) {
-              sent[i].createdAt > recieved[j].createdAt
-                ? (latesttext = sent[i])
-                : (latesttext = recieved[j]);
-            }
-            if (
-              sent[i].recipientId == recieved[j].senderId &&
-              alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0
-            ) {
-              alreadySentOrRecieved.push(sent[i].recipientId);
-              allData.push(
-                <div
-                  key={recieved[j].createdAt}
-                  className="listOfMessagesDiv"
-                  onClick={() => {
-                    console.log("eys");
-                    props.state.setMessageOpen(true);
-                    props.state.setUserClicked(recieved[j].senderId);
-                    console.log("wegsd");
-                  }}
-                >
-                  <img
-                    src={recieved[j].senderPP}
-                    alt={recieved[j].senderUsername}
-                  />
-                  <div className="messageDetail">
-                    <p style={{ fontSize: "14px" }}>
-                      {recieved[j].senderUsername}
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "13px",
-                        color: "rgba(10,10,10,0.3)",
-                        fontWeight: "light",
-                        paddingTop: "2px",
-                      }}
-                    >
-                      {latesttext.text}
-                    </p>
-                  </div>
-                </div>
-              );
-            } else if (
-              alreadySentOrRecieved.indexOf(recieved[j].senderId) < 0
-            ) {
-              alreadySentOrRecieved.push(recieved[j].senderId);
-              allData.push(
-                <div
-                  value={recieved[j].senderId}
-                  key={recieved[j].createdAt}
-                  className="listOfMessagesDiv"
-                  onClick={(e) => {
-                    console.log("ISIT SECOND");
+        recievers.push(sent[i].recipientId);
+      }
+      //in the recievers user will never the recipient
+      //in the senders user will never be the sender
+      //SENDERS
+      let senders = [];
+      for (let j = 0; j < recieved.length; j++) {
+        senders.push(recieved[j].senderId);
+      }
+      //MATCHED OR NOT MEANING EITHER THEY SENT AND RECIEVED OR JUST SENT OR RECIEVED
+      let matched = [];
+      let unmatched = [];
+      for (let m = 0; m < recievers.length; m++) {
+        senders.indexOf(recievers[m]) >= 0 && matched.indexOf(recievers[m]) < 0
+          ? matched.push(recievers[m])
+          : unmatched.indexOf(recievers[m]) < 0
+          ? unmatched.push(recievers[m])
+          : "";
+      }
 
-                    props.state.setMessageOpen(true);
-                    props.state.setUserClicked(e.target.value);
-                  }}
-                >
-                  <img
-                    src={recieved[j].senderPP}
-                    alt={recieved[j].senderUsername}
-                  />
-                  <div className="messageDetail">
-                    <p style={{ fontSize: "14px" }}>
-                      {recieved[j].senderUsername}
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "13px",
-                        color: "rgba(10,10,10,0.3)",
-                        fontWeight: "light",
-                        paddingTop: "2px",
-                      }}
-                    >
-                      {"Recieved"}
-                    </p>
-                  </div>
-                </div>
-              );
-            }
-          }
-        }
-        if (alreadySentOrRecieved.indexOf(sent[i].recipientId) < 0) {
-          alreadySentOrRecieved.push(sent[i].recipientId);
-          allData.push(
-            <div
-              key={sent[i].createdAt}
-              className="listOfMessagesDiv"
-              onClick={() => {
-                console.log("WORKSSSSSS");
-                props.state.setMessageOpen(true);
-                props.state.setUserClicked(sent[i].recipientId);
-              }}
-            >
-              <img src={sent[i].recieverPP} alt={sent[i].recieverUsername} />
-              <div className="messageDetail">
-                <p style={{ fontSize: "14px" }}>{sent[i].recieverUsername}</p>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "rgba(10,10,10,0.3)",
-                    fontWeight: "light",
-                    paddingTop: "2px",
-                  }}
-                >
-                  {"Sent Message"}
-                </p>
-              </div>
-            </div>
-          );
+      let Random = [...sent, ...recieved];
+      let placeholder;
+      for (let i = 0; i < Random.length; i++) {
+        if (Random[i].createdAt > Random[i + 1].createdAt) {
+          placeholder = Random[i + 1];
+          Random[i + 1] = Random[i];
+          Random[i] = placeholder;
+        } else {
         }
       }
+      let holder = [];
     }
-    return allData;
   }
   return (
     <>

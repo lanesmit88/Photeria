@@ -21,8 +21,8 @@ function Messages(props) {
   }, [props.user]);
 
   const messagesArray = (recievedMessages, sentMessages) => {
-    let senderMessages = recievedMessages;
-    let recipientMessages = sentMessages;
+    let recipientMessages = recievedMessages;
+    let senderMessages = sentMessages;
     let array = [];
 
     for (let i = -senderMessages.length; i < senderMessages.length; i++) {
