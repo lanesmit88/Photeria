@@ -168,7 +168,7 @@ function AllMessages(props) {
           <div className="inboxDisplayDiv">
             <h2>Inbox</h2>
           </div>
-          {messages.sentMessages
+          {messages
             ? conversations(
                 messages.sentMessages,
                 messages.recievedMessages
