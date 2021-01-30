@@ -17,12 +17,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     return storeData;
   });
 
-  console.log(reduxStore);
-
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(firstName,lastName,username, email, password);
+      const user = await signUp(firstName, lastName, username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -59,10 +57,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     <div>
       <form
         id="signupForm"
-        onSubmit={(e) => {
-          // dispatch();
-          onSignUp(e)
-        }}
+        onSubmit={onSignUp}
       >
         <div>
           <h1 id="signup-logo">Photeria</h1>

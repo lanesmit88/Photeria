@@ -19,7 +19,6 @@ function CommentComponent({postId}) {
 
     function submitHandler(e){
         e.preventDefault();
-        console.log(newComment)
         dispatch(createComment(postId, newComment));
     }
 

@@ -23,9 +23,6 @@ function Post({
   updatedAt,
   userId,
 }) {
-
-
-
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
@@ -34,44 +31,43 @@ function Post({
 
   const usersData = useSelector((reduxState) => {
     return reduxState.allUsers.users;
-  })
+  });
 
   let user = usersData.find((temp) => {
     return temp.id === userId;
-  })
+  });
 
-  useEffect(async () => {
-    dispatch(fetchPostData(2));
-  }, []);
-
+  let commentor = usersData.find((temp) => {
+    return temp.userId === comment.userId;
+  });
+  console.log(commentor);
   const likeSubmit = async () => {
     // edit fetch call to specific post
     await fetch("/api/post/1/like", {
       method: "POST",
     });
   };
-    if (!user) {
-      return null
-    }
+  if (!user) {
+    return null;
+  }
 
   return (
     <div>
-      <div id='CreatePostButton'>
+      <div id="CreatePostButton">
         <div>
-
           <p onClick={() => setShowModal(true)}>Make a Post</p>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                    <div id="modal-div">
-                      <CreatePost />
-                    </div>
-                  </Modal>
-                )}
+              <div id="modal-div">
+                <CreatePost />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <div className="wrapper">
         <div className="headerBlock">
-          <img src={photoData} alt={"hi"} />
+          <img src={user.profilePhoto} alt={"hi"} />
           <a href={"/"}>{user.username}</a>
         </div>
         <div className="imageBlock">
@@ -154,7 +150,7 @@ function Post({
           </div>
           <div className="captionBlock">
             <div className="hi" style={{ width: "auto" }}>
-              <a href={"/"}>{user.username}</a>
+              <a href={`/profile/${user.id}`}>{user.username}</a>
             </div>{" "}
             <div className="testing">
               {!testTrue && caption.length > 60 ? (
@@ -219,7 +215,9 @@ function Post({
               comment.map((eachComment) => (
                 <div className="comment">
                   <div className="aTagDivComment">
-                    <a href="">User Name</a>
+                    <a href={`/profile/${commentor.id}`}>
+                      {commentor.username}
+                    </a>
                   </div>
                   <div className="pTagDivComment">
                     <p>{eachComment.text}</p>
@@ -229,11 +227,11 @@ function Post({
             {comment.length >= 2 && !stnule && (
               <>
                 <div className={"topComments"}>
-                  <a href={""}>User Name</a>
+                  <a href={`/profile/${commentor.id}`}>{commentor.username}</a>
                   <p>{comment[0].text}</p>
                 </div>
                 <div className={"topComments"}>
-                  <a href={""}>User Name</a>
+                  <a href={`/profile/${commentor.id}`}>{commentor.username}</a>
                   <p>{comment[1].text}</p>
                 </div>
               </>
@@ -241,7 +239,7 @@ function Post({
             {comment.length === 1 && !stnule && (
               <>
                 <div className={"topComments"}>
-                  <a href={""}>User Name</a>
+                  <a href={`/profile/${commentor.id}`}>{commentor.username}</a>
                   <p>{comment[0].text}</p>
                 </div>
               </>
