@@ -46,24 +46,52 @@ function AllMessages(props) {
         }
       }
 
-      let Random = [...sent, ...recieved];
-      console.log("Random", Random);
+      for (let i = 0; i < senders.length; i++) {
+        if (
+          matched.indexOf(senders[i]) < 0 &&
+          unmatched.indexOf(senders[i]) < 0
+        ) {
+          unmatched.push(senders[i]);
+        }
+      }
+      console.log("matched", matched);
+      console.log("unmatched", unmatched);
 
-      console.log(Random[1].createdAt > Random[0].createdAt);
+      let Random = [...sent, ...recieved];
       let placeholder;
+      console.log(Random);
       for (let j = 0; j < Random.length; j++) {
         for (let i = 0; i < Random.length; i++) {
           if (Random[j].createdAt > Random[i].createdAt) {
-            // console.log(Random[i + 1], "I + 1");
             placeholder = Random[j];
             Random[j] = Random[i];
             Random[i] = placeholder;
           }
         }
       }
-      console.log("Random Sorted", Random);
 
       let holder = [];
+      for (let i = 0; i < Random.length; i++) {
+        for (let j = 0; j < matched.length; j++) {
+          if (
+            Random[i].senderId == matched[j] ||
+            Random[i].recipientId == matched[j]
+          ) {
+            holder.push(Random[i]);
+            break;
+          }
+        }
+        for (let j = 0; j < Random.length; j++) {
+          if (
+            Random[i].senderId == unmatched[j] ||
+            Random[i].recipientId == unmatched[j]
+          ) {
+            holder.push(Random[i]);
+            break;
+          }
+        }
+      }
+      console.log(holder, "holder");
     }
     return ["hi"];
   }
