@@ -4,12 +4,10 @@ import { getAllMessages } from "../../../store/Messages";
 import "./AllMessages.css";
 
 function AllMessages(props) {
-  let [messagesDelivered, setMessagesDelivered] = useState(false);
+  // let [messagesDelivered, setMessagesDelivered] = useState(false);
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllMessages(props.state.userId)).then(() =>
-      setMessagesDelivered(true)
-    );
+    dispatch(getAllMessages(props.state.userId));
   }, []);
 
   let messages = useSelector((state) => state.messages.allMessages);
@@ -165,7 +163,7 @@ function AllMessages(props) {
   }
   return (
     <>
-      {messagesDelivered ? (
+      {messages ? (
         <div className="allMessagesContainer">
           <div className="inboxDisplayDiv">
             <h2>Inbox</h2>
