@@ -6,7 +6,7 @@ import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
-
+import CreatePost from "../CreatePost/CreatePost";
 import { fetchPostLikes } from "../../store/postLikes";
 
 import "./Post.css";
@@ -24,7 +24,7 @@ function Post({
   userId,
 }) {
 
-import CreatePost from "../CreatePost/CreatePost";
+
 
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
