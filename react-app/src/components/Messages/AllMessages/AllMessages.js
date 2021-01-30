@@ -15,13 +15,15 @@ function AllMessages(props) {
   let messages = useSelector((state) => state.messages.allMessages);
 
   function conversations(sent, recieved) {
+    let holder = [];
+
     if (sent.length && recieved.length) {
       //RECIEVERS
       let recievers = [];
       for (let i = 0; i < sent.length; i++) {
         recievers.push(sent[i].recipientId);
       }
-      console.log("RECIEVERS", recievers);
+
       //in the recievers user will never the recipient
       //in the senders user will never be the sender
       //SENDERS
@@ -29,7 +31,7 @@ function AllMessages(props) {
       for (let j = 0; j < recieved.length; j++) {
         senders.push(recieved[j].senderId);
       }
-      console.log(senders, "SENDERS");
+
       //MATCHED OR NOT MEANING EITHER THEY SENT AND RECIEVED OR JUST SENT OR RECIEVED
       let matched = [];
       let unmatched = [];
@@ -54,12 +56,10 @@ function AllMessages(props) {
           unmatched.push(senders[i]);
         }
       }
-      console.log("matched", matched);
-      console.log("unmatched", unmatched);
 
       let Random = [...sent, ...recieved];
       let placeholder;
-      console.log(Random);
+
       for (let j = 0; j < Random.length; j++) {
         for (let i = 0; i < Random.length; i++) {
           if (Random[j].createdAt > Random[i].createdAt) {
@@ -70,7 +70,6 @@ function AllMessages(props) {
         }
       }
 
-      let holder = [];
       for (let i = 0; i < Random.length; i++) {
         for (let j = 0; j < matched.length; j++) {
           if (
@@ -78,9 +77,9 @@ function AllMessages(props) {
             Random[i].recipientId == matched[j]
           ) {
             holder.push(Random[i]);
-            break;
           }
         }
+        if (holder.length == unmatched.length + matched.length) break;
         for (let j = 0; j < Random.length; j++) {
           if (
             Random[i].senderId == unmatched[j] ||
@@ -91,9 +90,65 @@ function AllMessages(props) {
           }
         }
       }
-      console.log(holder, "holder");
     }
-    return ["hi"];
+    console.log(holder, "Holder");
+    let allDivs = [];
+    holder.forEach((each) => {
+      if (each.senderId == 4) {
+        allDivs.push(
+          <div
+            key={each.createdAt}
+            className="listOfMessagesDiv"
+            onClick={() => {
+              props.state.setMessageOpen(true);
+              props.state.setUserClicked(each.recipientId);
+            }}
+          >
+            <img src={each.recieverPP} alt={each.recieverUsername} />
+            <div className="messageDetail">
+              <p style={{ fontSize: "14px" }}>{each.recieverUsername}</p>
+              <p
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(10,10,10,0.3)",
+                  fontWeight: "light",
+                  paddingTop: "2px",
+                }}
+              >
+                {each.text}
+              </p>
+            </div>
+          </div>
+        );
+      } else {
+        allDivs.push(
+          <div
+            key={each.createdAt}
+            className="listOfMessagesDiv"
+            onClick={() => {
+              props.state.setMessageOpen(true);
+              props.state.setUserClicked(each.senderId);
+            }}
+          >
+            <img src={each.senderPP} alt={each.senderPP} />
+            <div className="messageDetail">
+              <p style={{ fontSize: "14px" }}>{each.senderUsername}</p>
+              <p
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(10,10,10,0.3)",
+                  fontWeight: "light",
+                  paddingTop: "2px",
+                }}
+              >
+                {each.text}
+              </p>
+            </div>
+          </div>
+        );
+      }
+    });
+    return allDivs;
   }
   return (
     <>
