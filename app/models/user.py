@@ -53,7 +53,8 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
       "createdAt": self.createdAt,
-      "updatedAt": self.updatedAt
+      "updatedAt": self.updatedAt,
+      "posts": [ post.to_dict() for post in self.posts ],
     }
 
 class Follower(db.Model):
@@ -68,8 +69,9 @@ class Follower(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
-      "followerId": self.followerId,
       "followedId": self.followedId,
+      "followerId": self.followerId,
       "createdAt": self.createdAt,
       "updatedAt": self.updatedAt
+      
     }

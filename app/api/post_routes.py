@@ -13,7 +13,7 @@ def postLikes(id):
     allPosts = []
     for post in posts:
         allPosts.append(post.to_dict())
-    return jsonify(*allPosts)
+    return jsonify(allPosts)
 
 # Get users another time
 
@@ -22,7 +22,6 @@ def postLikes(id):
 def post_comments(id):
     print(id)
     comments = Comment.query.filter(Comment.postId==id).all()
-
     return {"comments":[comment.to_dict() for comment in comments]}
 
 

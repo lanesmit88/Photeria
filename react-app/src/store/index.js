@@ -2,7 +2,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import userReducer from './user'
 import commentReducer from './comment'
+import feedReducer from "./feed"
+import allUsersReducer from "./allUsers"
 import followingReducer from './follows'
+
 
 import postReducer from "./post"
 import postLikesReducer from "./postLikes"
@@ -11,6 +14,8 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   post: postReducer,
   postLikes: postLikesReducer,
+  feed: feedReducer,
+  allUsers: allUsersReducer,
   following: followingReducer
 });
 

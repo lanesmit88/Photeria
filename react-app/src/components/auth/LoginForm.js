@@ -41,7 +41,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             <div>{error}</div>
           ))}
         </div>
-        <div class="login-fields">
+        <div className="login-fields">
           <input
             name="email"
             type="text"
@@ -50,7 +50,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             onChange={updateEmail}
           />
         </div>
-        <div class="login-fields">
+        <div className="login-fields">
           <input
             name="password"
             type="password"
