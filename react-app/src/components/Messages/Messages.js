@@ -19,10 +19,12 @@ function Messages(props) {
   useEffect(() => {
     dispatch(getSpecificUserMessages(loggedInUser, props.user));
   }, [props.user]);
-  console.log(specificUserMessages);
+  // console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {
-    let recipientMessages = recievedMessages;
-    let senderMessages = sentMessages;
+    let test = [...recievedMessages];
+    let test1 = [...sentMessages];
+    let recipientMessages = test;
+    let senderMessages = test1;
     let array = [];
 
     for (let i = -senderMessages.length; i < senderMessages.length; i++) {
@@ -32,7 +34,7 @@ function Messages(props) {
         j++
       ) {
         if (
-          Date.parse(senderMessages[0].createdAt) >=
+          Date.parse(senderMessages[0].createdAt) <=
           Date.parse(recipientMessages[0].createdAt)
         ) {
           array.push(senderMessages[0]);
