@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Post, PostLike, Comment
-
+from app.models import Post, PostLike,Comment, db
+from app.forms import ImageUploadForm
+import base64
 post_routes = Blueprint('posts', __name__)
 
 

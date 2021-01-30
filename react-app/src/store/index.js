@@ -4,6 +4,8 @@ import userReducer from './user'
 import commentReducer from './comment'
 import feedReducer from "./feed"
 import allUsersReducer from "./allUsers"
+import followingReducer from './follows'
+
 
 import postReducer from "./post"
 import postLikesReducer from "./postLikes"
@@ -13,7 +15,8 @@ const rootReducer = combineReducers({
   post: postReducer,
   postLikes: postLikesReducer,
   feed: feedReducer,
-  allUsers: allUsersReducer
+  allUsers: allUsersReducer,
+  following: followingReducer
 });
 
 let enhancer;

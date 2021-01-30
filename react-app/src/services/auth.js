@@ -1,3 +1,5 @@
+import userReducer from "../store/user";
+
 export const authenticate = async() => {
   const response = await fetch('/api/auth/',{
     headers: {
@@ -31,17 +33,22 @@ export const logout = async () => {
 };
 
 
-export const signUp = async (username, email, password) => {
+export const signUp = async (firstName,lastName,username, email, password) => {
+  console.log(firstName,lastName,username,email,password)
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    
     body: JSON.stringify({
+      firstName,
+      lastName,
       username,
       email,
       password,
     }),
+
   });
   return await response.json();
 }

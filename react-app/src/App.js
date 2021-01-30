@@ -12,7 +12,10 @@ import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
 
 import CommentListComponent from "./components/CommentListComponent/commentlist";
+import ImageUpload from "./components/PhotoUploadComponent/photoUpload";
+import FollowComponent from "./components/FollowComponent/FollowComponent";
 import CommentComponent from "./components/Comment/comment";
+import TestComponent from "./components/TestComponent/testcomponent";
 import MessagesPage from "./components/Messages/MessagePage";
 
 
@@ -55,6 +58,13 @@ function App() {
         <Route path="/commenttest" exact={true}>
           <CommentListComponent postId='2' />
           {/* <CommentComponent postId='1' /> */}
+        </Route>
+
+        <Route path="/phototest" exact={true}>
+          <TestComponent />
+        </Route>
+        <Route path="/followtest" exact={true}>
+          <FollowComponent postId='5'/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm

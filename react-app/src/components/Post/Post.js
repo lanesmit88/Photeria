@@ -6,8 +6,8 @@ import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
-import { fetchPostLikes } from "../../store/postLikes";
 
+import { fetchPostLikes } from "../../store/postLikes";
 
 import "./Post.css";
 
@@ -23,6 +23,9 @@ function Post({
   updatedAt,
   userId,
 }) {
+
+import CreatePost from "../CreatePost/CreatePost";
+
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
@@ -37,8 +40,9 @@ function Post({
     return temp.id === userId;
   })
 
-  console.log("------------------", user)
-
+  useEffect(async () => {
+    dispatch(fetchPostData(2));
+  }, []);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -52,6 +56,19 @@ function Post({
 
   return (
     <div>
+      <div id='CreatePostButton'>
+        <div>
+
+          <p onClick={() => setShowModal(true)}>Make a Post</p>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                    <div id="modal-div">
+                      <CreatePost />
+                    </div>
+                  </Modal>
+                )}
+        </div>
+      </div>
       <div className="wrapper">
         <div className="headerBlock">
           <img src={photoData} alt={"hi"} />
