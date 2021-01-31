@@ -11,18 +11,19 @@ function Feed() {
     return reduxState.feed;
   });
 
-  useEffect(async () => {
+  useEffect(() => {
+    
     dispatch(fetchFeedData());
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(fetchAllUsers());
    }, []);
 
   return (
     <div>
       { feedData.map((post) => {
-        return <Post caption={post.caption} comment={post.comment} createdAt={post.createdAt} hashtags={post.hashtags} id={post.id} likes={post.likes} location={post.location} photoData={post.photoData} updatedAt={post.updatedAt} userId={post.userId}/>
+        return <Post key={post.id} caption={post.caption} comment={post.comment} createdAt={post.createdAt} hashtags={post.hashtags} id={post.id} likes={post.likes} location={post.location} photoData={post.photoData} updatedAt={post.updatedAt} userId={post.userId}/>
       })}
     </div>
   );
