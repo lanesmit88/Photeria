@@ -57,7 +57,7 @@ function AllMessages(props) {
           unmatched.push(senders[i]);
         }
       }
-      console.log("matched", matched, "unmatched", unmatched);
+
       let Random = [...sent, ...recieved];
       let placeholder;
 
