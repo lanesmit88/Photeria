@@ -23,12 +23,14 @@ let submitTheFormAC = (formValue) => {
 export const submitTheForm = (formValue, userId, sentToId) => async (
   dispatch
 ) => {
+  let converUserId = Number(userId);
+
   let request = await fetch("/dm/submitTheForm", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ formValue, userId, sentToId }),
+    body: JSON.stringify({ formValue, converUserId, sentToId }),
   });
   let convertJson = await request.json();
   dispatch(submitTheFormAC(convertJson));

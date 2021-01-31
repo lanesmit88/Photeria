@@ -28,3 +28,8 @@ class Message(db.Model):
       'recieverUsername': self.recipient.username,
       'recieverPP': self.recipient.profilePhoto
     }
+
+  # def to_formDict(self):
+  #   return {
+  #     'id'
+  #   }
