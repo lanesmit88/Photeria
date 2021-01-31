@@ -64,7 +64,7 @@ const messageReducer = (state = {}, action) => {
       return changedState;
     case SUBMIT_THE_FORM:
       changedState = Object.assign({}, state);
-      changedState.specificUserMessages.push(action.formValue);
+      changedState.specificUserMessages.sentMessages.unshift(action.formValue);
       return changedState;
     default:
       return state;

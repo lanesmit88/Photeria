@@ -13,7 +13,7 @@ function TypeMessage(props) {
   let dispatch = useDispatch();
   let test = props.sentToId;
   const submittingtheForm = (e, formValue, userId, test) => {
-    console.log("formValkue", formValue);
+    // console.log("formValkue", formValue);
     e.preventDefault();
     dispatch(submitTheForm(formValue, userId, test));
   };
@@ -31,7 +31,9 @@ function TypeMessage(props) {
           onClick={() => setTyped(false)}
           onChange={(e) => setFormValue(e.target.value)}
         />
-        <button hidden={typed}>Send</button>
+        <button onClick={() => props.state(true)} hidden={typed}>
+          Send
+        </button>
       </form>
     </div>
   );

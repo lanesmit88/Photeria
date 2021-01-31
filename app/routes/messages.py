@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, json
 from flask_login import login_required
-from app.models import Message, User
+from app.models import Message, User, db
+from datetime import datetime
 
 bp = Blueprint('messages', __name__)
 
@@ -41,13 +42,10 @@ def getAllSpecificUserMessages(userId, senderId):
     sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == userId, Message.recipientId == senderId).all()
     return jsonify({'recievedMessages': [msg.to_dict() for msg in recievedMessages], 'sentMessages': [msg.to_dict() for msg in sentMessages]})
 
-@bp.route('/submitTheForm', methods=['POST'])
+@bp.route('/submitTheForm', methods=['POST', 'GET'])
 def submitTheForm():
     formValue = json.loads(request.data)
-    # userId = User(id=formValue['converUserId']).to_dict()
-    # sentToId = User(id=formValue['sentToId']).to_dict()
-    # print(sentToId, 'SENTTTTTTTTTTTTTTTTTTTTTTTTTTTT TO')
-    newMessage = Message(text=formValue['formValue'], senderId=formValue['converUserId'], recipientId=formValue['sentToId'])
-    print('HEEEEEEEEEEEEEEEE', newMessage)
-    return 'done:)'
-    # return jsonify(newMessage.to_dict())
+    newMessage = Message(text=formValue['formValue'], senderId=formValue['converUserId'], recipientId=formValue['sentToId'], createdAt=datetime.now())
+    db.session.add(newMessage)
+    db.session.commit()
+    return jsonify(newMessage.to_dict())

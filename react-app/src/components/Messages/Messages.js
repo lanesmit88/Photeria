@@ -10,6 +10,7 @@ function Messages(props) {
   let loggedInUser = 4;
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
   // console.log(props.user.userClicked);
+  // console.log("state", onChangeSubmitButton);
   const specificUserMessages = useSelector(
     (state) => state.messages.specificUserMessages
   );
@@ -18,7 +19,7 @@ function Messages(props) {
 
   useEffect(() => {
     dispatch(getSpecificUserMessages(loggedInUser, props.user));
-  }, [props.user]);
+  }, [props.user, onChangeSubmitButton]);
   // console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {
     let test = [...recievedMessages];
