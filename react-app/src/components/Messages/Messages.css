@@ -43,7 +43,11 @@
   padding-bottom: 3px;
 }
 
-/* USERS MESSAGE GO HERE */
+.senderMessageDiv p:hover {
+  background-color: rgba(57, 152, 180, 0.253);
+  height: auto;
+  font-size: 100px;
+} /* USERS MESSAGE GO HERE */
 
 .userMessageBlock {
   margin-left: 50px;
@@ -64,6 +68,11 @@
   margin-right: 1px;
 }
 
+.userMessageBlock p:hover {
+  background-color: rgba(255, 0, 0, 0.267);
+  height: auto;
+  font-size: 100px;
+}
 /* TYPE MESSAGE GOES HERE */
 
 .typeMessageDiv {
