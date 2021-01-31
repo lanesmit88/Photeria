@@ -37,8 +37,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <h1 id="login-logo">Photeria</h1>
         </div>
         <div id="login-errors">
-          {errors.map((error) => (
-            <div>{error}</div>
+          {errors.map((error,i) => (
+            <div key={i}>{error}</div>
           ))}
         </div>
         <div className="login-fields">

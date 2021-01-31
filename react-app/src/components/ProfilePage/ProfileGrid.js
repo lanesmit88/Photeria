@@ -24,7 +24,7 @@ function ProfileGrid({posts}) {
       {posts &&
         posts.map((post) => {
           console.log(post.likes.length)
-          return <ProfileGridEntry imgSrc={post.photoData} numLikes={post.likes.length} numComments={post.comment.length} />;
+          return <ProfileGridEntry key={post.id} imgSrc={post.photoData} numLikes={post.likes.length} numComments={post.comment.length} />;
         })}
     </div>
   );

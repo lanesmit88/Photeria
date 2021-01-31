@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {useHistory, Link} from "react-router-dom"
 import CreateComment from "../Comment/comment";
 import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
@@ -8,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
 import { fetchPostLikes } from "../../store/postLikes";
-
+import FollowComponent from '../FollowComponent/FollowComponent'
 import "./Post.css";
 
 function Post({
@@ -40,13 +41,16 @@ function Post({
     return temp.id === userId;
   })
 
+  console.log(userId)
+  let history= useHistory()
+
   useEffect(async () => {
-    dispatch(fetchPostData(2));
+    dispatch(fetchPostData(id));
   }, []);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
-    await fetch("/api/post/1/like", {
+    await fetch(`/api/post/${id}/like`, {
       method: "POST",
     });
   };
@@ -71,8 +75,19 @@ function Post({
       </div>
       <div className="wrapper">
         <div className="headerBlock">
+          <div className="flex">
           <img src={photoData} alt={"hi"} />
-          <a href={"/"}>{user.username}</a>
+          <div className='user-loc'>
+
+          <span onClick={()=>history.push(`/profile/${userId}`)
+          }>{user.username}</span>
+        
+          <span className="location-text">{location}</span>  
+          </div>
+          </div>
+          <div className="name-location">
+            <FollowComponent postId={id} />
+          </div>
         </div>
         <div className="imageBlock">
           <img src={photoData} alt={"sydfgui"} />
@@ -83,6 +98,7 @@ function Post({
             <button onClick={() => likeSubmit()}>Like</button>
             <button>Comment</button>
             <button>DM</button>
+              
           </div>
           <div className="likeBlock">
             <p>

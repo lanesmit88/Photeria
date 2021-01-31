@@ -9,16 +9,16 @@ feed_routes = Blueprint('feed', __name__)
 @login_required
 def feed():
     followed = Follower.query.filter(Follower.followerId == current_user.id).all()
-    
+
     followed_dict = []
     for follow in followed:
         followed_dict.append(follow.to_dict())
     followed_posts = []
     for user in followed_dict:
-        
+
         followed_posts.append(Post.query.filter(Post.userId == user["followedId"]).all())
-    
-    
+
+
 
 
     new_followed_posts = [item for sublist in followed_posts for item in sublist]
