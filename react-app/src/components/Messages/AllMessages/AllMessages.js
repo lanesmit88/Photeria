@@ -126,7 +126,7 @@ function AllMessages(props) {
                   paddingTop: "2px",
                 }}
               >
-                {each.text}
+                {each.text.slice(0, 20)}
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@ function AllMessages(props) {
                   paddingTop: "2px",
                 }}
               >
-                {each.text}
+                {each.text.slice(0, 20)}
               </p>
             </div>
           </div>

@@ -1,5 +1,7 @@
 const GET_ALL_MESSAGES = "allMEssagesForUserReturn";
 const GET_S_USER_MESSAGES = "getspecificusermessages";
+let SUBMIT_THE_FORM = "submitstheformTextfromUser";
+
 const getAllMessagesAC = (messages) => {
   return {
     type: GET_ALL_MESSAGES,
@@ -11,6 +13,26 @@ const getSpecificUserMessagesAC = (spmessages) => {
     type: GET_S_USER_MESSAGES,
     spmessages,
   };
+};
+let submitTheFormAC = (formValue) => {
+  return {
+    type: SUBMIT_THE_FORM,
+    formValue,
+  };
+};
+export const submitTheForm = (formValue, userId, sentToId) => async (
+  dispatch
+) => {
+  let request = await fetch("/dm/submitTheForm", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ formValue, userId, sentToId }),
+  });
+  let convertJson = await request.json();
+  dispatch(submitTheFormAC(convertJson));
+  return;
 };
 export const getSpecificUserMessages = (userId, userClicked) => async (
   dispatch
@@ -37,6 +59,10 @@ const messageReducer = (state = {}, action) => {
     case GET_S_USER_MESSAGES:
       changedState = Object.assign({}, state);
       changedState.specificUserMessages = action.spmessages;
+      return changedState;
+    case SUBMIT_THE_FORM:
+      changedState = Object.assign({}, state);
+      changedState.specificUserMessages.push(action.formValue);
       return changedState;
     default:
       return state;

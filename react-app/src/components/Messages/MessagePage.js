@@ -24,7 +24,7 @@ function MessagesPage() {
           style={{
             border: "1px solid rgba(0, 0, 0, 0.11)",
 
-            marginLeft: "35.3%",
+            marginLeft: "35.8%",
             borderRadius: "10px",
             borderBottomLeftRadius: "0",
             borderBottomRightRadius: "0",

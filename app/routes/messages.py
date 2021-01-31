@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Message, User
 
@@ -40,3 +40,10 @@ def getAllSpecificUserMessages(userId, senderId):
     recievedMessages = Message.query.order_by(Message.createdAt).filter(Message.recipientId == userId, Message.senderId == senderId).all()
     sentMessages = Message.query.order_by(Message.createdAt).filter(Message.senderId == userId, Message.recipientId == senderId).all()
     return jsonify({'recievedMessages': [msg.to_dict() for msg in recievedMessages], 'sentMessages': [msg.to_dict() for msg in sentMessages]})
+
+@bp.route('/submitTheForm', methods=['POST'])
+def submitTheForm():
+    formValue = request.data
+    newMessage = Message(text=formValue.formValue, senderId=formValue.userId, recipientId=formValue.sentToId)
+
+    return jsonify(newMessage.to_dict())

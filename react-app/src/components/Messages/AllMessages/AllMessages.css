@@ -28,7 +28,8 @@
 }
 .listOfMessagesDiv img {
   height: 50px;
-  border-radius: 100px;
+  width: 50px;
+  border-radius: 80px;
   margin-left: 3px;
   margin-right: 2px;
   padding: 3px 0 3px 0;
