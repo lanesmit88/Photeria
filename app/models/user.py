@@ -2,14 +2,17 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
+<<<<<<< HEAD
 
+=======
+>>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  hashedPassword = db.Column(db.String(255), nullable = False)
+  hashed_password = db.Column(db.String(255), nullable = False)
   profilePhoto = db.Column(db.String(255), default="https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg")
   headline = db.Column(db.String(100))
   bio = db.Column(db.String(255))
@@ -58,6 +61,9 @@ class User(db.Model, UserMixin):
       "bio": self.bio,
       "firstName": self.firstName,
       "lastName": self.lastName,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt,
+      "posts": [ post.to_dict() for post in self.posts ],
     }
 
 class Follower(db.Model):
@@ -68,11 +74,17 @@ class Follower(db.Model):
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
+<<<<<<< HEAD
 
+=======
+>>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
   def to_dict(self):
     return {
       "id": self.id,
-      "followerId": self.followerId,
       "followedId": self.followedId,
+      "followerId": self.followerId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
+
     }

@@ -7,9 +7,17 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Post from "./components/Post/Post";
+import Feed from "./components/feed/Feed"
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
+
+import CommentListComponent from "./components/CommentListComponent/commentlist";
+import ImageUpload from "./components/PhotoUploadComponent/photoUpload";
+import FollowComponent from "./components/FollowComponent/FollowComponent";
+import CommentComponent from "./components/Comment/comment";
+import TestComponent from "./components/TestComponent/testcomponent";
 import MessagesPage from "./components/Messages/MessagePage";
+
 
 import { authenticate } from "./services/auth";
 
@@ -34,7 +42,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
-
       <Switch>
         <Route path="/dm/:userId">
           <MessagesPage />
@@ -47,6 +54,17 @@ function App() {
         </Route>
         <Route path="/profile/:id" exact={true}>
           <ProfilePage />
+        </Route>
+        <Route path="/commenttest" exact={true}>
+          <CommentListComponent postId='2' />
+          {/* <CommentComponent postId='1' /> */}
+        </Route>
+
+        <Route path="/phototest" exact={true}>
+          <TestComponent />
+        </Route>
+        <Route path="/followtest" exact={true}>
+          <FollowComponent postId='5'/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
@@ -69,7 +87,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Post />
+          <Feed />
         </ProtectedRoute>
         {/* double check these routes */}
         <Route exact path="/element">

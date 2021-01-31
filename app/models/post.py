@@ -1,4 +1,8 @@
 from .db import db
+<<<<<<< HEAD
+=======
+import base64
+>>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 from datetime import datetime
 
 hashtagPostJoin = db.Table(
@@ -22,10 +26,13 @@ class Post(db.Model):
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   likes = db.relationship("PostLike")
   comments = db.relationship('Comment')
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
 
   def to_dict(self):
     return {
       "id": self.id,
+      # "photoData": self.photoData,
       "photoData": self.photoData,
       "location": self.location,
       "caption": self.caption,
@@ -49,7 +56,10 @@ class Hashtag(db.Model):
 
   def to_dict(self):
     return {
-      "id": self.id
+      "id": self.id,
+      "tag": self.tag,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class PostLike(db.Model):
@@ -60,6 +70,7 @@ class PostLike(db.Model):
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
+<<<<<<< HEAD
 
   def to_dict(self):
     return {
@@ -67,14 +78,17 @@ class PostLike(db.Model):
       "userId": self.userId,
       "postId": self.postId
     }
+=======
+>>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
   def to_dict(self):
     return {
       "id": self.id,
       "userId": self.userId,
-      "postId": self.postId
+      "postId": self.postId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
-
 
 class Comment(db.Model):
   __tablename__ = 'comments'
@@ -91,7 +105,9 @@ class Comment(db.Model):
       "id": self.id,
       "text": self.text,
       "userId": self.userId,
-      "postId": self.postId
+      "postId": self.postId,
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class CommentLike(db.Model):

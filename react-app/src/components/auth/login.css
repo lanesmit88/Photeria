@@ -16,6 +16,12 @@
     font-family: dublin;
 }
 
+#login-errors{
+  margin-top: 4px;
+  margin-bottom: 6px;
+  color: silver;
+}
+
 .login-fields {
     display: flex;
     flex-direction: column;

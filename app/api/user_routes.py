@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User,Post, PostLike,Follower
+from flask_login import current_user, login_user, logout_user, login_required
 # from app.models.post import PostLike,Comment
 
 user_routes = Blueprint('users', __name__)
@@ -14,10 +15,6 @@ def user_profile(id):
     # print(user.posts)
 
     postsquery = Post.query.filter(Post.userId==id).all()
-    for p in postsquery:
-        print(p.likes)
-        print('--------------')
-        print(p.comments)
 
     posts = [post.to_dict() for post in postsquery]
 
@@ -35,6 +32,12 @@ def user_profile(id):
 def users():
     users = User.query.all()
     return {"users": [user.to_dict() for user in users]}
+
+@user_routes.route('/getid')
+@login_required
+def user_id():
+
+    return {"user": current_user.id}
 
 
 @user_routes.route('/<int:id>')
