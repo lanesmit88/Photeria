@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 import CreateComment from "../Comment/comment";
 import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
@@ -7,7 +8,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
-import { fetchPostLikes } from "../../store/postLikes";
+// import { fetchPostLikes } from "../../store/postLikes";
 import FollowComponent from "../FollowComponent/FollowComponent";
 import "./Post.css";
 
@@ -38,11 +39,11 @@ function Post({
     return temp.id === userId;
   });
 
-  console.log(userId);
+  let history = useHistory();
 
   useEffect(async () => {
     dispatch(fetchPostData(id));
-  }, [newSate]);
+  }, []);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -73,12 +74,15 @@ function Post({
           <div className="flex">
             <img src={photoData} alt={"hi"} />
             <div className="user-loc">
-              <span>{user.username}</span>
+              <span onClick={() => history.push(`/profile/${userId}`)}>
+                {user.username}
+              </span>
+
               <span className="location-text">{location}</span>
             </div>
           </div>
           <div className="name-location">
-            <FollowComponent setNewState={setNewState} postId={id} />
+            <FollowComponent id={id} postId={id} />
           </div>
         </div>
         <div className="imageBlock">

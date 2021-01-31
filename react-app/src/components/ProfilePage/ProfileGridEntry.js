@@ -14,8 +14,8 @@ function ProfileGridEntry({imgSrc, numLikes,numComments}) {
         <div className='red grid-entry' style={{ backgroundImage: `url(${imgSrc})` }}>
             <div className='hover'>
                 <div className='hover-details'>
-                    <div><span><i class='far fa-heart'></i> {numLikes}</span></div>
-                    <div><span><i class='far fa-comment'></i> {numComments}</span></div>
+                    <div><span><i className='far fa-heart'></i> {numLikes}</span></div>
+                    <div><span><i className='far fa-comment'></i> {numComments}</span></div>
                 </div>
             </div>
         </div>

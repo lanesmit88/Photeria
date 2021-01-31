@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { isUserFollowing } from "../../store/follows";
+import { fetchPostData } from "../../store/post";
 
-function FollowComponent({ setNewState, postId }) {
+function FollowComponent({ postId, id }) {
   const dispatch = useDispatch();
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
@@ -13,7 +14,7 @@ function FollowComponent({ setNewState, postId }) {
   // },[checkFollow])
 
   useEffect(() => {
-    dispatch(isUserFollowing(postId)).then(() => setNewState(true));
+    dispatch(isUserFollowing(postId)).then(() => dispatch(fetchPostData(id)));
   }, [checkFollow]);
 
   const followUser = async () => {
@@ -34,7 +35,15 @@ function FollowComponent({ setNewState, postId }) {
   return (
     <div>
       {!isFollowing.status && <button onClick={followUser}>Follow</button>}
-      {isFollowing.status && <button onClick={unfollowUser}>UnFollow</button>}
+      {isFollowing.status && (
+        <button
+          onClick={() => {
+            unfollowUser();
+          }}
+        >
+          UnFollow
+        </button>
+      )}
     </div>
   );
 }
