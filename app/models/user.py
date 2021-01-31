@@ -2,10 +2,6 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
-<<<<<<< HEAD
-
-=======
->>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -74,10 +70,6 @@ class Follower(db.Model):
   followerId = db.Column(db.Integer, db.ForeignKey("users.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
-<<<<<<< HEAD
-
-=======
->>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
   def to_dict(self):
     return {

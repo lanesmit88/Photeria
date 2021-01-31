@@ -38,14 +38,11 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/post')
-<<<<<<< HEAD
 app.register_blueprint(bp, url_prefix='/dm')
-=======
 app.register_blueprint(comment_routes, url_prefix='/api/comment')
 app.register_blueprint(feed_routes, url_prefix='/api/feed')
 app.register_blueprint(follow_routes, url_prefix='/api/follow')
 
->>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 db.init_app(app)
 Migrate(app, db)
 

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
 import { fetchPostLikes } from "../../store/postLikes";
-import FollowComponent from '../FollowComponent/FollowComponent'
+import FollowComponent from "../FollowComponent/FollowComponent";
 import "./Post.css";
 
 function Post({
@@ -23,28 +23,26 @@ function Post({
   updatedAt,
   userId,
 }) {
-
-
-
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [newSate, setNewState] = useState(false);
   const dispatch = useDispatch();
 
   const usersData = useSelector((reduxState) => {
     return reduxState.allUsers.users;
-  })
+  });
 
   let user = usersData.find((temp) => {
     return temp.id === userId;
-  })
+  });
 
-  console.log(userId)
+  console.log(userId);
 
   useEffect(async () => {
     dispatch(fetchPostData(id));
-  }, []);
+  }, [newSate]);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -52,37 +50,35 @@ function Post({
       method: "POST",
     });
   };
-    if (!user) {
-      return null
-    }
+  if (!user) {
+    return null;
+  }
 
   return (
     <div>
-      <div id='CreatePostButton'>
+      <div id="CreatePostButton">
         <div>
-
           <p onClick={() => setShowModal(true)}>Make a Post</p>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                    <div id="modal-div">
-                      <CreatePost />
-                    </div>
-                  </Modal>
-                )}
+              <div id="modal-div">
+                <CreatePost />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <div className="wrapper">
         <div className="headerBlock">
           <div className="flex">
-          <img src={photoData} alt={"hi"} />
-          <div className='user-loc'>
-
-          <span>{user.username}</span>
-          <span className="location-text">{location}</span>  
-          </div>
+            <img src={photoData} alt={"hi"} />
+            <div className="user-loc">
+              <span>{user.username}</span>
+              <span className="location-text">{location}</span>
+            </div>
           </div>
           <div className="name-location">
-            <FollowComponent postId={id} />
+            <FollowComponent setNewState={setNewState} postId={id} />
           </div>
         </div>
         <div className="imageBlock">
@@ -94,7 +90,6 @@ function Post({
             <button onClick={() => likeSubmit()}>Like</button>
             <button>Comment</button>
             <button>DM</button>
-              
           </div>
           <div className="likeBlock">
             <p>

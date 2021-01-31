@@ -1,8 +1,5 @@
 from .db import db
-<<<<<<< HEAD
-=======
 import base64
->>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 from datetime import datetime
 
 hashtagPostJoin = db.Table(
@@ -70,7 +67,6 @@ class PostLike(db.Model):
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
-<<<<<<< HEAD
 
   def to_dict(self):
     return {
@@ -78,8 +74,6 @@ class PostLike(db.Model):
       "userId": self.userId,
       "postId": self.postId
     }
-=======
->>>>>>> a612102b77dba59d4bb6b9d89074bcf511bae29b
 
   def to_dict(self):
     return {

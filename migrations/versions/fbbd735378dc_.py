@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3be96f0863f1
-Revises:
-Create Date: 2021-01-29 16:11:10.486190
+Revision ID: fbbd735378dc
+Revises: 
+Create Date: 2021-01-31 17:16:20.264998
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3be96f0863f1'
+revision = 'fbbd735378dc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,12 +61,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['recipientId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['senderId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('messagesUserRelation',
-    sa.Column('senderId', sa.Integer(), nullable=True),
-    sa.Column('recipientId', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['recipientId'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['senderId'], ['users.id'], )
     )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -127,7 +121,6 @@ def downgrade():
     op.drop_table('hashtagPostJoins')
     op.drop_table('comments')
     op.drop_table('posts')
-    op.drop_table('messagesUserRelation')
     op.drop_table('messages')
     op.drop_table('followers')
     op.drop_table('users')
