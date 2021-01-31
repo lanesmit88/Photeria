@@ -17,6 +17,17 @@
   margin: 0 0 0 12px;
 }
 
+.inboxDisplayDiv div {
+  position: absolute;
+  top: 5px;
+  left: 83.5%;
+  width: 45px;
+  text-align: center;
+  background-color: rgba(0, 0, 255, 0.055);
+  border: 1px solid rgba(0, 0, 0, 0.068);
+  border-radius: 10px;
+  color: rgba(18, 23, 53, 0.418);
+}
 .listOfMessagesDiv {
   display: flex;
   /* border: 1px solid; */

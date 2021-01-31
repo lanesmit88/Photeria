@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllMessages } from "../../../store/Messages";
+import { Modal } from "../../../context/Modal";
 import "./AllMessages.css";
 
 function AllMessages(props) {
   // let [messagesDelivered, setMessagesDelivered] = useState(false);
+  let [showModal, setShowModel] = useState(false);
+
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllMessages(props.state.userId));
@@ -171,6 +174,14 @@ function AllMessages(props) {
         <div className="allMessagesContainer">
           <div className="inboxDisplayDiv">
             <h2>Inbox</h2>
+            <div onClick={() => setShowModel(true)}>Create</div>
+            {showModal ? (
+              <Modal>
+                <div>Hi</div>
+              </Modal>
+            ) : (
+              ""
+            )}
           </div>
           {messages
             ? conversations(
