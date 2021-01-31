@@ -1,12 +1,15 @@
 import React from 'react';
+import { useState } from "react";
+import ImageUpload from '../PhotoUploadComponent/photoUpload';
 
 function CreatePost(){
+    const [imgurl, setImgUrl] = useState('');
 
     return(
         <div>
             <form action={''} method={'POST'}>
                 <label for="img">Select image:</label>
-                <input type="file" name="img" accept="image/*" />
+                <ImageUpload onNewImageBase64={b64 => setImgUrl(b64)}/>
                 <textarea placeholder='Create a caption'></textarea>
                 <input placeholder='Location' />
                 <button type='submit'>Post</button>
