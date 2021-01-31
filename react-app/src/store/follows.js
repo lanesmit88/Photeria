@@ -9,12 +9,7 @@ const checkIfFollowing = (following) => {
   };
 };
 
-const newFollow = (status) => {
-  return {
-    type: IS_FOLLOWING,
-    status
-  };
-};
+
 
 export const isUserFollowing = (postId) => async dispatch => {
     const followingStatus = await fetch(`/api/follow/followstatus/${postId}`);

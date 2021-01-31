@@ -7,9 +7,9 @@ function FollowComponent({postId}) {
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
   
-  useEffect(()=>{
-    console.log(checkFollow)
-  },[checkFollow])
+  // useEffect(()=>{
+  //   console.log(checkFollow)
+  // },[checkFollow])
 
 
   useEffect(() => {
@@ -17,30 +17,22 @@ function FollowComponent({postId}) {
   }, [checkFollow]);
 
 
-  const handleSubmit = async (e) => {
-      e.preventDefault()
+  const followUser = async () => {
       const newFollow = await fetch(`/api/follow/new`,{method:'post',body: JSON.stringify({"userToFollow":postId})});
       setCheckFollow(await newFollow.json())
-      // isFollowing=newFollow
   }
-  const handleUnfollow = async (e) => {
-      e.preventDefault()
+  const unfollowUser = async () => {
       const unFollow = await fetch(`/api/follow/unfollow`,{method:'post',body: JSON.stringify({"userToFollow":postId})});
       setCheckFollow(await unFollow.json())
-      // isFollowing=unFollow
   }
 
   return (
     <div>
      {!isFollowing.status &&
-      <form onSubmit={handleSubmit} action="" method="post">
-          <button type='submit'>Follow</button>
-      </form>
+          <button onClick={followUser}>Follow</button>
     }
       {isFollowing.status &&
-      <form onSubmit={handleUnfollow} action="" method="post">
-          <button type='submit'>UnFollow</button>
-      </form>
+          <button onClick={unfollowUser}>UnFollow</button>
     }
 
    
