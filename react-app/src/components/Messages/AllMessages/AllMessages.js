@@ -40,7 +40,10 @@ function AllMessages(props) {
         ) {
           matched.push(recievers[m]);
         } else {
-          if (unmatched.indexOf(recievers[m]) < 0) {
+          if (
+            unmatched.indexOf(recievers[m]) < 0 &&
+            matched.indexOf(recievers[m]) < 0
+          ) {
             unmatched.push(recievers[m]);
           }
         }
@@ -54,7 +57,7 @@ function AllMessages(props) {
           unmatched.push(senders[i]);
         }
       }
-
+      console.log("matched", matched, "unmatched", unmatched);
       let Random = [...sent, ...recieved];
       let placeholder;
 
@@ -69,7 +72,7 @@ function AllMessages(props) {
       }
 
       for (let i = 0; i < matched.length; i++) {
-        if (holder.length == unmatched.length + matched.length) break;
+        if (holder.length == matched.length) break;
         for (let j = 0; j < Random.length; j++) {
           if (
             Random[j].senderId == matched[i] ||
@@ -81,6 +84,7 @@ function AllMessages(props) {
         }
       }
       for (let j = 0; j < unmatched.length; j++) {
+        if (holder.length == unmatched.length + matched.length) break;
         for (let i = 0; i < Random.length; i++) {
           if (
             Random[i].senderId == unmatched[j] ||
