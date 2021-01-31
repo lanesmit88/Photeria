@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {useHistory, Link} from "react-router-dom"
 import CreateComment from "../Comment/comment";
 import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
@@ -41,6 +42,7 @@ function Post({
   })
 
   console.log(userId)
+  let history= useHistory()
 
   useEffect(async () => {
     dispatch(fetchPostData(id));
@@ -77,7 +79,9 @@ function Post({
           <img src={photoData} alt={"hi"} />
           <div className='user-loc'>
 
-          <span>{user.username}</span>
+          <span onClick={()=>history.push(`/profile/${userId}`)
+          }>{user.username}</span>
+        
           <span className="location-text">{location}</span>  
           </div>
           </div>
