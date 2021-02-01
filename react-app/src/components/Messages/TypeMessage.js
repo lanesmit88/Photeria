@@ -17,6 +17,7 @@ function TypeMessage(props) {
     dispatch(submitTheForm(formValue, userId, test));
     setFormValue("");
     props.state(true);
+    props.replacer(true);
   };
   return (
     <div className="messageContainer">

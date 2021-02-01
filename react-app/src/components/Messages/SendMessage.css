@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.sendMessageForm form input {
+.sendMessageForm form select {
   margin-left: 19.5px;
   margin-bottom: 10px;
   margin-top: 10px;
