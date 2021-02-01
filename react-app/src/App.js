@@ -25,15 +25,15 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = await authenticate();
-  //     if (!user.errors) {
-  //       setAuthenticated(true);
-  //     }
-  //     setLoaded(true);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const user = await authenticate();
+      if (!user.errors) {
+        setAuthenticated(true);
+      }
+      setLoaded(true);
+    })();
+  }, []);
 
   // if (!loaded) {
   //   return null;
@@ -43,7 +43,7 @@ function App() {
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
-        <Route path="/dm">
+        <Route path="/dm/:userId">
           <MessagesPage />
         </Route>
         <Route path="/login" exact={true}>

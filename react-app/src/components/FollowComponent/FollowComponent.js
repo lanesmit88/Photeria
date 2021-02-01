@@ -1,51 +1,51 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {isUserFollowing} from '../../store/follows'
+import { isUserFollowing } from "../../store/follows";
+import { fetchPostData } from "../../store/post";
 
-function FollowComponent({postId}) {
-  const dispatch = useDispatch()
+function FollowComponent({ postId, id }) {
+  const dispatch = useDispatch();
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
-  
-  useEffect(()=>{
-    console.log(checkFollow)
-  },[checkFollow])
+  // const [newState, setNewState] = useState(false);
 
+  // useEffect(()=>{
+  //   console.log(checkFollow)
+  // },[checkFollow])
 
   useEffect(() => {
-    dispatch(isUserFollowing(postId));
+    dispatch(isUserFollowing(postId)).then(() => dispatch(fetchPostData(id)));
   }, [checkFollow]);
 
-
-  const handleSubmit = async (e) => {
-      e.preventDefault()
-      const newFollow = await fetch(`/api/follow/new`,{method:'post',body: JSON.stringify({"userToFollow":postId})});
-      setCheckFollow(await newFollow.json())
-      // isFollowing=newFollow
-  }
-  const handleUnfollow = async (e) => {
-      e.preventDefault()
-      const unFollow = await fetch(`/api/follow/unfollow`,{method:'post',body: JSON.stringify({"userToFollow":postId})});
-      setCheckFollow(await unFollow.json())
-      // isFollowing=unFollow
-  }
+  const followUser = async () => {
+    const newFollow = await fetch(`/api/follow/new`, {
+      method: "post",
+      body: JSON.stringify({ userToFollow: postId }),
+    });
+    setCheckFollow(await newFollow.json());
+  };
+  const unfollowUser = async () => {
+    const unFollow = await fetch(`/api/follow/unfollow`, {
+      method: "post",
+      body: JSON.stringify({ userToFollow: postId }),
+    });
+    setCheckFollow(await unFollow.json());
+  };
 
   return (
     <div>
-     {!isFollowing.status &&
-      <form onSubmit={handleSubmit} action="" method="post">
-          <button type='submit'>Follow</button>
-      </form>
-    }
-      {isFollowing.status &&
-      <form onSubmit={handleUnfollow} action="" method="post">
-          <button type='submit'>UnFollow</button>
-      </form>
-    }
-
-   
+      {!isFollowing.status && <button onClick={followUser}>Follow</button>}
+      {isFollowing.status && (
+        <button
+          onClick={() => {
+            unfollowUser();
+          }}
+        >
+          UnFollow
+        </button>
+      )}
     </div>
   );
 }
 
-export default FollowComponent
+export default FollowComponent;

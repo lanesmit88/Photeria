@@ -5,22 +5,22 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', firstName='John', lastName='Smith')
+                password=generate_password_hash('password'), firstName='John', lastName='Smith')
     mike = User(username='mike1', email='mike@mike.oom',
-                password='mikespwd', firstName='Mike', 
+                password=generate_password_hash('password'), firstName='Mike',
                 lastName='Not Smith',
                 profilePhoto='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')
     lane = User(username='lane', email='lane@lane.com',
-                password='lanespwd', firstName='Lane', 
+                password=generate_password_hash('password'), firstName='Lane',
                 lastName='Smit', profilePhoto='https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')
     giiaga = User(username='giiaga', email='giiaga@giiaga.com',
-                password='giiagaspwd', firstName='Giiaga',
-                lastName='Also not Smith', 
+                password=generate_password_hash('password'), firstName='Giiaga',
+                lastName='Also not Smith',
                 profilePhoto='https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?')
     ty = User(username='ty', email='ty@ty.com',
-                password='tysspwd', firstName='Ty', 
+                password=generate_password_hash('password'), firstName='Ty',
                 lastName='Again not Smith', profilePhoto='https://images.pexels.com/photos/1484792/pexels-photo-1484792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
-    
+
 
     db.session.add(demo)
     db.session.add(mike)

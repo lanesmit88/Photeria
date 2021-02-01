@@ -5,7 +5,6 @@ from datetime import datetime
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
-
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
@@ -17,6 +16,12 @@ class User(db.Model, UserMixin):
   lastName = db.Column(db.String(80), nullable = False)
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
+
+  sentMessages = db.relationship('Message', foreign_keys='Message.senderId', back_populates='sender')
+  recievedMessages = db.relationship('Message', foreign_keys='Message.recipientId', back_populates='recipient')
+
+  # messages = db.relationship('Message')
+
   # messages = db.relationship("Message")
   # messages = db.relationship("Message", back_populates="userId")
   posts = db.relationship("Post")
@@ -73,5 +78,5 @@ class Follower(db.Model):
       "followerId": self.followerId,
       "createdAt": self.createdAt,
       "updatedAt": self.updatedAt
-      
+
     }
