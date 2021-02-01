@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
   feed: feedReducer,
   allUsers: allUsersReducer,
   following: followingReducer,
+  messages: messageReducer,
 });
 
 let enhancer;

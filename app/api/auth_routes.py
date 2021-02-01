@@ -42,6 +42,7 @@ def login():
         # Add the user to the session, we are logged in!
         print('Logged In')
         user = User.query.filter(User.email == form.data['email']).first()
+        login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -66,9 +67,9 @@ def sign_up():
     print(form.data['firstName'],form.data['lastName'],
                 form.data['username'],form.data['email'],
                 form.data['password'])
-    
+
     if form.validate_on_submit():
-        
+
         user = User(
             firstName=form.data['firstName'],
             lastName=form.data['lastName'],
