@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TypeMessage from "./TypeMessage";
 import "./Messages.css";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpecificUserMessages } from "../../store/Messages";
 
 // import AllMessages from "./AllMessages/AllMessages";
 
 function Messages(props) {
-  let loggedInUser = 4;
+  // let loggedInUser = 4;
+  let { userId } = useParams();
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
   // console.log(props.user.userClicked);
   // console.log("state", onChangeSubmitButton);
@@ -18,7 +20,7 @@ function Messages(props) {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSpecificUserMessages(loggedInUser, props.user));
+    dispatch(getSpecificUserMessages(userId, props.user));
   }, [props.user, onChangeSubmitButton]);
   // console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {
@@ -67,7 +69,7 @@ function Messages(props) {
                 specificUserMessages.recievedMessages,
                 specificUserMessages.sentMessages
               ).map((message) =>
-                message.senderId != 4 ? (
+                message.senderId != Number(userId) ? (
                   <div key={message.id} className="senderMessageBlock">
                     <img src={message.senderPP} alt={message.senderUsername} />
                     <div className="senderMessageDiv">

@@ -11,6 +11,7 @@ function MessagesPage() {
   const [messageOpen, setMessageOpen] = useState(false);
   const [userClicked, setUserClicked] = useState();
   const { userId } = useParams();
+  // console.log(userClicked, "USERERRE");
   return (
     <>
       <AllMessages

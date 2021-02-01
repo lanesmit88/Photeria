@@ -11,6 +11,7 @@ function TypeMessage(props) {
   const [formValue, setFormValue] = useState();
   let dispatch = useDispatch();
   let test = props.sentToId;
+  console.log(userId);
   const submittingtheForm = (e, formValue, userId, test) => {
     e.preventDefault();
     dispatch(submitTheForm(formValue, userId, test));

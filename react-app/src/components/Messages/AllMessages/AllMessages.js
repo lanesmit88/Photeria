@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllMessages } from "../../../store/Messages";
 import { Modal } from "../../../context/Modal";
 import "./AllMessages.css";
+import SendMessage from "../SendMessage";
 
 function AllMessages(props) {
   // let [messagesDelivered, setMessagesDelivered] = useState(false);
@@ -112,12 +113,13 @@ function AllMessages(props) {
 
     let allDivs = [];
     holder.forEach((each) => {
-      if (each.senderId == 4) {
+      if (each.senderId == props.state.userId) {
         allDivs.push(
           <div
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
+              console.log(each.recipientId);
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.recipientId);
             }}
@@ -144,6 +146,8 @@ function AllMessages(props) {
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
+              console.log(each.recipientId);
+
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.senderId);
             }}
@@ -177,7 +181,7 @@ function AllMessages(props) {
             <div onClick={() => setShowModel(true)}>Create</div>
             {showModal ? (
               <Modal>
-                <div>Hi</div>
+                <SendMessage />
               </Modal>
             ) : (
               ""
