@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, json
 from app.models import User,Post, Comment, Follower, db
 from app.forms import CommentForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -10,15 +10,15 @@ follow_routes = Blueprint('follows', __name__)
 def add_follow():
 
     currentUser = current_user.id
-    requestData = request.get_json(force=True)
+    requestData = json.loads(request.data)
     # userToFollow = requestData["userToFollow"]
     postId = requestData["userToFollow"]
     postQuery = Post.query.filter(Post.id==postId).first()
     postOwner = postQuery.userId
-    
+
     existingFollow = Follower.query.filter(Follower.followerId==current_user.id, Follower.followedId==postOwner).first()
-    print(existingFollow is not None)
-    if existingFollow is None:     
+    print(existingFollow)
+    if existingFollow is None:
         newFollow = Follower(followedId=postOwner, followerId=current_user.id)
         db.session.add(newFollow)
         db.session.commit()
@@ -29,18 +29,18 @@ def add_follow():
 def un_follow():
 
     currentUser = current_user.id
-    requestData = request.get_json(force=True)
+    requestData = json.loads(request.data)
     postId = requestData["userToFollow"]
     postQuery = Post.query.filter(Post.id==postId).first()
     postOwner = postQuery.userId
 
     existingFollow = Follower.query.filter(Follower.followerId==current_user.id, Follower.followedId==postOwner).first()
-    
-    print(existingFollow is not None)
-    if existingFollow is not None:     
+
+    # print(existingFollow is not None)
+    # if existingFollow is not None:
         # existingFollow.delete()
-        db.session.delete(existingFollow)
-        db.session.commit()
+    db.session.delete(existingFollow)
+    db.session.commit()
     return {"status":False}
 
 @follow_routes.route('/followstatus/<int:postId>')
@@ -56,6 +56,6 @@ def follow_status(postId):
     print(postOwner)
     print('===========================')
     existingFollow = Follower.query.filter(Follower.followerId==current_user.id, Follower.followedId==postOwner).first()
-    if existingFollow is not None:     
+    if existingFollow is not None:
        return {"status":True}
     return {"status":False}

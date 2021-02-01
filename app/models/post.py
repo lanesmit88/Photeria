@@ -17,6 +17,9 @@ class Post(db.Model):
   location  = db.Column(db.String(255))
   caption = db.Column(db.String(255), nullable = False)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'))
+  createdAt = db.Column(db.DateTime, default=datetime.now())
+  updatedAt = db.Column(db.DateTime, default=datetime.now())
+
   hashtags = db.relationship("Hashtag", secondary=hashtagPostJoin, back_populates="posts")
   likes = db.relationship("PostLike")
   comments = db.relationship('Comment')
@@ -31,11 +34,11 @@ class Post(db.Model):
       "location": self.location,
       "caption": self.caption,
       "userId": self.userId,
-      "createdAt": self.createdAt,
-      "updatedAt": self.updatedAt,
       "hashtags": [ hashtag.to_dict() for hashtag in self.hashtags ],
       "likes": [like.to_dict() for like in self.likes],
-      "comment": [comment.to_dict() for comment in self.comments]
+      "comment": [comment.to_dict() for comment in self.comments],
+      "createdAt": self.createdAt,
+      "updatedAt": self.updatedAt
     }
 
 class Hashtag(db.Model):
@@ -64,6 +67,13 @@ class PostLike(db.Model):
   postId = db.Column(db.Integer, db.ForeignKey("posts.id"))
   createdAt = db.Column(db.DateTime, default=datetime.now())
   updatedAt = db.Column(db.DateTime, default=datetime.now())
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "userId": self.userId,
+      "postId": self.postId
+    }
 
   def to_dict(self):
     return {

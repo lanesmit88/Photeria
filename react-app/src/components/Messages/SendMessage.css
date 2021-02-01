@@ -1,0 +1,24 @@
+.sendMessageForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sendMessageForm form input {
+  margin-left: 19.5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 150px;
+}
+
+.sendMessageForm form textarea {
+  margin: auto;
+  width: 300px;
+  margin-bottom: 5px;
+}
+
+.sendMessageForm form button {
+  margin-left: auto;
+  margin-right: 20px;
+  width: 50px;
+  margin-bottom: 5px;
+}

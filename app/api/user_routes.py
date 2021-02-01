@@ -13,17 +13,17 @@ def user_profile(id):
     print(id)
     user = User.query.get(id)
     # print(user.posts)
-    
+
     postsquery = Post.query.filter(Post.userId==id).all()
- 
+
     posts = [post.to_dict() for post in postsquery]
-    
+
     followers = Follower.query.filter(Follower.followedId==id).all()
     following = Follower.query.filter(Follower.followerId==id).all()
-    
-   
+
+
     # likes = PostLike.query.filter(Postlike.postId==id).all()
-    
+
     return {"user":user.to_dict(),"posts":posts, "numFollowers":len(followers),"numFollowing":len(following)}
 
 
@@ -36,7 +36,7 @@ def users():
 @user_routes.route('/getid')
 @login_required
 def user_id():
-    
+
     return {"user": current_user.id}
 
 
@@ -45,4 +45,3 @@ def user_id():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
-

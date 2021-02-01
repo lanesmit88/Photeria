@@ -9,6 +9,7 @@ from .models import db, User, Message, Post, Hashtag, PostLike, Comment, Comment
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
+from .routes.messages import bp
 from .api.comment_routes import comment_routes
 from .api.feed_routes import feed_routes
 from .api.follow_routes import follow_routes
@@ -37,6 +38,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/post')
+app.register_blueprint(bp, url_prefix='/dm')
 app.register_blueprint(comment_routes, url_prefix='/api/comment')
 app.register_blueprint(feed_routes, url_prefix='/api/feed')
 app.register_blueprint(follow_routes, url_prefix='/api/follow')
@@ -49,7 +51,7 @@ CORS(app)
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any 
+# Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
 

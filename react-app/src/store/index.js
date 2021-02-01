@@ -1,14 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import userReducer from './user'
-import commentReducer from './comment'
-import feedReducer from "./feed"
-import allUsersReducer from "./allUsers"
-import followingReducer from './follows'
+import userReducer from "./user";
+import commentReducer from "./comment";
+import feedReducer from "./feed";
+import allUsersReducer from "./allUsers";
+import followingReducer from "./follows";
 
+import postReducer from "./post";
+import postLikesReducer from "./postLikes";
+import messageReducer from "./Messages";
 
-import postReducer from "./post"
-import postLikesReducer from "./postLikes"
 const rootReducer = combineReducers({
   user: userReducer,
   comment: commentReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   postLikes: postLikesReducer,
   feed: feedReducer,
   allUsers: allUsersReducer,
-  following: followingReducer
+  following: followingReducer,
+  messages: messageReducer,
 });
 
 let enhancer;
