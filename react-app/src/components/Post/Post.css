@@ -220,6 +220,10 @@
   flex-direction: column;
 }
 
+.user-loc > a {
+  position: relative;
+  left: -10px;
+}
 .location-text {
   font-size: 0.8em;
 }

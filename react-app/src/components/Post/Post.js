@@ -78,8 +78,15 @@ function Post({
                 {user.username}
               </span>
 
-              <span className="location-text">{location}</span>
-            </div>
+
+
+          {/* <span onClick={()=>history.push(`/profile/${userId}`)
+          }>{user.username}</span> */}
+          <span><a href={`/profile/${userId}`}>{user.username}</a></span>
+        
+          <span className="location-text">{location}</span>  
+          </div>
+
           </div>
           <div className="name-location">
             <FollowComponent id={id} postId={id} />
