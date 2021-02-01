@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, json
 from flask_login import login_required
-from app.models import Message, User, db
+from app.models import Message, User, db, Follower
 from datetime import datetime
 
 bp = Blueprint('messages', __name__)
@@ -49,3 +49,20 @@ def submitTheForm():
     db.session.add(newMessage)
     db.session.commit()
     return jsonify(newMessage.to_dict())
+
+@bp.route('/<int:id>/message')
+def getFollowersToSendMessage(id):
+    following = Follower.query.filter(Follower.followerId == id).all()
+    follower = Follower.query.filter(Follower.followedId == id).all()
+    allFollowings = {'following': [following.to_dict() for following in following], 'follower': [follower.to_dict() for follower in follower]}
+
+    followingName = []
+    for follow in allFollowings['following']:
+        followingName.append(User.query.filter(User.id == follow['followedId']).with_entities(User.username).all())
+    for followed in allFollowings['follower']:
+        followingName.append(User.query.filter(User.id == followed['followerId']).with_entities(User.username).all())
+    convertedFollowing = []
+    for each in followingName:
+        convertedFollowing.append(''.join(each[0]))
+
+    return jsonify(convertedFollowing)
