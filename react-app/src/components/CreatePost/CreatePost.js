@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { createPost } from "../../store/post";
 import ImageUpload from "../PhotoUploadComponent/photoUpload";
 
-function CreatePost() {
+function CreatePost(props) {
   const dispatch = useDispatch();
   let [image, setImage] = useState();
   //   let [image, setImage] = useState();
@@ -13,8 +13,9 @@ function CreatePost() {
   const onbSubmit = (e, image, userCreating, caption, location) => {
     e.preventDefault();
     dispatch(createPost(image, userCreating, caption, location));
+    props.state(true);
   };
-  console.log(image);
+  //   console.log(image);
   //   console.log(iamge)
   return (
     <div>

@@ -69,7 +69,7 @@ function Post({
           </p>
 
           <div hidden={tempi}>
-            <CreatePost />
+            <CreatePost state={setTempi} />
           </div>
         </div>
       </div>
