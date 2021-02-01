@@ -51,6 +51,22 @@ export const getAllMessages = (userId) => async (dispatch) => {
   return;
 };
 
+const GET_FOLLOWERS_FOR_SEND_MESSAGE_TO = "recievesUsersFollowedOrFollowing";
+
+const getFollowersAC = (data) => {
+  return {
+    type: GET_FOLLOWERS_FOR_SEND_MESSAGE_TO,
+    data,
+  };
+};
+
+export const getFollowers = (userId) => async (dispatch) => {
+  const returnResponse = await fetch(`/dm/${userId}/message`);
+  const response = await returnResponse.json();
+  dispatch(getFollowersAC(response));
+  return;
+};
+
 const messageReducer = (state = {}, action) => {
   let changedState;
   switch (action.type) {
@@ -65,6 +81,10 @@ const messageReducer = (state = {}, action) => {
     case SUBMIT_THE_FORM:
       changedState = Object.assign({}, state);
       changedState.specificUserMessages.sentMessages.unshift(action.formValue);
+      return changedState;
+    case GET_FOLLOWERS_FOR_SEND_MESSAGE_TO:
+      changedState = Object.assign({}, state);
+      changedState.allFollowers = action.data;
       return changedState;
     default:
       return state;
