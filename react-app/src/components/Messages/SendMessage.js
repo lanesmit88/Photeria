@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
-import { getFollowers } from "../../store/Messages";
+import { getFollowers, sendMessage } from "../../store/Messages";
 import "./SendMessage.css";
 
 function SendMessage(props) {
@@ -19,18 +19,20 @@ function SendMessage(props) {
     dispatch(sendMessage(userId, selectValue, textValue));
     setSelectValue();
     setTextValue();
+    Redirect(`/dm/${userId}`);
   };
   return (
     <div className="sendMessageForm">
       <form
         onSubmit={(e) => sendText(e, userId, selectValue, textValue)}
         method="post"
-        action={`/dm/${props.userId}`}
+        action={`/dm/${userId}`}
       >
         <select
           onChange={(e) => setSelectValue(e.target.value)}
           placeholder="Send To..."
         >
+          <option>Send To...</option>
           {allData.map((each) => (
             <option value={each}>{each}</option>
           ))}

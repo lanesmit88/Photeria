@@ -67,6 +67,18 @@ export const getFollowers = (userId) => async (dispatch) => {
   return;
 };
 
+export const sendMessage = (userId, sendToId, textvalue) => async (
+  dispatch
+) => {
+  const request = await fetch(`/dm/${userId}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, sendToId, textvalue }),
+  });
+  return;
+};
 const messageReducer = (state = {}, action) => {
   let changedState;
   switch (action.type) {

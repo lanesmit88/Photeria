@@ -66,3 +66,11 @@ def getFollowersToSendMessage(id):
         convertedFollowing.append(''.join(each[0]))
 
     return jsonify(convertedFollowing)
+
+@bp.route('/<int:id>/sendMessage', methods=['post'])
+def sendMessageTo(id):
+    data = json.loads(request.data)
+    message = Message(text=data['textvalue'], recipientId=data['sendToId'], senderId=data['userId'], createdAt=datetime.now())
+    db.session.add(message)
+    db.session.commit()
+    return
