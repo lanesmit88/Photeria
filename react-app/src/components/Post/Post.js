@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {useHistory, Link} from "react-router-dom"
+import { useHistory, Link } from "react-router-dom";
 import CreateComment from "../Comment/comment";
 import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
@@ -8,8 +8,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
-import { fetchPostLikes } from "../../store/postLikes";
-import FollowComponent from '../FollowComponent/FollowComponent'
+// import { fetchPostLikes } from "../../store/postLikes";
+import FollowComponent from "../FollowComponent/FollowComponent";
 import "./Post.css";
 
 function Post({
@@ -24,25 +24,22 @@ function Post({
   updatedAt,
   userId,
 }) {
-
-
-
   // const [likeColor, likeColorChange] = useState("rgba(10,10,10, 0.4)");
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  // const [newSate, setNewState] = useState(false);
   const dispatch = useDispatch();
 
   const usersData = useSelector((reduxState) => {
     return reduxState.allUsers.users;
-  })
+  });
 
   let user = usersData.find((temp) => {
     return temp.id === userId;
-  })
+  });
 
-  console.log(userId)
-  let history= useHistory()
+  let history = useHistory();
 
   useEffect(async () => {
     dispatch(fetchPostData(id));
@@ -54,30 +51,34 @@ function Post({
       method: "POST",
     });
   };
-    if (!user) {
-      return null
-    }
+  if (!user) {
+    return null;
+  }
 
   return (
     <div>
-      <div id='CreatePostButton'>
+      <div id="CreatePostButton">
         <div>
-
           <p onClick={() => setShowModal(true)}>Make a Post</p>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                    <div id="modal-div">
-                      <CreatePost />
-                    </div>
-                  </Modal>
-                )}
+              <div id="modal-div">
+                <CreatePost />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <div className="wrapper">
         <div className="headerBlock">
           <div className="flex">
-          <img src={photoData} alt={"hi"} />
-          <div className='user-loc'>
+            <img src={photoData} alt={"hi"} />
+            <div className="user-loc">
+              <span onClick={() => history.push(`/profile/${userId}`)}>
+                {user.username}
+              </span>
+
+
 
           {/* <span onClick={()=>history.push(`/profile/${userId}`)
           }>{user.username}</span> */}
@@ -85,9 +86,10 @@ function Post({
         
           <span className="location-text">{location}</span>  
           </div>
+
           </div>
           <div className="name-location">
-            <FollowComponent postId={id} />
+            <FollowComponent id={id} postId={id} />
           </div>
         </div>
         <div className="imageBlock">
@@ -98,8 +100,9 @@ function Post({
           <div className="iconBlock">
             <button onClick={() => likeSubmit()}>Like</button>
             <button>Comment</button>
-            <button>DM</button>
-              
+            <button onClick={() => (window.location.href = `/dm/${userId}`)}>
+              DM
+            </button>
           </div>
           <div className="likeBlock">
             <p>

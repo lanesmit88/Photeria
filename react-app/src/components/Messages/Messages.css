@@ -6,6 +6,7 @@
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .senderMessageBlock {
@@ -42,7 +43,11 @@
   padding-bottom: 3px;
 }
 
-/* USERS MESSAGE GO HERE */
+.senderMessageDiv p:hover {
+  background-color: rgba(57, 152, 180, 0.253);
+  height: auto;
+  font-size: 100px;
+} /* USERS MESSAGE GO HERE */
 
 .userMessageBlock {
   margin-left: 50px;
@@ -55,14 +60,19 @@
   word-wrap: break-word;
   width: 430px;
   border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 4px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   padding-left: 10px;
   padding-right: 0px;
   margin-left: auto;
   margin-right: 1px;
 }
 
+.userMessageBlock p:hover {
+  background-color: rgba(255, 0, 0, 0.267);
+  height: auto;
+  font-size: 100px;
+}
 /* TYPE MESSAGE GOES HERE */
 
 .typeMessageDiv {

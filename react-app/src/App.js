@@ -45,7 +45,7 @@ function App() {
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} loggedIn={loggedIn} />
       <Switch>
-        <Route path="/dm">
+        <Route path="/dm/:userId">
           <MessagesPage />
         </Route>
         <Route path="/login" exact={true}>
