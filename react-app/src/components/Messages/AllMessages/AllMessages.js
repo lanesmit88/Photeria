@@ -13,9 +13,11 @@ function AllMessages(props) {
   useEffect(() => {
     dispatch(getAllMessages(props.state.userId));
   }, []);
-
   let messages = useSelector((state) => state.messages.allMessages);
-
+  useEffect(() => {
+    dispatch(getAllMessages(props.state.userId));
+    props.state.setReplacer(false);
+  }, [props.state.replacer]);
   function conversations(sent, recieved) {
     let holder = [];
 
@@ -181,7 +183,10 @@ function AllMessages(props) {
             <div onClick={() => setShowModel(true)}>Create</div>
             {showModal ? (
               <Modal>
-                <SendMessage setModelState={setShowModel} />
+                <SendMessage
+                  replacer={props.state.setReplacer}
+                  setModelState={setShowModel}
+                />
               </Modal>
             ) : (
               ""

@@ -28,7 +28,7 @@ function Post({
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [newSate, setNewState] = useState(false);
+  // const [newSate, setNewState] = useState(false);
   const dispatch = useDispatch();
 
   const usersData = useSelector((reduxState) => {
@@ -100,7 +100,9 @@ function Post({
           <div className="iconBlock">
             <button onClick={() => likeSubmit()}>Like</button>
             <button>Comment</button>
-            <button>DM</button>
+            <button onClick={() => (window.location.href = `/dm/${userId}`)}>
+              DM
+            </button>
           </div>
           <div className="likeBlock">
             <p>

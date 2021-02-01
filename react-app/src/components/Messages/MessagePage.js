@@ -10,15 +10,24 @@ import "./Messages.css";
 function MessagesPage() {
   const [messageOpen, setMessageOpen] = useState(false);
   const [userClicked, setUserClicked] = useState();
+  let [replacer, setReplacer] = useState(false);
+
   const { userId } = useParams();
   // console.log(userClicked, "USERERRE");
   return (
     <>
       <AllMessages
-        state={{ messageOpen, setMessageOpen, userId, setUserClicked }}
+        state={{
+          setReplacer,
+          replacer,
+          messageOpen,
+          setMessageOpen,
+          userId,
+          setUserClicked,
+        }}
       />
       {messageOpen ? (
-        <Messages user={userClicked} />
+        <Messages replace={setReplacer} user={userClicked} />
       ) : (
         <div
           className="messagesPage"
