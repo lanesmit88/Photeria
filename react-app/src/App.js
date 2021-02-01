@@ -24,12 +24,14 @@ import { authenticate } from "./services/auth";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        setLoggedIn(true)
       }
       setLoaded(true);
     })();
@@ -41,7 +43,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar setAuthenticated={setAuthenticated} loggedIn={loggedIn} />
       <Switch>
         <Route path="/dm">
           <MessagesPage />
