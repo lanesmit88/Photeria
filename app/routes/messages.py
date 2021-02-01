@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, json
 from flask_login import login_required
-from app.models import Message, User, db, Follower
+from app.models import Message, User, db, Follower, Post
 from datetime import datetime
 
 bp = Blueprint('messages', __name__)
@@ -75,3 +75,16 @@ def sendMessageTo(id):
     db.session.add(message)
     db.session.commit()
     return jsonify(message.to_dict())
+
+@bp.route('/createPost', methods=['get','post'])
+def createPost():
+    # print('PRINTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT')
+    data = json.loads(request.data)
+    # print(request.data)
+    # print('aLSDLFSDGODFSLDHL', data['image'])
+    # print
+    newPhoto = Post(photoData=data['image'], location=data['location'], caption=data['caption'], userId=data['userCreating'])
+    db.session.add(newPhoto)
+    db.session.commit()
+    # return 'ho'
+    return jsonify(newPhoto.to_dict())
