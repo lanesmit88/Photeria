@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TypeMessage from "./TypeMessage";
+import { useParams } from "react-router-dom";
 import "./Messages.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpecificUserMessages } from "../../store/Messages";
@@ -7,7 +8,7 @@ import { getSpecificUserMessages } from "../../store/Messages";
 // import AllMessages from "./AllMessages/AllMessages";
 
 function Messages(props) {
-  let loggedInUser = 4;
+  let { id } = useParams();
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
   // console.log(props.user.userClicked);
   // console.log("state", onChangeSubmitButton);
@@ -18,7 +19,7 @@ function Messages(props) {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSpecificUserMessages(loggedInUser, props.user));
+    dispatch(getSpecificUserMessages(id, props.user));
   }, [props.user, onChangeSubmitButton]);
   // console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {

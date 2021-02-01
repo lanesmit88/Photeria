@@ -7,13 +7,12 @@ import "./AllMessages.css";
 function AllMessages(props) {
   // let [messagesDelivered, setMessagesDelivered] = useState(false);
   let [showModal, setShowModel] = useState(false);
+  let messages = useSelector((state) => state.messages.allMessages);
 
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllMessages(props.state.userId));
   }, []);
-
-  let messages = useSelector((state) => state.messages.allMessages);
 
   function conversations(sent, recieved) {
     let holder = [];

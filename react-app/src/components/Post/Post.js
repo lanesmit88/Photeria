@@ -82,7 +82,7 @@ function Post({
             </div>
           </div>
           <div className="name-location">
-            <FollowComponent id={id} postId={id} />
+            <FollowComponent setNewState={setNewState} id={id} postId={id} />
           </div>
         </div>
         <div className="imageBlock">

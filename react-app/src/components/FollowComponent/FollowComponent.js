@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { isUserFollowing } from "../../store/follows";
-import { fetchPostData } from "../../store/post";
+import { unfollowUser } from "../../store/post";
 
-function FollowComponent({ postId, id }) {
+// import { fetchPostData } from "../../store/post";
+
+function FollowComponent({ setNewState, postId, id }) {
   const dispatch = useDispatch();
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
@@ -14,7 +16,7 @@ function FollowComponent({ postId, id }) {
   // },[checkFollow])
 
   useEffect(() => {
-    dispatch(isUserFollowing(postId)).then(() => dispatch(fetchPostData(id)));
+    dispatch(isUserFollowing(postId));
   }, [checkFollow]);
 
   const followUser = async () => {
@@ -24,12 +26,11 @@ function FollowComponent({ postId, id }) {
     });
     setCheckFollow(await newFollow.json());
   };
-  const unfollowUser = async () => {
-    const unFollow = await fetch(`/api/follow/unfollow`, {
-      method: "post",
-      body: JSON.stringify({ userToFollow: postId }),
-    });
-    setCheckFollow(await unFollow.json());
+  const UnfollowUser = async (e, postId) => {
+    e.preventDefault();
+
+    dispatch(unfollowUser(postId));
+    // setCheckFollow(false);
   };
 
   return (
@@ -37,8 +38,9 @@ function FollowComponent({ postId, id }) {
       {!isFollowing.status && <button onClick={followUser}>Follow</button>}
       {isFollowing.status && (
         <button
-          onClick={() => {
-            unfollowUser();
+          onClick={(e) => {
+            UnfollowUser(e, postId);
+            setNewState(true);
           }}
         >
           UnFollow
