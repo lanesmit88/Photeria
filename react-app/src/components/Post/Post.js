@@ -28,6 +28,7 @@ function Post({
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [tempi, setTempi] = useState(true);
   // const [newSate, setNewState] = useState(false);
   const dispatch = useDispatch();
 
@@ -59,14 +60,17 @@ function Post({
     <div>
       <div id="CreatePostButton">
         <div>
-          <p onClick={() => setShowModal(true)}>Make a Post</p>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <div id="modal-div">
-                <CreatePost />
-              </div>
-            </Modal>
-          )}
+          <p
+            onClick={() => {
+              setTempi(false);
+            }}
+          >
+            Make a Post
+          </p>
+
+          <div hidden={tempi}>
+            <CreatePost state={setTempi} />
+          </div>
         </div>
       </div>
       <div className="wrapper">
