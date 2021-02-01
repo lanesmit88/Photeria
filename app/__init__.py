@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, json, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -42,6 +42,8 @@ app.register_blueprint(bp, url_prefix='/dm')
 app.register_blueprint(comment_routes, url_prefix='/api/comment')
 app.register_blueprint(feed_routes, url_prefix='/api/feed')
 app.register_blueprint(follow_routes, url_prefix='/api/follow')
+
+
 
 db.init_app(app)
 Migrate(app, db)
