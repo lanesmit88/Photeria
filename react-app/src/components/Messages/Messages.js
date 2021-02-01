@@ -86,7 +86,12 @@ function Messages(props) {
             : ""}
         </div>
         <div className="typeMessageDiv">
-          <TypeMessage state={setOnChangeSubmitButton} sentToId={props.user} />
+          <TypeMessage
+            replacer={props.replace}
+            // replacer={setReplacer}
+            state={setOnChangeSubmitButton}
+            sentToId={props.user}
+          />
         </div>
       </div>
     </>

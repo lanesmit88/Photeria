@@ -13,7 +13,7 @@ function SendMessage(props) {
   let [selectValue, setSelectValue] = useState();
   let [state, setState] = useState(false);
   let [textValuess, setTextValuess] = useState(false);
-  console.log(state);
+
   let allData = useSelector((state) => state.messages.allFollowers);
   // console.log(allData);
   useEffect(() => {
@@ -25,6 +25,7 @@ function SendMessage(props) {
     setSelectValue("");
     setTextValue("");
     setTextValuess(true);
+    props.replacer(true);
     props.setModelState(false);
   };
   return (

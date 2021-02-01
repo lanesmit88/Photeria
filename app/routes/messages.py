@@ -64,7 +64,6 @@ def getFollowersToSendMessage(id):
     convertedFollowing = []
     for each in followingName:
         convertedFollowing.append(''.join(each[0]))
-
     return jsonify(convertedFollowing)
 
 @bp.route('/<int:id>/sendMessage', methods=['post'])

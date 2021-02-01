@@ -84,7 +84,7 @@ export const sendMessage = (userId, sendToId, textvalue) => async (
     },
     body: JSON.stringify({ userId, sendToId, textvalue }),
   });
-  const convertJson = request.json();
+  const convertJson = await request.json();
   dispatch(submitTheSendMessageAC(convertJson));
   return;
 };
