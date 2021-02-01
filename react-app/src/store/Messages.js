@@ -20,6 +20,13 @@ let submitTheFormAC = (formValue) => {
     formValue,
   };
 };
+const SUBMIT_THE_SEND_FORM = "submitthesendmessage";
+let submitTheSendMessageAC = (formValue) => {
+  return {
+    type: SUBMIT_THE_SEND_FORM,
+    formValue,
+  };
+};
 export const submitTheForm = (formValue, userId, sentToId) => async (
   dispatch
 ) => {
@@ -77,6 +84,8 @@ export const sendMessage = (userId, sendToId, textvalue) => async (
     },
     body: JSON.stringify({ userId, sendToId, textvalue }),
   });
+  const convertson = request.json();
+  dispatch(submitTheSendMessageAC(convertJson));
   return;
 };
 const messageReducer = (state = {}, action) => {
@@ -98,6 +107,14 @@ const messageReducer = (state = {}, action) => {
       changedState = Object.assign({}, state);
       changedState.allFollowers = action.data;
       return changedState;
+    case SUBMIT_THE_SEND_FORM:
+      changedState = Object.assign({}, state);
+      changedState.allMessages.unshift(action.formValue);
+      return changedState;
+    // case SUBMIT_THE_FORM:
+    //   changedState = Object.assign({}, state);
+    //   changedState.allMessages = action.formValue;
+    //   return changedState;
     default:
       return state;
   }

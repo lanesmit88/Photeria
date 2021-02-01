@@ -75,4 +75,4 @@ def sendMessageTo(id):
     message = Message(text=data['textvalue'], recipientId=sendToId, senderId=data['userId'], createdAt=datetime.now())
     db.session.add(message)
     db.session.commit()
-    return 'hi'
+    return jsonify(message.to_dict())
