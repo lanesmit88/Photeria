@@ -7,43 +7,53 @@ import "./SendMessage.css";
 
 function SendMessage(props) {
   let { userId } = useParams();
+  console.log("use", userId);
   const dispatch = useDispatch();
   let [textValue, setTextValue] = useState();
   let [selectValue, setSelectValue] = useState();
-  let allData = useSelector((state) => state.allFollowers);
+  let [state, setState] = useState(false);
+  let [textValuess, setTextValuess] = useState(false);
+  console.log(state);
+  let allData = useSelector((state) => state.messages.allFollowers);
+  // console.log(allData);
   useEffect(() => {
-    dispatch(getFollowers(userId));
+    dispatch(getFollowers(userId)).then(() => setState(true));
   }, []);
   const sendText = (e, userId, selectValue, textValue) => {
     e.preventDefault();
     dispatch(sendMessage(userId, selectValue, textValue));
-    setSelectValue();
-    setTextValue();
-    Redirect(`/dm/${userId}`);
+    setSelectValue("");
+    setTextValue("");
+    setTextValuess(true);
+    props.setModelState(false);
   };
   return (
     <div className="sendMessageForm">
-      <form
-        onSubmit={(e) => sendText(e, userId, selectValue, textValue)}
-        method="post"
-        action={`/dm/${userId}`}
-      >
-        <select
-          onChange={(e) => setSelectValue(e.target.value)}
-          placeholder="Send To..."
+      {state ? (
+        <form
+          onSubmit={(e) => sendText(e, userId, selectValue, textValue)}
+          method="post"
+          action={`/dm/${userId}`}
         >
-          <option>Send To...</option>
-          {allData.map((each) => (
-            <option value={each}>{each}</option>
-          ))}
-        </select>
-        <textarea
-          value={textValue}
-          placeholder="Write here.."
-          onChange={(e) => setTextValue(e.target.value)}
-        />
-        <button>Send</button>
-      </form>
+          <select
+            onChange={(e) => setSelectValue(e.target.value)}
+            placeholder="Send To..."
+          >
+            <option>Send To...</option>
+            {allData.map((each) => (
+              <option value={each}>{each}</option>
+            ))}
+          </select>
+          <textarea
+            value={textValue}
+            placeholder="Write here.."
+            onChange={(e) => setTextValue(e.target.value)}
+          />
+          <button>Send</button>
+        </form>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

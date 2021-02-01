@@ -70,7 +70,9 @@ def getFollowersToSendMessage(id):
 @bp.route('/<int:id>/sendMessage', methods=['post'])
 def sendMessageTo(id):
     data = json.loads(request.data)
-    message = Message(text=data['textvalue'], recipientId=data['sendToId'], senderId=data['userId'], createdAt=datetime.now())
+    sendTo = User.query.filter(User.username == data['sendToId']).with_entities(User.id).first()
+    sendToId = int(sendTo[0])
+    message = Message(text=data['textvalue'], recipientId=sendToId, senderId=data['userId'], createdAt=datetime.now())
     db.session.add(message)
     db.session.commit()
-    return
+    return 'hi'

@@ -21,6 +21,7 @@ function Messages(props) {
 
   useEffect(() => {
     dispatch(getSpecificUserMessages(userId, props.user));
+    setOnChangeSubmitButton(false);
   }, [props.user, onChangeSubmitButton]);
   // console.log(specificUserMessages);
   const messagesArray = (recievedMessages, sentMessages) => {

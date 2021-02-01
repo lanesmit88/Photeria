@@ -181,7 +181,7 @@ function AllMessages(props) {
             <div onClick={() => setShowModel(true)}>Create</div>
             {showModal ? (
               <Modal>
-                <SendMessage />
+                <SendMessage setModelState={setShowModel} />
               </Modal>
             ) : (
               ""
