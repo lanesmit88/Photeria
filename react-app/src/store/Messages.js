@@ -84,7 +84,7 @@ export const sendMessage = (userId, sendToId, textvalue) => async (
     },
     body: JSON.stringify({ userId, sendToId, textvalue }),
   });
-  const convertson = request.json();
+  const convertJson = request.json();
   dispatch(submitTheSendMessageAC(convertJson));
   return;
 };
@@ -102,6 +102,7 @@ const messageReducer = (state = {}, action) => {
     case SUBMIT_THE_FORM:
       changedState = Object.assign({}, state);
       changedState.specificUserMessages.sentMessages.unshift(action.formValue);
+      changedState.allMessages.sentMessages.unshift(action.formValue);
       return changedState;
     case GET_FOLLOWERS_FOR_SEND_MESSAGE_TO:
       changedState = Object.assign({}, state);
@@ -109,7 +110,7 @@ const messageReducer = (state = {}, action) => {
       return changedState;
     case SUBMIT_THE_SEND_FORM:
       changedState = Object.assign({}, state);
-      changedState.allMessages.unshift(action.formValue);
+      changedState.allMessages.sentMessages.unshift(action.formValue);
       return changedState;
     // case SUBMIT_THE_FORM:
     //   changedState = Object.assign({}, state);
