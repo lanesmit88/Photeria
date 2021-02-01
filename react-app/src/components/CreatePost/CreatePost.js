@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useState } from "react";
-import ImageUpload from '../PhotoUploadComponent/photoUpload';
-
-function CreatePost(){
-    const [imgurl, setImgUrl] = useState('');
-
-    return(
-        <div>
-            <form action={''} method={'POST'}>
-                <label for="img">Select image:</label>
-                <ImageUpload onNewImageBase64={b64 => setImgUrl(b64)}/>
-                <textarea placeholder='Create a caption'></textarea>
-                <input placeholder='Location' />
-                <button type='submit'>Post</button>
-            </form>
-        </div>
-    )
-=======
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../store/post";
@@ -67,7 +47,6 @@ function CreatePost(props) {
       </form>
     </div>
   );
->>>>>>> feb696207001291b29d437b1a98cbf307336b091
 }
 
 export default CreatePost;
