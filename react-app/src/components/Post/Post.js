@@ -78,6 +78,12 @@ function Post({
                 {user.username}
               </span>
 
+              {/* <span onClick={()=>history.push(`/profile/${userId}`)
+          }>{user.username}</span> */}
+              <span>
+                <a href={`/profile/${userId}`}>{user.username}</a>
+              </span>
+
               <span className="location-text">{location}</span>
             </div>
           </div>
