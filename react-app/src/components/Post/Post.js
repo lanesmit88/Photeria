@@ -104,7 +104,7 @@ function Post({
           <div className="iconBlock">
             <button onClick={() => likeSubmit()}>Like</button>
             <button>Comment</button>
-            <button onClick={() => (window.location.href = `/dm/${userId}`)}>
+            <button onClick={() => (window.location.href = `/dm/${6}`)}>
               DM
             </button>
           </div>
