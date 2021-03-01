@@ -5,7 +5,7 @@ import commentReducer from "./comment";
 import feedReducer from "./feed";
 import allUsersReducer from "./allUsers";
 import followingReducer from "./follows";
-
+import trendingReducer from "./trending";
 import postReducer from "./post";
 import postLikesReducer from "./postLikes";
 import messageReducer from "./Messages";
@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
   allUsers: allUsersReducer,
   following: followingReducer,
   messages: messageReducer,
+  trending: trendingReducer,
 });
 
 let enhancer;
