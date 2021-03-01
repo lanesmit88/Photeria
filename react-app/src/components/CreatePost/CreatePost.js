@@ -5,24 +5,20 @@ import ImageUpload from "../PhotoUploadComponent/photoUpload";
 
 function CreatePost(props) {
   const dispatch = useDispatch();
-  let [image, setImage] = useState();
-  //   let [image, setImage] = useState();
-  let [caption, setCaption] = useState();
-  let [location, setLocation] = useState();
-  //   let [photoName, setPhotoName] = useState();
-  const onbSubmit = (e, image, userCreating, caption, location) => {
+  let [image, setImage] = useState("");
+  let [caption, setCaption] = useState("");
+  let [location, setLocation] = useState("");
+
+  const submitHandeler = (e) => {
     e.preventDefault();
-    dispatch(createPost(image, userCreating, caption, location));
-    props.state(true);
+    dispatch(createPost(image, caption, location));
   };
-  //   console.log(image);
-  //   console.log(iamge)
+
   return (
     <div>
       <form
-        action={"/dm/createPost"}
-        method={"POST"}
-        onSubmit={(e) => onbSubmit(e, image, 6, caption, location)}
+        // onSubmit={(e) => onSubmit(e, image, 6, caption, location)}
+        onSubmit={submitHandeler}
       >
         <label for="img">Select image:</label>
         {/* <input

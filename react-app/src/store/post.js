@@ -34,7 +34,7 @@ export const createPost = (image, userCreating, caption, location) => async (
   formData.append("caption", caption);
   formData.append("location", location);
   // console.log(formData);
-  const returnRequest = await fetch("/dm/createPost", {
+  const returnRequest = await fetch("/createPost", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,6 +43,7 @@ export const createPost = (image, userCreating, caption, location) => async (
   });
   return;
 };
+
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
