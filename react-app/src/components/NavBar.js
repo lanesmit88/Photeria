@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
-import Trending from "./Trending"
+
 
 const NavBar = ({ setAuthenticated }) => {
   return (
@@ -10,6 +10,11 @@ const NavBar = ({ setAuthenticated }) => {
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="trending-link" exact={true} to={`/trending`}>
+            Trending
           </NavLink>
         </li>
         <li>
