@@ -41,8 +41,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      <NavBar
+        setAuthenticated={setAuthenticated}
+        authenticated={authenticated}
+      />
       <Switch>
+        <ProtectedRoute
+          path="/trending"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <Trending />
+        </ProtectedRoute>
         <Route path="/dm/:userId">
           <MessagesPage />
         </Route>
@@ -89,11 +99,7 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <Feed />
         </ProtectedRoute>
-        {authenticated && (
-          <Route path="/trending">
-            <Trending />
-          </Route>
-        )}
+
         {/* double check these routes */}
         <Route exact path="/element">
           <ProfilePage />

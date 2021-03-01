@@ -1,5 +1,3 @@
-import { fetch } from "./csrf.js";
-
 const TRENDING_DATA = "trending/trendingData";
 
 const TrendingData = (trending) => ({
@@ -10,7 +8,7 @@ const TrendingData = (trending) => ({
 export const fetchTrendingData = () => {
   return async (dispatch) => {
     const res = await fetch(`/api/trending`);
-    const resData = await res.data;
+    const resData = await res.json();
     dispatch(TrendingData(resData));
   };
 };
