@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../store/post";
+import { fetchCreatePost } from "../../store/post";
 import ImageUpload from "../PhotoUploadComponent/photoUpload";
 
 function CreatePost(props) {
@@ -11,7 +11,7 @@ function CreatePost(props) {
 
   const submitHandeler = (e) => {
     e.preventDefault();
-    dispatch(createPost(image, caption, location));
+    dispatch(fetchCreatePost(image, caption, location));
   };
 
   return (

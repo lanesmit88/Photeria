@@ -19,7 +19,6 @@ const listPostComments = (comments) => {
 
 
 export const createComment = (id,data) => async dispatch => {
-    console.log(data)
     const comment = await fetch(`/api/comment/new/${id}`,{method:'post',body: JSON.stringify({data})});
     dispatch(newComment(await comment.json()));
     return 'hello';

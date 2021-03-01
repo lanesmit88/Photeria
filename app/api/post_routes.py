@@ -40,3 +40,5 @@ def likePost(id):
 def post(id):
     post = Post.query.get(id)
     return post.to_dict()
+
+
