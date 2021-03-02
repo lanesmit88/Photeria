@@ -8,17 +8,10 @@ function FollowComponent({ postId, id, onCb }) {
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
   const [testFollow, setTestFollow] = useState(false)
-  // const [newState, setNewState] = useState(false);
-
-  // useEffect(()=>{
-  //   console.log(checkFollow)
-  // },[checkFollow])
 
   useEffect(() => {
     dispatch(isUserFollowing(postId)).then((e) => {
-      console.log('====================================')
-      console.log(e[0].following)
-      console.log('====================================')
+    
       if (e[0].following.status) {
         onCb(true)
         setTestFollow(true)
@@ -37,6 +30,7 @@ function FollowComponent({ postId, id, onCb }) {
     });
     setCheckFollow(await newFollow.json());
   };
+
   const unfollowUser = async () => {
     const unFollow = await fetch(`/api/follow/unfollow`, {
       method: "post",
