@@ -26,6 +26,17 @@ def user_profile(id):
 
     return {"user":user.to_dict(),"posts":posts, "numFollowers":len(followers),"numFollowing":len(following)}
 
+@user_routes.route('/search/<string:tag>')
+def search_users(tag):
+    print(tag)
+    search = "%{}%".format(tag)
+    results = User.query.filter(User.username.like(search)).all()
+    print([result.to_dict() for result in results])
+
+    return {"results": [result.to_dict() for result in results]}
+
+#     return {"results":results.to_dict()}
+
 
 @user_routes.route('/')
 @login_required

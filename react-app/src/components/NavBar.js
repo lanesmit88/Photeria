@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
-
-const NavBar = ({ setAuthenticated, authenticated, loggedInUserId }) => {
+import SearchComponent from './SearchComponent/SearchComponent'
+const NavBar = ({ setAuthenticated, authenticated }) => {
   return (
     <nav>
       <ul>
@@ -11,7 +11,7 @@ const NavBar = ({ setAuthenticated, authenticated, loggedInUserId }) => {
             Home
           </NavLink>
         </li>
-        {authenticated && (
+        {/* {authenticated && (
           <li>
             <NavLink
               className="profile-link"
@@ -21,14 +21,14 @@ const NavBar = ({ setAuthenticated, authenticated, loggedInUserId }) => {
               Profile
             </NavLink>
           </li>
-        )}
+        )} */}
         {authenticated && (
           <li>
             <NavLink className="trending-link" exact={true} to={`/trending`}>
               Trending
             </NavLink>
           </li>
-        )}
+         )} 
 
         {!authenticated && (
           <li>
@@ -36,24 +36,22 @@ const NavBar = ({ setAuthenticated, authenticated, loggedInUserId }) => {
               Login
             </NavLink>
           </li>
-        )}
+         )} 
         {!authenticated && (
           <li>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink>
           </li>
-        )}
+         )}
         <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
+         <SearchComponent />
         </li>
-        {authenticated && (
+        {/* {authenticated && ( */}
           <li>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </li>
-        )}
+        {/* )} */}
       </ul>
     </nav>
   );

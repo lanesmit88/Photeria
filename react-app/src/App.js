@@ -6,16 +6,12 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import Post from "./components/Post/Post";
 import Feed from "./components/feed/Feed";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
 import Trending from "./components/Trending";
-
 import CommentListComponent from "./components/CommentListComponent/commentlist";
-import ImageUpload from "./components/PhotoUploadComponent/photoUpload";
 import FollowComponent from "./components/FollowComponent/FollowComponent";
-import CommentComponent from "./components/Comment/comment";
 import TestComponent from "./components/TestComponent/testcomponent";
 import MessagesPage from "./components/Messages/MessagePage";
 
@@ -24,13 +20,11 @@ import { authenticate } from "./services/auth";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [loggedInUserId, setLoggedInUserId] = useState(0)
+
   useEffect(() => {
     (async () => {
       const user = await authenticate();
-
       if (!user.errors) {
-        setLoggedInUserId(user.id)
         setAuthenticated(true);
       }
       setLoaded(true);
@@ -46,7 +40,6 @@ function App() {
       <NavBar
         setAuthenticated={setAuthenticated}
         authenticated={authenticated}
-        loggedInUserId={loggedInUserId}
       />
       <Switch>
         <ProtectedRoute

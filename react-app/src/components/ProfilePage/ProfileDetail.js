@@ -1,14 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import { useState } from "react";
-
+import FollowComponent from '../FollowComponent/FollowComponent'
 import "./ProfileDetail.css";
 
 function ProfileDetail({user}) {
   const { id } = useParams();
-  // const [followed, setFollowed] = useState("Follow");
   const follows = 0;
-  // console.log(id);
+
   return (
     <div className="mainDiv">
       <div className="imageDiv">
@@ -22,7 +20,9 @@ function ProfileDetail({user}) {
       <div className="detailDiv">
         <div className="userNameDiv">
           <h1 className="userNameHeading">{user.user.username}</h1>
+          
           {id ? (
+            
             <button
               className="editProfileButton"
               onClick={() => (window.location.href = "/edit/profile")}

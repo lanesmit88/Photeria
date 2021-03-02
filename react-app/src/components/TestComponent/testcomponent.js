@@ -9,6 +9,8 @@ useEffect(()=>{
   return (
     <div>
      <ImageUpload onNewImageBase64={b64=>setImgUrl(b64)}/>
+     <img src={imgurl} style={{height:'300px', width:'300px', marginTop:'50px'}}></img>
+     <textarea value={imgurl} style={{width:"500px",height:'500px'}}></textarea>
     </div>
   );
 }

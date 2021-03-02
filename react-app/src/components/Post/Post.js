@@ -6,6 +6,8 @@ import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { fetchPostData } from "../../store/post";
+import { fetchFeedData } from "../../store/feed";
 import CreatePost from "../CreatePost/CreatePost";
 import { fetchCommentsData } from "../../store/comment";
 import FollowComponent from "../FollowComponent/FollowComponent";
@@ -38,6 +40,7 @@ function Post({
     return temp.id === userId;
   });
 
+
   const comments = useSelector((reduxState) => {
     return reduxState.comment[id];
   });
@@ -47,6 +50,13 @@ function Post({
   }, []);
 
   let history = useHistory();
+
+  // let history = useHistory();
+  
+  // const handleData = () => {
+  //     dispatch(fetchFeedData()) 
+  // }
+
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -81,9 +91,9 @@ function Post({
               <span className="location-text">{location}</span>
             </div>
           </div>
-          <div className="name-location">
-            <FollowComponent id={id} postId={id} />
-          </div>
+          {/* <div className="name-location">
+            <FollowComponent id={id} postId={id} onCb={(e)=>handleData()} />
+          </div> */}
         </div>
         <div className="imageBlock">
           <img src={photoData} alt={"sydfgui"} />
