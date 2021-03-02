@@ -6,9 +6,8 @@ import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPostData } from "../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
-// import { fetchPostLikes } from "../../store/postLikes";
+import { fetchCommentsData } from "../../store/comment";
 import FollowComponent from "../FollowComponent/FollowComponent";
 import "./Post.css";
 
@@ -38,6 +37,14 @@ function Post({
   let user = usersData.find((temp) => {
     return temp.id === userId;
   });
+
+  const comments = useSelector((reduxState) => {
+    return reduxState.comment[id];
+  });
+
+  useEffect(() => {
+    dispatch(fetchCommentsData(id));
+  }, []);
 
   let history = useHistory();
 
@@ -198,7 +205,7 @@ function Post({
           </div>
           <div className={"commentBlock"}>
             {/*Displays option to view all comments if more than two exist*/}
-            {comment.length > 2 && !stnule ? (
+            {comments && comments.length > 2 && !stnule ? (
               <a
                 onClick={() => {
                   stNull(true);
@@ -222,7 +229,8 @@ function Post({
             )}
 
             {stnule &&
-              comment.map((eachComment) => (
+              comments &&
+              comments.map((eachComment) => (
                 <div className="comment">
                   <div className="aTagDivComment">
                     <a href="">User Name</a>
@@ -232,23 +240,23 @@ function Post({
                   </div>
                 </div>
               ))}
-            {comment.length >= 2 && !stnule && (
+            {comments && comments.length >= 2 && !stnule && (
               <>
                 <div className={"topComments"}>
                   <a href={""}>User Name</a>
-                  <p>{comment[0].text}</p>
+                  <p>{comments[0].text}</p>
                 </div>
                 <div className={"topComments"}>
                   <a href={""}>User Name</a>
-                  <p>{comment[1].text}</p>
+                  <p>{comments[1].text}</p>
                 </div>
               </>
             )}
-            {comment.length === 1 && !stnule && (
+            {comments && comments.length === 1 && !stnule && (
               <>
                 <div className={"topComments"}>
                   <a href={""}>User Name</a>
-                  <p>{comment[0].text}</p>
+                  <p>{comments[0].text}</p>
                 </div>
               </>
             )}

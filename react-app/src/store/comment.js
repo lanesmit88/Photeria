@@ -1,32 +1,35 @@
-const NEW_COMMENT = "comments/new";
 const GET_ALL_COMMENTS = "comments/all";
+
+const NEW_COMMENT = "comments/new";
+
+const CommentsData = (comments) => {
+  return {
+    type: GET_ALL_COMMENTS,
+    comments: comments,
+  };
+};
 
 const newComment = (comment) => {
   return {
     type: NEW_COMMENT,
-    comment,
+    comment: comment,
   };
 };
 
-const listPostComments = (comments) => {
-  return {
-    type: GET_ALL_COMMENTS,
-    comments,
-  };
+export const fetchCommentsData = (id) => async (dispatch) => {
+  const res = await fetch(`/api/comment/${id}`);
+  const resData = await res.json();
+
+  dispatch(CommentsData(resData));
 };
 
 export const createComment = (id, data) => async (dispatch) => {
-  const comment = await fetch(`/api/comment/new/${id}`, {
+  const res = await fetch(`/api/comment/new/${id}`, {
     method: "post",
     body: JSON.stringify({ data }),
   });
-  dispatch(newComment(await comment.json()));
-};
-
-export const getPostComments = (postId) => async (dispatch) => {
-  const comments = await fetch(`/api/post/${postId}/allcomments`);
-  // console.log(await comments.json())
-  dispatch(listPostComments(await comments.json()));
+  const addComment = res.data;
+  dispatch(newComment(addComment));
 };
 
 const initialState = [];
@@ -35,15 +38,26 @@ const commentReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_ALL_COMMENTS:
-      newState = Object.assign({}, state);
-      newState.postcomments = action.comments;
-      return action.comments;
-
+      const newComments = [];
+      action.comments.forEach((comment) => {
+        if (newComments[comment.postId]) {
+          newComments[comment.postId].push(comment);
+        } else {
+          newComments[comment.postId] = [comment];
+        }
+      });
+      return { ...state, ...newComments };
     case NEW_COMMENT:
-      // console.log("0000000000000000000", state,"========================")
-      newState = Object.assign({}, state);
-      newState.comment = action.comment;
-      return newState;
+      newState = JSON.parse(JSON.stringify(state));
+      if (newState[action.comment]) {
+        newState[action.comment].push(action.comment);
+        return newState;
+      } else {
+        newState[action.comment] = [action.comment];
+        return newState;
+      }
+
+      return action.comments;
     default:
       return state;
   }

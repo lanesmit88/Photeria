@@ -16,6 +16,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
     return errorMessages
 
+@comment_routes.route('<int:id>')
+# @login_required
+def get_comments(id):
+    comments = Comment.query.filter(Comment.postId == id).all()
+    comments_dict = []
+    for comment in comments:
+        comments_dict.append(comment.to_dict())
+    return jsonify(comments_dict)
+
 @comment_routes.route('/new/<int:postId>', methods=['POST'])
 @login_required
 def new_comment(postId):
