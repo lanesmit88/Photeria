@@ -1,98 +1,107 @@
-# Flask React Project
+<!-- README HEADER -->
+<br />
+<p align="center">
+  
+  <h3 align="center">Photeria</h3>
 
-This is the backend for the Flask React project.
+  <p align="center">
+    Developers: Lane Smit, Ty Newman, Michael Sanford, and Giiaga Ay
+    <br />
+    <a href="https://github.com/lanesmit88/Photeria/wiki"><strong>Explore the docs... »</strong></a>
+    <br />
+    <br />
+    ·
+    <a href="https://photeria.herokuapp.com/">View Demo</a>
+    ·
+</p>
 
-## Getting started
 
-1. Clone this repository (only this branch)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#technologies-used">Technologies Used</a></li>
+      </ul>
+    </li>
+    <li><a href="#features">Features</a></li>
+      <ul>
+        <li><a href="#Trending">Trending</a></li>
+        <li><a href="#Creating-Posts">Creating Posts</a></li>
+      </ul>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#code-snippets">Code Snippets</a></li>
+  </ol>
+</details>
 
-2. Install dependencies
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+<!-- Overview -->
+## Overview
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+Everybody needs a good laugh from time to time. That's where GoodLaughs can help.
 
-   ```bash
-   pipenv shell
-   ```
+Here's why:
+* GoodLaughs is a way for users to share, create, and review laughs
+* A laugh can be as simple as a knock-knock joke or a long and humorous story
+* Users can save their laughs forever with a LaughBox - create your own and put laughs into it so you'll never forget where a specific laugh is
 
-   ```bash
-   flask db upgrade
-   ```
+In the future, we want our users to be able to use GoodLaughs as a social media platform. The ability to search laughs, have a custom profile, and add friends are all features we would have liked to implement.
 
-   ```bash
-   flask seed all
-   ```
+### Technologies Used
 
-   ```bash
-   flask run
-   ```
+Below are a few examples of technologies we used in order to complete our project.
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+* [Heroku](https://www.heroku.com/)
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+<!-- Features -->
+## Features
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+Below are two key features to our app that we feel are worth sharing about here.
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+### Trending
 
-## Deploy to Heroku
+The trending page displays all posts on photeria sorted by the number of likes on each post in descending order. This feature allows users the opertunity to discover other users that have made popular posts on the app.
 
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
+### Creating-Posts
 
-   ```bash
-   heroku login
-   ```
+The create post feature allows a user to mkae a post that contains both text and an image. We implemented image uploading useing a base64 approach where we convert the image data into a string and store it on the database
 
-5. Login to the heroku container registry
 
-   ```bash
-   heroku container:login
-   ```
+<!-- CHALLENGES -->
+## Challenges
 
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
+This app was created for the second group project as part of the AppAcademy curriculum. Being that it was meant to be a learning experience, all of the developers learned a lot. Below are a few challenges that were necessary to overcome in order to complete the app in the timeframe given.
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+1. 
 
-8. Release your docker container to heroku
+2. 
 
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
+3. 
 
-9. set up your database:
+<!-- CODE-SNIPPETS -->
+## Code-Snippets
 
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
+Below are a few code snippets that the deveopers feel demonstrate strong skills and knowledge of what has been learned up to this point.
 
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
-11. profit
+1. Snippet 1
+```
+Code will go here
+```
+
+2. Snippet 2
+```
+Insert interesting code block
+```
+
+3. Snippet 3
+```
+More code, MORE!
+```
