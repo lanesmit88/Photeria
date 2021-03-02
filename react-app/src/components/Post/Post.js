@@ -90,7 +90,7 @@ function Post({
 
           </div>
           <div className="name-location">
-            <FollowComponent id={id} postId={id} />
+            <FollowComponent id={id} postId={id} onCb={(e)=>console.log(e)} />
           </div>
         </div>
         <div className="imageBlock">
