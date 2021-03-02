@@ -15,11 +15,16 @@ function ProfilePage() {
 
   useEffect(() => {
     dispatch(getUserProfile(id));
+    
   }, []);
 
-  if (user) {
-    console.log(user);
-  }
+  useEffect(()=>{
+    // alert(user.user.id)
+    if (user) {
+      console.log(user)
+    }
+  },[user])
+
 
   return (
     <div className="profile-div inDiv">
