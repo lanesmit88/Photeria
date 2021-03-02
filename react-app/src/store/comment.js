@@ -28,7 +28,7 @@ export const createComment = (id, data) => async (dispatch) => {
     method: "post",
     body: JSON.stringify({ data }),
   });
-  const addComment = res.data;
+  const addComment = await res.json();
   dispatch(newComment(addComment));
 };
 
@@ -38,7 +38,7 @@ const commentReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_ALL_COMMENTS:
-      const newComments = [];
+      const newComments = {};
       action.comments.forEach((comment) => {
         if (newComments[comment.postId]) {
           newComments[comment.postId].push(comment);
@@ -49,15 +49,13 @@ const commentReducer = (state = initialState, action) => {
       return { ...state, ...newComments };
     case NEW_COMMENT:
       newState = JSON.parse(JSON.stringify(state));
-      if (newState[action.comment]) {
-        newState[action.comment].push(action.comment);
+      if (newState[action.comment.postId]) {
+        newState[action.comment.postId].push(action.comment);
         return newState;
       } else {
-        newState[action.comment] = [action.comment];
+        newState[action.comment.postId] = [action.comment];
         return newState;
       }
-
-      return action.comments;
     default:
       return state;
   }
