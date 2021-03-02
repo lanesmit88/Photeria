@@ -7,6 +7,7 @@ import CommentComponent from "../Comment/comment";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
+import { fetchFeedData } from "../../store/feed";
 import CreatePost from "../CreatePost/CreatePost";
 // import { fetchPostLikes } from "../../store/postLikes";
 import FollowComponent from "../FollowComponent/FollowComponent";
@@ -41,7 +42,10 @@ function Post({
   });
 
   let history = useHistory();
-
+  
+  const handleData = () => {
+      dispatch(fetchFeedData()) 
+  }
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -90,7 +94,7 @@ function Post({
 
           </div>
           <div className="name-location">
-            <FollowComponent id={id} postId={id} onCb={(e)=>console.log(e)} />
+            <FollowComponent id={id} postId={id} onCb={(e)=>handleData()} />
           </div>
         </div>
         <div className="imageBlock">

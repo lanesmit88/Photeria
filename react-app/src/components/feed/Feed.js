@@ -13,7 +13,7 @@ function Feed() {
 
   useEffect(() => {
     dispatch(fetchFeedData());
-  }, []);
+  }, [feedData]);
 
   useEffect(() => {
     dispatch(fetchAllUsers());
