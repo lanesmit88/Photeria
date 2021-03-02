@@ -42,9 +42,6 @@ function Post({
 
   let history = useHistory();
 
-  useEffect(async () => {
-    dispatch(fetchPostData(id));
-  }, []);
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -275,7 +272,7 @@ function Post({
         <div className="postCommentBlock">
           <CommentComponent postId={id} />
           {/* <CreateComment /> */}
-        </div>
+        </div> 
       </div>
     </div>
   );

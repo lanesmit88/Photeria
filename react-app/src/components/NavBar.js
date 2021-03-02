@@ -11,22 +11,36 @@ const NavBar = ({ setAuthenticated }) => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
+        {authenticated && (
+          <li>
+            <NavLink className="trending-link" exact={true} to={`/trending`}>
+              Trending
+            </NavLink>
+          </li>
+        )}
+
+        {!authenticated && (
+          <li>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </li>
+        )}
+        {!authenticated && (
+          <li>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </li>
+        )}
         <li>
          <SearchComponent />
         </li>
-        <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
+        {authenticated && (
+          <li>
+            <LogoutButton setAuthenticated={setAuthenticated} />
+          </li>
+        )}
       </ul>
     </nav>
   );

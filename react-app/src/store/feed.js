@@ -9,9 +9,6 @@ export const fetchFeedData = () => {
   return async (dispatch) => {
     const res = await fetch(`/api/feed/`);
     const resData = await res.json();
-    console.log('========================')
-    console.log(resData)
-    console.log('========================')
     dispatch(feedData(resData));
   };
 };

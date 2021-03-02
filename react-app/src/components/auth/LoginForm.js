@@ -30,6 +30,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     return <Redirect to="/" />;
   }
 
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setEmail("demo@aa.io");
+    setPassword("password");
+  };
+
   return (
     <div>
       <form id="loginForm" onSubmit={onLogin}>
@@ -37,7 +43,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <h1 id="login-logo">Photeria</h1>
         </div>
         <div id="login-errors">
-          {errors.map((error,i) => (
+          {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
         </div>
@@ -62,6 +68,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             Login
           </button>
         </div>
+      </form>
+      <form id="demo-button" onSubmit={handleDemo}>
+        <button type="submit">Demo</button>
       </form>
     </div>
   );

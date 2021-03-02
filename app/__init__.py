@@ -13,6 +13,7 @@ from .routes.messages import bp
 from .api.comment_routes import comment_routes
 from .api.feed_routes import feed_routes
 from .api.follow_routes import follow_routes
+from .api.trending_routes import trending_routes
 
 
 from .seeds import seed_commands
@@ -42,6 +43,7 @@ app.register_blueprint(bp, url_prefix='/dm')
 app.register_blueprint(comment_routes, url_prefix='/api/comment')
 app.register_blueprint(feed_routes, url_prefix='/api/feed')
 app.register_blueprint(follow_routes, url_prefix='/api/follow')
+app.register_blueprint(trending_routes, url_prefix='/api/trending')
 
 
 

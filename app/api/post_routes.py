@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Post, PostLike,Comment, db
+from app.models import Post, PostLike, Comment, db
 from app.forms import ImageUploadForm
+from app.forms import CreatePostForm
 import base64
 post_routes = Blueprint('posts', __name__)
 
@@ -40,3 +41,21 @@ def likePost(id):
 def post(id):
     post = Post.query.get(id)
     return post.to_dict()
+
+@post_routes.route('/create', methods=["POST"])
+@login_required
+def createPost():
+    form = CreatePostForm()
+    data = request.get_json(force = True)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['userId'].data = current_user.id
+    form['photoData'].data = data['data']['photoData']
+    form['caption'].data = data['data']['caption']
+    form['location'].data = data['data']['location']
+    if form.validate_on_submit():
+        newPost = Post()
+        form.populate_obj(newPost)
+        db.session.add(newPost)
+        db.session.commit()
+        return 'Comment created'
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
