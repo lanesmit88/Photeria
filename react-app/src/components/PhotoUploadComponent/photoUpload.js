@@ -5,8 +5,7 @@ function ImageUpload({onNewImageBase64}) {
   const [images, setImages] = React.useState([]);
  
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    // console.log(imageList, addUpdateIndex);
+
     setImages(imageList);
     if (imageList[0]) {
         onNewImageBase64(imageList[0].data_url)

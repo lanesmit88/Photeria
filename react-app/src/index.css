@@ -13,6 +13,7 @@ nav {
   padding-top: 0em;
   margin-bottom: 2em;
   position: fixed;
+  z-index: 100;
 }
 nav ul {
   display: flex;
@@ -34,4 +35,23 @@ nav ul li button {
   padding-right: 1em;
   cursor: pointer;
   font-size: 16px;
+}
+
+.searchDiv {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.searchResult {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.searchResult >p {
+  color: white;
 }

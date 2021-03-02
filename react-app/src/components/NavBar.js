@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
-
+import SearchComponent from './SearchComponent/SearchComponent'
 const NavBar = ({ setAuthenticated }) => {
   return (
     <nav>
@@ -22,9 +22,7 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
+         <SearchComponent />
         </li>
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
