@@ -24,13 +24,14 @@ export const fetchPostData = (postId) => {
 
 const initialState = [];
 
-export const fetchCreatePost = (body) => {
+export const fetchCreatePost = (data) => {
   return async (dispatch) => {
     const post = await fetch("/api/post/create", {
       method: "post",
-      body: JSON.stringify({ body }),
+      body: JSON.stringify({ data }),
     });
     dispatch(CreatePost(await post.json()));
+    return
   };
 };
 

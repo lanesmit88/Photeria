@@ -21,7 +21,6 @@ def validation_errors_to_error_messages(validation_errors):
 def new_comment(postId):
     form = CommentForm()
     data = request.get_json(force = True)
-    print(data['data'])
     
     form['csrf_token'].data = request.cookies['csrf_token']
     # form['userId'].data = '1'

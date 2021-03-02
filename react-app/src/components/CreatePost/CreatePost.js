@@ -11,6 +11,7 @@ function CreatePost(props) {
 
   const submitHandeler = (e) => {
     e.preventDefault();
+    console.log(image, caption, location, "000000000000000000")
     dispatch(fetchCreatePost(image, caption, location));
   };
 
