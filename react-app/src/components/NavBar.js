@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 
-const NavBar = ({ setAuthenticated, authenticated }) => {
+const NavBar = ({ setAuthenticated, authenticated, loggedInUserId }) => {
   return (
     <nav>
       <ul>
@@ -11,6 +11,17 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
             Home
           </NavLink>
         </li>
+        {authenticated && (
+          <li>
+            <NavLink
+              className="profile-link"
+              exact={true}
+              to={`/profile/${loggedInUserId}`}
+            >
+              Profile
+            </NavLink>
+          </li>
+        )}
         {authenticated && (
           <li>
             <NavLink className="trending-link" exact={true} to={`/trending`}>

@@ -62,7 +62,6 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
-    print('fuck yea')
     form['csrf_token'].data = request.cookies['csrf_token']
     print(form.data['firstName'],form.data['lastName'],
                 form.data['username'],form.data['email'],

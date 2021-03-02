@@ -33,7 +33,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const handleDemo = (e) => {
     e.preventDefault();
     setEmail("demo@aa.io");
-    setPassword("password");
+    setPassword("newPassword");
   };
 
   return (

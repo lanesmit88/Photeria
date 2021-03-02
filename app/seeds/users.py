@@ -5,7 +5,7 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                password=generate_password_hash('password'), firstName='John', lastName='Smith')
+                password=generate_password_hash('newPassword'), firstName='John', lastName='Smith')
     mike = User(username='mike1', email='mike@mike.oom',
                 password=generate_password_hash('password'), firstName='Mike',
                 lastName='Not Smith',
