@@ -37,7 +37,7 @@ function SearchComponent({ postId, id }) {
           setEditing(false)
           setSearchVal('')
           setSearchResults([])
-        },[200])
+        },[2000])
        
        }} 
        
