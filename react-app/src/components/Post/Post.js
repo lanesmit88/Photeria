@@ -28,7 +28,6 @@ function Post({
   const [testTrue, setTest] = useState(false);
   const [stnule, stNull] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [tempi, setTempi] = useState(true);
   // const [newSate, setNewState] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,7 +41,6 @@ function Post({
 
   let history = useHistory();
 
-
   const likeSubmit = async () => {
     // edit fetch call to specific post
     await fetch(`/api/post/${id}/like`, {
@@ -55,20 +53,8 @@ function Post({
 
   return (
     <div>
-      <div id="CreatePostButton">
-        <div>
-          <p
-            onClick={() => {
-              setTempi(false);
-            }}
-          >
-            Make a Post
-          </p>
-
-          <div hidden={tempi}>
-            <CreatePost state={setTempi} />
-          </div>
-        </div>
+      <div>
+        <CreatePost />
       </div>
       <div className="wrapper">
         <div className="headerBlock">
@@ -79,15 +65,14 @@ function Post({
                 {user.username}
               </span>
 
-
-
-          {/* <span onClick={()=>history.push(`/profile/${userId}`)
+              {/* <span onClick={()=>history.push(`/profile/${userId}`)
           }>{user.username}</span> */}
-          <span><a href={`/profile/${userId}`}>{user.username}</a></span>
-        
-          <span className="location-text">{location}</span>  
-          </div>
+              <span>
+                <a href={`/profile/${userId}`}>{user.username}</a>
+              </span>
 
+              <span className="location-text">{location}</span>
+            </div>
           </div>
           <div className="name-location">
             <FollowComponent id={id} postId={id} />
@@ -272,7 +257,7 @@ function Post({
         <div className="postCommentBlock">
           <CommentComponent postId={id} />
           {/* <CreateComment /> */}
-        </div> 
+        </div>
       </div>
     </div>
   );
