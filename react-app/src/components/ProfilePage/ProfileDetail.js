@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import FollowComponent from '../FollowComponent/FollowComponent'
 // import { useState } from "react";
 
 import "./ProfileDetail.css";

@@ -1,5 +1,7 @@
 import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getUserProfile } from "../../store/user";
+import { Link } from "react-router-dom";
 
 
 function SearchComponent({ postId, id }) {
@@ -29,11 +31,21 @@ function SearchComponent({ postId, id }) {
 
   return (
     <>
-     <input value={searchVal} className='search-bar' onFocus={()=>setEditing(true)} onBlur={()=>setEditing(false)} onChange={(e)=>searchUser(e.target.value)}></input>
+     <input value={searchVal} className='search-bar' onFocus={()=>setEditing(true)}
+      onBlur={()=>{
+        setTimeout(()=>{
+          setEditing(false)
+          setSearchVal('')
+          setSearchResults([])
+        },[200])
+       
+       }} 
+       
+       onChange={(e)=>searchUser(e.target.value)}></input>
      {searchResults.length > 0 && isEditing &&
-      <div className='searchDiv' style={{zIndex:'-9900'}}>
+      <div className='searchDiv'>
         {searchResults.map(r => {
-          return <a key={r.id} href={`/profile/${r.id}`}><div className='searchResult'> <img src={r.profilePhoto} style={{maxHeight:'50px'}}></img> <p>{r.username}</p> </div></a>
+          return <Link onClick={()=>{dispatch(getUserProfile(r.id))}} key={r.id} to={`/profile/${r.id}`}><div className='searchResult'> <img src={r.profilePhoto} style={{maxHeight:'50px'}}></img> <p>{r.username}</p> </div></Link>
         })}
       </div>
      }

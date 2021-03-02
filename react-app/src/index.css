@@ -50,6 +50,7 @@ nav ul li button {
   display: flex;
   justify-content: space-evenly;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 .searchResult >p {
