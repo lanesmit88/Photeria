@@ -22,18 +22,16 @@ export const fetchPostData = (postId) => {
   };
 };
 
-const initialState = [];
-
-export const fetchCreatePost = (data) => {
-  return async (dispatch) => {
-    const post = await fetch("/api/post/create", {
+export const fetchCreatePost = (data) => async (dispatch) => {
+    const res = await fetch("/api/post/create", {
       method: "post",
       body: JSON.stringify({ data }),
     });
-    dispatch(CreatePost(await post.json()));
-    return
+    dispatch(CreatePost(await res.json()));
+    return "hello";
   };
-};
+
+const initialState = [];
 
 function reducer(state = initialState, action) {
   let newState;
@@ -42,7 +40,8 @@ function reducer(state = initialState, action) {
       newState = action.post;
       return newState;
     case CREATE_POST:
-      newState = action.post;
+      newState = Object.assign({}, state);
+      newState.post = action.post;
       return newState;
     default:
       return state;

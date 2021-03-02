@@ -5,14 +5,13 @@ import ImageUpload from "../PhotoUploadComponent/photoUpload";
 
 function CreatePost(props) {
   const dispatch = useDispatch();
-  let [image, setImage] = useState("");
+  let [photoData, setPhotoData] = useState("");
   let [caption, setCaption] = useState("");
   let [location, setLocation] = useState("");
 
   const submitHandeler = (e) => {
     e.preventDefault();
-    console.log(image, caption, location, "000000000000000000")
-    dispatch(fetchCreatePost(image, caption, location));
+    dispatch(fetchCreatePost({photoData, caption, location}));
   };
 
   return (
@@ -29,15 +28,15 @@ function CreatePost(props) {
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
         /> */}
-        <ImageUpload onNewImageBase64={(b64) => setImage(b64)} />
+        <ImageUpload onNewImageBase64={(b64) => setPhotoData(b64)} />
         <textarea
           value={caption}
           placeholder="Create a caption"
           onChange={(e) => setCaption(e.target.value)}
         ></textarea>
         <input
-          placeholder="Location"
           value={location}
+          placeholder="Location"
           onChange={(e) => setLocation(e.target.value)}
         />
         <button type="submit">Post</button>

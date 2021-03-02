@@ -29,12 +29,10 @@ def new_comment(postId):
     form['postId'].data = postId
     
     if form.validate_on_submit():
-        
         newComment = Comment()
         form.populate_obj(newComment)
         db.session.add(newComment)
         db.session.commit()
-        
         return 'Comment created'
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
