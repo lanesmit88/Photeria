@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import FollowComponent from '../FollowComponent/FollowComponent'
+import FollowingProfileComponent from '../FollowingProfileComponent/FollowingProfileComponent'
 import "./ProfileDetail.css";
 
 function ProfileDetail({user}) {
@@ -20,6 +20,7 @@ function ProfileDetail({user}) {
       <div className="detailDiv">
         <div className="userNameDiv">
           <h1 className="userNameHeading">{user.user.username}</h1>
+          <FollowingProfileComponent userId={user.user.id} />
           
           {id ? (
             
