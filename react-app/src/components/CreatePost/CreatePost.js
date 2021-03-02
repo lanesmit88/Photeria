@@ -9,17 +9,14 @@ function CreatePost(props) {
   let [caption, setCaption] = useState("");
   let [location, setLocation] = useState("");
 
-  const submitHandeler = (e) => {
+  function submitHandeler(e) {
     e.preventDefault();
-    dispatch(fetchCreatePost({photoData, caption, location}));
-  };
+    dispatch(fetchCreatePost({ photoData, caption, location }));
+  }
 
   return (
     <div>
-      <form
-        // onSubmit={(e) => onSubmit(e, image, 6, caption, location)}
-        onSubmit={submitHandeler}
-      >
+      <form onSubmit={submitHandeler}>
         <label for="img">Select image:</label>
         {/* <input
           //   value={image}

@@ -21,14 +21,12 @@ export const createComment = (id, data) => async (dispatch) => {
     body: JSON.stringify({ data }),
   });
   dispatch(newComment(await comment.json()));
-  return "hello";
 };
 
 export const getPostComments = (postId) => async (dispatch) => {
   const comments = await fetch(`/api/post/${postId}/allcomments`);
   // console.log(await comments.json())
   dispatch(listPostComments(await comments.json()));
-  return "hello";
 };
 
 const initialState = [];
@@ -42,10 +40,10 @@ const commentReducer = (state = initialState, action) => {
       return action.comments;
 
     case NEW_COMMENT:
+      // console.log("0000000000000000000", state,"========================")
       newState = Object.assign({}, state);
       newState.comment = action.comment;
-      return action.comment;
-
+      return newState;
     default:
       return state;
   }
