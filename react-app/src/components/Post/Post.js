@@ -40,7 +40,6 @@ function Post({
     return temp.id === userId;
   });
 
-
   const comments = useSelector((reduxState) => {
     return reduxState.comment[id];
   });
@@ -51,12 +50,9 @@ function Post({
 
   let history = useHistory();
 
-  // let history = useHistory();
-  
-  // const handleData = () => {
-  //     dispatch(fetchFeedData()) 
-  // }
-
+  const handleData = () => {
+    dispatch(fetchFeedData());
+  };
 
   const likeSubmit = async () => {
     // edit fetch call to specific post
@@ -64,6 +60,7 @@ function Post({
       method: "POST",
     });
   };
+
   if (!user) {
     return null;
   }
@@ -91,9 +88,9 @@ function Post({
               <span className="location-text">{location}</span>
             </div>
           </div>
-          {/* <div className="name-location">
-            <FollowComponent id={id} postId={id} onCb={(e)=>handleData()} />
-          </div> */}
+          <div className="name-location">
+            <FollowComponent id={id} postId={id} onCb={(e) => handleData()} />
+          </div>
         </div>
         <div className="imageBlock">
           <img src={photoData} alt={"sydfgui"} />
