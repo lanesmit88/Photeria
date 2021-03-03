@@ -1,5 +1,6 @@
 .wrapper {
   margin: auto;
+  margin-top: 3em;
   width: 33%;
   display: grid;
   grid-template-columns: 1fr;
@@ -143,7 +144,7 @@
 .commentBlock > a:hover {
   color: gray;
 }
-.comment {
+/* .comment {
   display: flex;
 }
 .aTagDivComment {
@@ -160,6 +161,16 @@
   font-size: small;
   margin: 3px 0 0 0;
   word-wrap: break-word;
+} */
+
+.comment a {
+  margin-left: 0.5em;
+  font-size: small;
+}
+
+.comment {
+  font-size: small;
+  padding-bottom: 0.3em;
 }
 
 .readMoreSpan,

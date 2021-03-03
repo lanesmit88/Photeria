@@ -42,9 +42,9 @@ function Post({
   });
 
   let history = useHistory();
-  
+
   const handleData = () => {
-      dispatch(fetchFeedData()) 
+      dispatch(fetchFeedData())
   }
 
   const likeSubmit = async () => {
@@ -88,8 +88,8 @@ function Post({
           {/* <span onClick={()=>history.push(`/profile/${userId}`)
           }>{user.username}</span> */}
           <span><a href={`/profile/${userId}`}>{user.username}</a></span>
-        
-          <span className="location-text">{location}</span>  
+
+          <span className="location-text">{location}</span>
           </div>
 
           </div>
@@ -242,13 +242,9 @@ function Post({
 
             {stnule &&
               comment.map((eachComment) => (
-                <div className="comment">
-                  <div className="aTagDivComment">
+                <div className="topComments">
                     <a href="">User Name</a>
-                  </div>
-                  <div className="pTagDivComment">
                     <p>{eachComment.text}</p>
-                  </div>
                 </div>
               ))}
             {comment.length >= 2 && !stnule && (
@@ -276,7 +272,7 @@ function Post({
         <div className="postCommentBlock">
           <CommentComponent postId={id} />
           {/* <CreateComment /> */}
-        </div> 
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
   width: 700px !important;
   /* margin-left: 40%; */
   border-radius: 10px;
+  background-color: whitesmoke;
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
@@ -107,7 +108,7 @@
   padding-left: 0;
   padding-right: 0;
   padding-top: 2px;
-  background-color: transparent;
+  background-color: whitesmoke;
   margin-left: 1px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.14);
