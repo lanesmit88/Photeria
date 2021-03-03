@@ -4,6 +4,7 @@
   width: 300px !important;
   height: 547px;
   border-radius: 10px;
+  background-color: whitesmoke;
   border: 1px solid rgba(0, 0, 0, 0.11);
   border-bottom-right-radius: 0;
 }
