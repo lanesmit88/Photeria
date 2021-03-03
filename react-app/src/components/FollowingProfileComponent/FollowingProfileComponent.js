@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { isUserFollowingProfile } from "../../store/follows";
 import { fetchPostData } from "../../store/post";
 
-function FollowingProfileComponent({ userId }) {
+function FollowingProfileComponent({ userId, onCb }) {
   const dispatch = useDispatch();
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
@@ -31,6 +31,7 @@ function FollowingProfileComponent({ userId }) {
       body: JSON.stringify({ userToFollow: userId }),
     });
     setCheckFollow(await newFollow.json());
+    onCb()
   };
 
   const unfollowUser = async () => {
@@ -40,6 +41,7 @@ function FollowingProfileComponent({ userId }) {
       body: JSON.stringify({ userToFollow: userId }),
     });
     setCheckFollow(await unFollow.json());
+    onCb()
   };
 
   return (
