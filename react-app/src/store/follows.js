@@ -9,8 +9,14 @@ const checkIfFollowing = (following) => {
 
 export const isUserFollowing = (postId) => async (dispatch) => {
   const followingStatus = await fetch(`/api/follow/followstatus/${postId}`);
-  dispatch(checkIfFollowing(await followingStatus.json()));
-  // return
+  const following = dispatch(checkIfFollowing(await followingStatus.json()));
+  return [following, postId]
+};
+export const isUserFollowingProfile = (userId) => async (dispatch) => {
+  console.log(userId)
+  const followingStatus = await fetch(`/api/follow/followstatus/profile/${userId}`);
+  const following = dispatch(checkIfFollowing(await followingStatus.json()));
+  return [following, userId]
 };
 
 export const followUser = (postId) => async (dispatch) => {

@@ -1,14 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getUserProfile } from "../../store/user";
+import FollowingProfileComponent from '../FollowingProfileComponent/FollowingProfileComponent'
 import "./ProfileDetail.css";
 
 function ProfileDetail({user}) {
   const { id } = useParams();
-  // const [followed, setFollowed] = useState("Follow");
   const follows = 0;
-  // console.log(id);
+  const dispatch = useDispatch();
+
   return (
     <div className="mainDiv">
       <div className="imageDiv">
@@ -22,19 +23,7 @@ function ProfileDetail({user}) {
       <div className="detailDiv">
         <div className="userNameDiv">
           <h1 className="userNameHeading">{user.user.username}</h1>
-          {id ? (
-            <button
-              className="editProfileButton"
-              onClick={() => (window.location.href = "/edit/profile")}
-            >
-              Edit Profile
-            </button>
-          ) : (
-            <div>
-              {" "}
-              {follows ? <button>Unfollow</button> : <button>Follow</button>}
-            </div>
-          )}
+          <FollowingProfileComponent userId={user.user.id} onCb={()=>dispatch(getUserProfile(user.user.id))} />
         </div>
         <div className="pffDiv">
           <p>

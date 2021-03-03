@@ -1,17 +1,15 @@
-import React from 'react';
-import ImageUploading from 'react-images-uploading';
- 
-function ImageUpload({onNewImageBase64}) {
+import React from "react";
+import ImageUploading from "react-images-uploading";
+
+function ImageUpload({ onNewImageBase64 }) {
   const [images, setImages] = React.useState([]);
- 
+
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    // console.log(imageList, addUpdateIndex);
     setImages(imageList);
     if (imageList[0]) {
-        onNewImageBase64(imageList[0].data_url)
+      onNewImageBase64(imageList[0].data_url);
     } else {
-        onNewImageBase64(null)
+      onNewImageBase64(null);
     }
   };
 
@@ -34,7 +32,8 @@ function ImageUpload({onNewImageBase64}) {
           // write your building UI
           <div className="upload__image-wrapper">
             <button
-              style={isDragging ? { color: 'red' } : undefined}
+              type="button"
+              style={isDragging ? { color: "red" } : undefined}
               onClick={onImageUpload}
               {...dragProps}
             >
@@ -43,7 +42,7 @@ function ImageUpload({onNewImageBase64}) {
             &nbsp; {/* html encoded space character / HTML Entity*/}
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <img src={image['data_url']} alt="" width="100" />
+                <img src={image["data_url"]} alt="" width="100" />
                 <div className="image-item__btn-wrapper">
                   <button onClick={() => onImageUpdate(index)}>Update</button>
                   <button onClick={() => onImageRemove(index)}>Remove</button>
@@ -53,9 +52,8 @@ function ImageUpload({onNewImageBase64}) {
           </div>
         )}
       </ImageUploading>
-
     </div>
   );
 }
 
-export default ImageUpload
+export default ImageUpload;

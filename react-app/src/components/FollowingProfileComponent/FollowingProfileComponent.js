@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { isUserFollowing } from "../../store/follows";
+import { isUserFollowingProfile } from "../../store/follows";
 import { fetchPostData } from "../../store/post";
 
-function FollowComponent({ postId, id, onCb }) {
+function FollowingProfileComponent({ userId, onCb }) {
   const dispatch = useDispatch();
   const isFollowing = useSelector((state) => state.following);
   const [checkFollow, setCheckFollow] = useState(isFollowing);
   const [testFollow, setTestFollow] = useState(false)
 
   useEffect(() => {
-    dispatch(isUserFollowing(postId)).then((e) => {
+    dispatch(isUserFollowingProfile(userId)).then((e) => {
     
       if (e[0].following.status) {
-        onCb(true)
+        // onCb(true)
         setTestFollow(true)
       } else {
-        onCb(false)
+        // onCb(false)
         setTestFollow(false)
       }
-      dispatch(fetchPostData(id))});
+    //   dispatch(fetchPostData(userd))
+    });
     
   }, [checkFollow]);
 
   const followUser = async () => {
-    const newFollow = await fetch(`/api/follow/new`, {
+      console.log(userId)
+    const newFollow = await fetch(`/api/follow/followuser`, {
       method: "post",
-      body: JSON.stringify({ userToFollow: postId }),
+      body: JSON.stringify({ userToFollow: userId }),
     });
     setCheckFollow(await newFollow.json());
+    onCb()
   };
 
   const unfollowUser = async () => {
-    const unFollow = await fetch(`/api/follow/unfollow`, {
+      
+    const unFollow = await fetch(`/api/follow/unfollowuser`, {
       method: "post",
-      body: JSON.stringify({ userToFollow: postId }),
+      body: JSON.stringify({ userToFollow: userId }),
     });
     setCheckFollow(await unFollow.json());
+    onCb()
   };
 
   return (
@@ -55,4 +60,4 @@ function FollowComponent({ postId, id, onCb }) {
   );
 }
 
-export default FollowComponent;
+export default FollowingProfileComponent;
