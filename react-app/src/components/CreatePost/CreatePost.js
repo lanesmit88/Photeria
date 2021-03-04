@@ -15,7 +15,7 @@ function CreatePost(props) {
   };
 
   return (
-    <div>
+    <div className='create-post-modal-wrapper'>
       <form
         // onSubmit={(e) => onSubmit(e, image, 6, caption, location)}
         onSubmit={submitHandeler}

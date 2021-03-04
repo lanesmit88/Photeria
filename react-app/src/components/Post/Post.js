@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostData } from "../../store/post";
 import { fetchFeedData } from "../../store/feed";
-import CreatePost from "../CreatePost/CreatePost";
 // import { fetchPostLikes } from "../../store/postLikes";
 import FollowComponent from "../FollowComponent/FollowComponent";
 import "./Post.css";
@@ -59,21 +58,6 @@ function Post({
 
   return (
     <div>
-      <div id="CreatePostButton">
-        <div>
-          <p
-            onClick={() => {
-              setTempi(false);
-            }}
-          >
-            Make a Post
-          </p>
-
-          <div hidden={tempi}>
-            <CreatePost state={setTempi} />
-          </div>
-        </div>
-      </div>
       <div className="wrapper">
         <div className="headerBlock">
           <div className="flex">

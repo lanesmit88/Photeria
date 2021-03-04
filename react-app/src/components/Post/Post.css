@@ -217,6 +217,7 @@
   border-radius: 5px;
   box-shadow: rgb(49, 49, 49) 5px 5px 5px;
   cursor: pointer;
+  margin-top: 3em;
 }
 #CreatePostButton div p {
   color: white;
