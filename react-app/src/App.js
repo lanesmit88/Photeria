@@ -20,12 +20,13 @@ import { authenticate } from "./services/auth";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [loggedInUserId, setLoggedInUserId] = useState(0);
   useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
-
+        setLoggedInUserId(user.id);
       }
       setLoaded(true);
     })();
@@ -40,6 +41,7 @@ function App() {
       <NavBar
         setAuthenticated={setAuthenticated}
         authenticated={authenticated}
+        loggedInUserId={loggedInUserId}
       />
       <Switch>
         <ProtectedRoute
