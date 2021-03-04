@@ -1,12 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import Post from "../Post/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFeedData } from "../../store/feed";
 import { useEffect } from "react";
 import { fetchAllUsers } from "../../store/allUsers";
+import { Modal } from "../../context/Modal";
+import CreatePost from "../CreatePost/CreatePost";
 
 function Feed() {
   const dispatch = useDispatch();
+  const [createPostModal, setCreatePostModal] = useState(false);
   const feedData = useSelector((reduxState) => {
     return reduxState.feed;
   });
@@ -21,6 +25,18 @@ function Feed() {
 
   return (
     <div>
+        <div id="CreatePostButton">
+          <div>
+            <p onClick={() => { setCreatePostModal(true); }}>Make a Post</p>
+            {createPostModal && (
+                <Modal onClose={() => setCreatePostModal(false)}>
+                  <div id="modal-div">
+                    <CreatePost />
+                  </div>
+                </Modal>
+              )}
+        </div>
+      </div>
       {feedData.length > 0
         ? feedData.map((post) => {
             return (
