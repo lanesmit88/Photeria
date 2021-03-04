@@ -57,5 +57,5 @@ def createPost():
         form.populate_obj(newPost)
         db.session.add(newPost)
         db.session.commit()
-        return 'Comment created'
+        return {"success":'true'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
