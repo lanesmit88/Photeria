@@ -73,12 +73,12 @@ function Post({
           }>{user.username}</span> */}
           <span><a href={`/profile/${userId}`}>{user.username}</a></span>
 
-          <span className="location-text">{location}</span>
           </div>
 
           </div>
           <div className="name-location">
             <FollowComponent id={id} postId={id} onCb={(e)=>handleData()} />
+          <span className="location-text">{location}</span>
           </div>
         </div>
         <div className="imageBlock">
