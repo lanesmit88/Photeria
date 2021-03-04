@@ -67,9 +67,6 @@ function Post({
 
   return (
     <div>
-      <div>
-        <CreatePost />
-      </div>
       <div className="wrapper">
         <div className="headerBlock">
           <div className="flex">
@@ -81,9 +78,10 @@ function Post({
 
               {/* <span onClick={()=>history.push(`/profile/${userId}`)
           }>{user.username}</span> */}
-              <span>
-                <a href={`/profile/${userId}`}>{user.username}</a>
-              </span>
+          <span><a href={`/profile/${userId}`}>{user.username}</a></span>
+
+          <span className="location-text">{location}</span>
+          </div>
 
               <span className="location-text">{location}</span>
             </div>
@@ -236,15 +234,10 @@ function Post({
             )}
 
             {stnule &&
-              comments &&
               comments.map((eachComment) => (
-                <div className="comment">
-                  <div className="aTagDivComment">
+                <div className="topComments">
                     <a href="">User Name</a>
-                  </div>
-                  <div className="pTagDivComment">
                     <p>{eachComment.text}</p>
-                  </div>
                 </div>
               ))}
             {comments && comments.length >= 2 && !stnule && (
@@ -274,7 +267,6 @@ function Post({
           {/* <CreateComment /> */}
         </div>
       </div>
-    </div>
   );
 }
 

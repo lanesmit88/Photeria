@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 #modal-background {
@@ -50,4 +51,21 @@
 /* Handle on hover */
 #modal-content::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Corner */
+#modal-content::-webkit-scrollbar-corner {
+  background:rgba(0, 0, 0, 0);
+}
+
+
+/* Create post modal  */
+.create-post-modal-wrapper{
+  margin: auto;
+  width: 80%;
+  padding: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.create-post-modal-wrapper form *{
+  margin-top: 0.5em;
 }

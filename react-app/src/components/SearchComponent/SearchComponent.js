@@ -31,7 +31,7 @@ function SearchComponent({ postId, id }) {
 
   return (
     <>
-     <input value={searchVal} className='search-bar' onFocus={()=>setEditing(true)}
+     <input placeholder='Search....' value={searchVal} className='search-bar' onFocus={()=>setEditing(true)}
       onBlur={()=>{
         setTimeout(()=>{
           setEditing(false)
