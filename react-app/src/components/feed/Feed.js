@@ -25,16 +25,22 @@ function Feed() {
 
   return (
     <div>
-        <div id="CreatePostButton">
-          <div>
-            <p onClick={() => { setCreatePostModal(true); }}>Make a Post</p>
-            {createPostModal && (
-                <Modal onClose={() => setCreatePostModal(false)}>
-                  <div id="modal-div">
-                    <CreatePost />
-                  </div>
-                </Modal>
-              )}
+      <div id="CreatePostButton">
+        <div>
+          <p
+            onClick={() => {
+              setCreatePostModal(true);
+            }}
+          >
+            Make a Post
+          </p>
+          {createPostModal && (
+            <Modal onClose={() => setCreatePostModal(false)}>
+              <div id="modal-div">
+                <CreatePost />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       {feedData.length > 0
