@@ -49,9 +49,9 @@ def createPost():
     data = request.get_json(force = True)
     form['csrf_token'].data = request.cookies['csrf_token']
     form['userId'].data = current_user.id
-    form['photoData'].data = data['data']['photoData']
-    form['caption'].data = data['data']['caption']
-    form['location'].data = data['data']['location']
+    form['photoData'].data = data['photoData']
+    form['caption'].data = data['caption']
+    form['location'].data = data['location']
     if form.validate_on_submit():
         newPost = Post()
         form.populate_obj(newPost)
