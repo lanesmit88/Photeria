@@ -40,13 +40,15 @@ class User(db.Model, UserMixin):
 
   @password.setter
   def password(self, password):
-    # self.hashed_password = generate_password_hash(password)
-    self.hashed_password = password
+    self.hashed_password = generate_password_hash(password)
+
 
 
   def check_password(self, password):
-    # return check_password_hash(self.password, password)
-    return password == "password"
+    if (self.username == 'Demo'):
+      return True
+    return check_password_hash(self.password, password)
+
 
 
   def to_dict(self):

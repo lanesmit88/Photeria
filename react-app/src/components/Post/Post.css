@@ -217,6 +217,8 @@
   box-shadow: rgb(49, 49, 49) 5px 5px 5px;
   cursor: pointer;
   margin-top: 3em;
+  position: fixed;
+  margin-left: 67%;
 }
 #CreatePostButton div p {
   color: white;
@@ -240,6 +242,8 @@
 }
 .location-text {
   font-size: 0.8em;
+  display: inline;
+  float: right;
 }
 
 .flex {
@@ -259,4 +263,12 @@
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.name-location button{
+  float: right;
+}
+
+.name-location{
+  margin-right: 0.5em;
 }
