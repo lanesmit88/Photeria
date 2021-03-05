@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, NavLink } from "react-router-dom";
 import CreateComment from "../Comment/comment";
 import { Modal } from "../../context/Modal";
 import CommentComponent from "../Comment/comment";
@@ -72,24 +72,17 @@ function Post({
           <div className="flex">
             <img src={photoData} alt={"hi"} />
             <div className="user-loc">
-              <span onClick={() => history.push(`/profile/${userId}`)}>
-                {user.username}
-              </span>
-
+              <NavLink to={`/profile/${userId}`}>{user.username}</NavLink>
               {/* <span onClick={()=>history.push(`/profile/${userId}`)
           }>{user.username}</span> */}
-          <span><a href={`/profile/${userId}`}>{user.username}</a></span>
-
-          <span className="location-text">{location}</span>
-          </div>
-
-              <span className="location-text">{location}</span>
+            </div>
+            <span className="location-text">{location}</span>{" "}
+            <div className="follow-button-wrapper">
+              <FollowComponent id={id} postId={id} onCb={(e) => handleData()} />
             </div>
           </div>
-          <div className="name-location">
-            <FollowComponent id={id} postId={id} onCb={(e) => handleData()} />
-          </div>
         </div>
+
         <div className="imageBlock">
           <img src={photoData} alt={"sydfgui"} />
         </div>
@@ -236,8 +229,8 @@ function Post({
             {stnule &&
               comments.map((eachComment) => (
                 <div className="topComments">
-                    <a href="">User Name</a>
-                    <p>{eachComment.text}</p>
+                  <a href="">User Name</a>
+                  <p>{eachComment.text}</p>
                 </div>
               ))}
             {comments && comments.length >= 2 && !stnule && (
@@ -267,6 +260,7 @@ function Post({
           {/* <CreateComment /> */}
         </div>
       </div>
+    </div>
   );
 }
 

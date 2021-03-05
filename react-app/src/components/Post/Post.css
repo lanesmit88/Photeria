@@ -36,7 +36,6 @@
   padding-left: 2px;
 }
 .detailBlock {
-  grid-area: detailBlock;
   border-top: solid 1px black;
   width: 100%;
 }
@@ -230,6 +229,9 @@
 .user-loc {
   display: flex;
   flex-direction: column;
+  padding-left: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-loc > a {
@@ -242,4 +244,19 @@
 
 .flex {
   display: flex;
+  width: 100%;
+}
+
+.follow-button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.location-text {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
