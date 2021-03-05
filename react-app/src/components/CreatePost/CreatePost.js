@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { fetchCreatePost } from "../../store/post";
 import ImageUpload from "../PhotoUploadComponent/photoUpload";
 
@@ -12,6 +13,7 @@ function CreatePost(props) {
   const submitHandeler = (e) => {
     e.preventDefault();
     dispatch(fetchCreatePost({ photoData, caption, location }));
+    Redirect("/")
   };
 
   return (

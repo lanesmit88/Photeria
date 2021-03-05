@@ -5,12 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchFeedData } from "../../store/feed";
 import { useEffect } from "react";
 import { fetchAllUsers } from "../../store/allUsers";
+import { fetchCreatePost } from "../../store/post";
+
 import { Modal } from "../../context/Modal";
+import ImageUpload from "../PhotoUploadComponent/photoUpload";
 import CreatePost from "../CreatePost/CreatePost";
 
 function Feed() {
   const dispatch = useDispatch();
   const [createPostModal, setCreatePostModal] = useState(false);
+  let [photoData, setPhotoData] = useState("");
+  let [caption, setCaption] = useState("");
+  let [location, setLocation] = useState("");
   const feedData = useSelector((reduxState) => {
     return reduxState.feed;
   });
@@ -22,7 +28,11 @@ function Feed() {
   useEffect(() => {
     dispatch(fetchAllUsers());
   }, []);
-
+  const submitHandeler = (e) => {
+    e.preventDefault();
+    dispatch(fetchCreatePost({ photoData, caption, location }));
+    setCreatePostModal(false);
+  };
   return (
     <div>
       <div id="CreatePostButton">
@@ -37,7 +47,35 @@ function Feed() {
           {createPostModal && (
             <Modal onClose={() => setCreatePostModal(false)}>
               <div id="modal-div">
-                <CreatePost />
+                <div className="create-post-modal-wrapper">
+                  <form
+                    // onSubmit={(e) => onSubmit(e, image, 6, caption, location)}
+                    onSubmit={submitHandeler}
+                  >
+                    <label for="img">Select image:</label>
+                    {/* <input
+          //   value={image}
+          type="file"
+          name="img"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        /> */}
+                    <ImageUpload
+                      onNewImageBase64={(b64) => setPhotoData(b64)}
+                    />
+                    <textarea
+                      value={caption}
+                      placeholder="Create a caption"
+                      onChange={(e) => setCaption(e.target.value)}
+                    ></textarea>
+                    <input
+                      value={location}
+                      placeholder="Location"
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                    <button type="submit">Post</button>
+                  </form>
+                </div>
               </div>
             </Modal>
           )}
