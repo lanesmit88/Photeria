@@ -89,9 +89,9 @@ function Post({
         <div className="detailBlock">
           {/* Likes and other details */}
           <div className="iconBlock">
-            <button onClick={() => likeSubmit()}>Like</button>
-            <button>Comment</button>
-            <button onClick={() => (window.location.href = `/dm/${6}`)}>
+            <button onClick={() => likeSubmit()} className='feed-button'>Like</button>
+            <button className='feed-button'>Comment</button>
+            <button onClick={() => (window.location.href = `/dm/${6}`)} className='feed-button'>
               DM
             </button>
           </div>

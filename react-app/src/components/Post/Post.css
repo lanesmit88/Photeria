@@ -96,12 +96,16 @@
   background-color: rgba(245, 245, 245, 0.6);
 }
 
-.postCommentBlock form button {
+.feed-button {
   color: blue;
   border: none;
   background-color: rgba(100, 200, 233, 0);
   padding-right: 0.9em;
   cursor: pointer;
+}
+
+.feed-button:hover{
+  text-decoration: underline;
 }
 
 /* Icon styles */

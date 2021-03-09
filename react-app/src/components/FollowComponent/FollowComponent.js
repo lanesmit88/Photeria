@@ -11,7 +11,7 @@ function FollowComponent({ postId, id, onCb }) {
 
   useEffect(() => {
     dispatch(isUserFollowing(postId)).then((e) => {
-    
+
       if (e[0].following.status) {
         onCb(true)
         setTestFollow(true)
@@ -20,7 +20,7 @@ function FollowComponent({ postId, id, onCb }) {
         setTestFollow(false)
       }
       dispatch(fetchPostData(id))});
-    
+
   }, [checkFollow]);
 
   const followUser = async () => {
@@ -47,6 +47,7 @@ function FollowComponent({ postId, id, onCb }) {
           onClick={() => {
             unfollowUser();
           }}
+          className='feed-button'
         >
           UnFollow
         </button>
