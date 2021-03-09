@@ -26,7 +26,7 @@ function CommentComponent({postId}) {
     return(
         <form onSubmit={e => submitHandler(e)} action={''} method={'POST'}>
             <textarea onKeyUp={e => setNewComment(e.target.value)} placeholder='Leave a comment'></textarea>
-            <button type='submit'>Post</button>
+            <button type='submit' className='feed-button'>Post</button>
         </form>
     )
 }
